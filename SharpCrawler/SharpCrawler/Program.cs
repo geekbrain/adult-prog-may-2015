@@ -9,13 +9,14 @@ namespace SharpCrawler
             var crawler = new UrlCrawler("http://www.lenta.ru");
             try
             {
-                Console.WriteLine(crawler.GetHttp());
+/*                Console.WriteLine(crawler.GetHttp());
                 Console.ReadLine();
                 GC.Collect();
                 crawler = new UrlCrawler("http://www.lenta122.ru");
                 Console.WriteLine(crawler.GetHttp());
                 Console.ReadLine();
-                crawler = null;
+                crawler = null;*/
+                crawler.GetLinks();
             }
             catch (CrawlerException exception)
             {

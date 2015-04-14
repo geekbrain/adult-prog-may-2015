@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using HtmlAgilityPack;
 
 namespace SharpCrawler
 {
@@ -13,7 +15,7 @@ namespace SharpCrawler
 
         private readonly string _url;
 
-        public string GetHttp()
+        private string GetHttp()
         {
             var request = WebRequest.Create(_url);
             request.Credentials = CredentialCache.DefaultCredentials;
@@ -36,6 +38,12 @@ namespace SharpCrawler
             response.Close();
 
             return responseText;
+        }
+
+        public List<string> GetLinks()
+        {
+
+            return null;
         }
     }
 }
