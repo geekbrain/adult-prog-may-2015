@@ -16,7 +16,7 @@ namespace SharpCrawler
                 Console.WriteLine(crawler.GetHttp());
                 Console.ReadLine();
                 crawler = null;*/
-                crawler.GetLinks();
+                var links = crawler.GetLinks();
             }
             catch (CrawlerException exception)
             {

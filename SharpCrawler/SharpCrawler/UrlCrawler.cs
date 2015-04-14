@@ -9,12 +9,12 @@ namespace SharpCrawler
 {
     class UrlCrawler
     {
+        private readonly string _url;
+
         public UrlCrawler(string url)
         {
             _url = url;            
         }
-
-        private readonly string _url;
 
         private string GetHttp()
         {
@@ -46,7 +46,11 @@ namespace SharpCrawler
             var document = new HtmlDocument();
             document.LoadHtml(GetHttp());
 
-            return document.DocumentNode.SelectNodes("//a[@href]").Select(link => link.Attributes["href"].Value).ToList();
+            return
+                document.DocumentNode.SelectNodes("//a[@href]")
+                    .Select(link => link.Attributes["href"].Value)
+                    .Where(href => !href.Contains("http") || href.Contains(_url))
+                    .ToList();
         }
     }
 }
