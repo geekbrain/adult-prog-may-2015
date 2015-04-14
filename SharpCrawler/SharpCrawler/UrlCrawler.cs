@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using HtmlAgilityPack;
 
@@ -42,8 +43,10 @@ namespace SharpCrawler
 
         public List<string> GetLinks()
         {
+            var document = new HtmlDocument();
+            document.LoadHtml(GetHttp());
 
-            return null;
+            return document.DocumentNode.SelectNodes("//a[@href]").Select(link => link.Attributes["href"].Value).ToList();
         }
     }
 }

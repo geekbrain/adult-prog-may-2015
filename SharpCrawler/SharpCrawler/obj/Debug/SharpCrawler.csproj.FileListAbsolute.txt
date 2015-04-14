@@ -4,3 +4,6 @@ D:\Code\adult-prog-may-2015\SharpCrawler\SharpCrawler\bin\Debug\SharpCrawler.pdb
 D:\Code\adult-prog-may-2015\SharpCrawler\SharpCrawler\obj\Debug\SharpCrawler.csprojResolveAssemblyReference.cache
 D:\Code\adult-prog-may-2015\SharpCrawler\SharpCrawler\obj\Debug\SharpCrawler.exe
 D:\Code\adult-prog-may-2015\SharpCrawler\SharpCrawler\obj\Debug\SharpCrawler.pdb
+D:\Code\adult-prog-may-2015\SharpCrawler\SharpCrawler\bin\Debug\HtmlAgilityPack.dll
+D:\Code\adult-prog-may-2015\SharpCrawler\SharpCrawler\bin\Debug\HtmlAgilityPack.pdb
+D:\Code\adult-prog-may-2015\SharpCrawler\SharpCrawler\bin\Debug\HtmlAgilityPack.xml
