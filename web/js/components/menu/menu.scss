@@ -1,0 +1,20 @@
+.list-group-item {
+    padding: 0;
+    position: relative;
+}
+.list-group a {
+    padding: 10px 15px;
+    display: block;
+    color: black;
+}
+.list-group {}
+.list-group .white {background: $white;}
+.list-group .blue {background: $blue;}
+.list-group .red {background: $red;}
+.list-group-item .glyphicon {
+    display: none;
+    position: absolute;
+    left: 10px;
+    top: 13px;
+}
+.list-group-item:hover .glyphicon {display: inline;}

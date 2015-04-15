@@ -1,0 +1,16 @@
+{
+    "name": "homax/adult-prog-may-2015",
+    "description": "GeekBrains project",
+    "authors": [
+        {
+            "name": "Maxim Kutyrev",
+            "email": "axigreat@mail.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GeekBrains\\": "src"
+        }
+    },
+    "require": {}
+}
