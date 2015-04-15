@@ -52,14 +52,25 @@ namespace SharpCrawler
 
             var uri = new Uri(_url);
             var host = uri.Host.Replace("www.","");
+            var scheme = uri.Scheme;
             var regexAbsoluteLink = new Regex("^http://[[a-z]*[.]*]*" + host + "");
             var regexRelativeLink = new Regex("^/");
 
-            return
-                document.DocumentNode.SelectNodes("//a[@href]")
+            var relativeLinks = document.DocumentNode.SelectNodes("//a[@href]")
                     .Select(link => link.Attributes["href"].Value)
-                    .Where(link => regexAbsoluteLink.IsMatch(link) || regexRelativeLink.IsMatch(link))
+                    .Where(link => regexRelativeLink.IsMatch(link))
                     .Distinct().ToList();
+
+            for (int i = 0; i < relativeLinks.Count; i++)
+                relativeLinks[i] = scheme + "://" + host + relativeLinks[i];
+
+            var links = document.DocumentNode.SelectNodes("//a[@href]")
+                .Select(link => link.Attributes["href"].Value)
+                .Where(link => regexAbsoluteLink.IsMatch(link))
+                .Distinct().ToList();
+            links.AddRange(relativeLinks);
+            
+            return links;
         }
     }
 }

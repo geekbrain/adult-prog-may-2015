@@ -6,17 +6,12 @@ namespace SharpCrawler
     {
         static void Main(string[] args)
         {
-            var crawler = new UrlCrawler("http://www.lenta.ru");
+            var crawler = new UrlCrawler("http://rbc.ru");
             try
             {
-/*                Console.WriteLine(crawler.GetHttp());
-                Console.ReadLine();
-                GC.Collect();
-                crawler = new UrlCrawler("http://www.lenta122.ru");
-                Console.WriteLine(crawler.GetHttp());
-                Console.ReadLine();
-                crawler = null;*/
                 var links = crawler.GetLinks();
+                links.ForEach(x => Console.WriteLine(x));
+                Console.ReadLine();
             }
             catch (CrawlerException exception)
             {
