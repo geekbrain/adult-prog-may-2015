@@ -1,24 +1,30 @@
 #ifndef GENERALSTATWIDGET_H
 #define GENERALSTATWIDGET_H
 
-#include <QWidget>
+#include <QGroupBox>
 
 QT_BEGIN_NAMESPACE
-class QGroupBox;
-class QPushButton;
+class QDial;
+class QScrollBar;
+class QSlider;
 class QComboBox;
+class QPushButton;
+class QGroupBox;
 QT_END_NAMESPACE
 
-class GeneralStatWidget : public QWidget
+class GeneralStatWidget : public QGroupBox
 {
     Q_OBJECT
 public:
-    explicit GeneralStatWidget(QWidget *parent = 0);
-    ~GeneralStatWidget();
+    explicit GeneralStatWidget(Qt::Orientation orientation, const QString &title,
+                               QWidget *parent = 0);
+//    ~GeneralStatWidget();
 
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;
     QPushButton *okBt_;
+    QGroupBox *leftGroup_;
+    QGroupBox *rightGroup_;
 signals:
 
 public slots:

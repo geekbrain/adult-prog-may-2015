@@ -9,6 +9,7 @@ class QPushButton;
 class QStackedWidget;
 QT_END_NAMESPACE
 class Area2;
+class GeneralStatWidget;
 
 //! [0]
 class Window : public QWidget
@@ -23,6 +24,7 @@ private:
 
     Area2 *horizontalSliders_;
     Area2 *verticalSliders_;
+    GeneralStatWidget* generalStatWidget_;
     QStackedWidget *stackedWidget_;
 
     QGroupBox *controlsGroup_;

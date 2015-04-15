@@ -7,6 +7,8 @@ QT_BEGIN_NAMESPACE
 class QDial;
 class QScrollBar;
 class QSlider;
+class QComboBox;
+class QPushButton;
 QT_END_NAMESPACE
 
 //! [0]
@@ -32,6 +34,10 @@ private:
     QSlider *slider;
     QScrollBar *scrollBar;
     QDial *dial;
+
+    QGroupBox *sitesGroup_;
+    QComboBox *sitesCombo_;
+    QPushButton *okBt_;
 };
 //! [0]
 

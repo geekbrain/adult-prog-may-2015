@@ -1,6 +1,7 @@
 #include <QtWidgets>
 
 #include "area2.h"
+#include "generalstatwidget.h"
 #include "window.h"
 
 //! [0]
@@ -8,8 +9,10 @@ Window::Window()
 {
     horizontalSliders_ = new Area2(Qt::Horizontal, tr("Horizontal"));
     verticalSliders_ = new Area2(Qt::Vertical, tr("Vertical"));
+    generalStatWidget_ = new GeneralStatWidget(Qt::Vertical, tr("Общая статистика"));
 
     stackedWidget_ = new QStackedWidget;
+    stackedWidget_->addWidget(generalStatWidget_);
     stackedWidget_->addWidget(horizontalSliders_);
     stackedWidget_->addWidget(verticalSliders_);
 
