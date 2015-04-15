@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
+
 using HtmlAgilityPack;
+
 
 namespace SharpCrawler
 {
@@ -44,13 +47,19 @@ namespace SharpCrawler
         public List<string> GetLinks()
         {
             var document = new HtmlDocument();
+
             document.LoadHtml(GetHttp());
+
+            var uri = new Uri(_url);
+            var host = uri.Host.Replace("www.","");
+            var regexAbsoluteLink = new Regex("^http://[[a-z]*[.]*]*" + host + "");
+            var regexRelativeLink = new Regex("^/");
 
             return
                 document.DocumentNode.SelectNodes("//a[@href]")
                     .Select(link => link.Attributes["href"].Value)
-                    .Where(href => !href.Contains("http") || href.Contains(_url))
-                    .ToList();
+                    .Where(link => regexAbsoluteLink.IsMatch(link) || regexRelativeLink.IsMatch(link))
+                    .Distinct().ToList();
         }
     }
 }
