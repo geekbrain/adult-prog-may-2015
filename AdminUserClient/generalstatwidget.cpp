@@ -25,6 +25,10 @@ GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString 
     leftGroup_->setLayout(leftLayout);
 
     rightGroup_ = new QGroupBox("right");
+    table_ = new QTableWidget(4, 2);
+    QVBoxLayout *rightLay = new QVBoxLayout;
+    rightLay->addWidget(table_);
+    rightGroup_->setLayout(rightLay);
     QBoxLayout::Direction direction;
 //! [3] //! [4]
 

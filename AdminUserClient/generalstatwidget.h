@@ -10,6 +10,7 @@ class QSlider;
 class QComboBox;
 class QPushButton;
 class QGroupBox;
+class QTableWidget;
 QT_END_NAMESPACE
 
 class GeneralStatWidget : public QGroupBox
@@ -23,6 +24,7 @@ public:
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;
     QPushButton *okBt_;
+    QTableWidget *table_;
     QGroupBox *leftGroup_;
     QGroupBox *rightGroup_;
 signals:
