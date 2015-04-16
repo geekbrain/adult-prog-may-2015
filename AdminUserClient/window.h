@@ -2,6 +2,7 @@
 #define WINDOW_H
 
 #include <QWidget>
+#include <QSharedPointer>
 
 QT_BEGIN_NAMESPACE
 class QGroupBox;
@@ -26,9 +27,9 @@ private:
 
     Area2 *horizontalSliders_;
     Area2 *verticalSliders_;
-    GeneralStatWidget* generalStatWidget_;
-    DailyStatWidget* dailyStatWidget_;
-    NameStatWidget* nameStatWidget_;
+    QSharedPointer<GeneralStatWidget> generalStatWidget_;
+    QSharedPointer<DailyStatWidget> dailyStatWidget_;
+    QSharedPointer<NameStatWidget> nameStatWidget_;
 
     QStackedWidget *stackedWidget_;
 

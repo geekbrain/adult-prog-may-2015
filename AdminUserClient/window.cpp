@@ -7,18 +7,19 @@
 #include "window.h"
 
 //! [0]
-Window::Window()
+Window::Window() :
+    generalStatWidget_(new GeneralStatWidget(Qt::Vertical, tr("Общая статистика"))),
+    dailyStatWidget_(new DailyStatWidget(Qt::Vertical, tr("Ежедневная статистика"))),
+    nameStatWidget_(new NameStatWidget(Qt::Vertical, tr("Статистика по именам")))
 {
     horizontalSliders_ = new Area2(Qt::Horizontal, tr("Horizontal"));
     verticalSliders_ = new Area2(Qt::Vertical, tr("Vertical"));
-    generalStatWidget_ = new GeneralStatWidget(Qt::Vertical, tr("Общая статистика"));
-    dailyStatWidget_ = new DailyStatWidget(Qt::Vertical, tr("Ежедневная статистика"));
-    nameStatWidget_ = new NameStatWidget(Qt::Vertical, tr("Статистика по именам"));
+
 
     stackedWidget_ = new QStackedWidget;
-    stackedWidget_->addWidget(generalStatWidget_);
-    stackedWidget_->addWidget(dailyStatWidget_);
-    stackedWidget_->addWidget(nameStatWidget_);
+    stackedWidget_->addWidget(generalStatWidget_.data());
+    stackedWidget_->addWidget(dailyStatWidget_.data());
+    stackedWidget_->addWidget(nameStatWidget_.data());
     stackedWidget_->addWidget(horizontalSliders_);
     stackedWidget_->addWidget(verticalSliders_);
 
