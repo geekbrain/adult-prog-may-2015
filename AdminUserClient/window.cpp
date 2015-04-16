@@ -1,6 +1,5 @@
 #include <QtWidgets>
 
-#include "area2.h"
 #include "generalstatwidget.h"
 #include "dailystatwidget.h"
 #include "namestatwidget.h"
@@ -8,21 +7,17 @@
 
 //! [0]
 Window::Window() :
+    names_({"Медведев", "Навальный"}),
     generalStatWidget_(new GeneralStatWidget(Qt::Vertical, tr("Общая статистика"))),
     dailyStatWidget_(new DailyStatWidget(Qt::Vertical, tr("Ежедневная статистика"))),
-    nameStatWidget_(new NameStatWidget(Qt::Vertical, tr("Статистика по именам")))
+    nameStatWidget_(new NameStatWidget(names_, Qt::Vertical, tr("Статистика по имени")))
 {
-    horizontalSliders_ = new Area2(Qt::Horizontal, tr("Horizontal"));
-    verticalSliders_ = new Area2(Qt::Vertical, tr("Vertical"));
-
 
     stackedWidget_ = new QStackedWidget;
     stackedWidget_->addWidget(new QWidget(this));
     stackedWidget_->addWidget(generalStatWidget_.data());
     stackedWidget_->addWidget(dailyStatWidget_.data());
     stackedWidget_->addWidget(nameStatWidget_.data());
-    stackedWidget_->addWidget(horizontalSliders_);
-    stackedWidget_->addWidget(verticalSliders_);
 
     createControls(tr("Controls"));
             //! [0]

@@ -17,6 +17,11 @@ public:
     explicit GeneralStatWidget(Qt::Orientation orientation, const QString &title,
                                QWidget *parent = 0);
 //    ~GeneralStatWidget();
+signals:
+
+public slots:
+
+private:
 
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;
@@ -24,9 +29,6 @@ public:
     QTableWidget *table_;
     QGroupBox *leftGroup_;
     QGroupBox *rightGroup_;
-signals:
-
-public slots:
 };
 
 #endif // GENERALSTATWIDGET_H

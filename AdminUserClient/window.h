@@ -3,13 +3,13 @@
 
 #include <QWidget>
 #include <QSharedPointer>
+#include <QList>
 
 QT_BEGIN_NAMESPACE
 class QGroupBox;
 class QPushButton;
 class QStackedWidget;
 QT_END_NAMESPACE
-class Area2;
 class GeneralStatWidget;
 class DailyStatWidget;
 class NameStatWidget;
@@ -25,8 +25,8 @@ public:
 private:
     void createControls(const QString &title);
 
-    Area2 *horizontalSliders_;
-    Area2 *verticalSliders_;
+    QList<QString> names_; // Список личностей, о которых смотрится статистика.
+
     QSharedPointer<GeneralStatWidget> generalStatWidget_;
     QSharedPointer<DailyStatWidget> dailyStatWidget_;
     QSharedPointer<NameStatWidget> nameStatWidget_;
@@ -37,6 +37,7 @@ private:
     QPushButton *generalStatBt_;
     QPushButton *dailyStatBt_;
     QPushButton *nameStatBt_;
+
 };
 //! [0]
 
