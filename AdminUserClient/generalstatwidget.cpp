@@ -9,14 +9,14 @@ GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString 
     okBt_ = new QPushButton("ok");
     sitesCombo_ = new QComboBox();
     sitesCombo_->addItem("lenta.ru");
-    leftGroup_ = new QGroupBox("left");
+    leftGroup_ = new QGroupBox("Выбор сайта");
     QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
     leftLayout->addWidget(sitesCombo_);
     leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
     leftLayout->addStretch();
     leftGroup_->setLayout(leftLayout);
 
-    rightGroup_ = new QGroupBox("right");
+    rightGroup_ = new QGroupBox("Результаты");
     table_ = new QTableWidget(4, 2);
     QVBoxLayout *rightLay = new QVBoxLayout;
     rightLay->addWidget(table_);
@@ -35,20 +35,28 @@ GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString 
     setLayout(slidersLayout);    
 
     QObject::connect(okBt_, &QPushButton::clicked, [&](){
+        // по кнопке ок пока заполняем тестовыми данными
         int row = 0;
         int col = 0;
         table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
         //Set Header Label Texts Here
-        table_->setHorizontalHeaderLabels(QString("HEADER 1;HEADER 2;HEADER 3").split(";"));
+        table_->setHorizontalHeaderLabels(QString("персонаж;упоминаний;").split(";"));
 
-        //Add Table items here With Default Cell Texts
-        table_->setItem(row, col, new QTableWidgetItem("ITEM 1"));
+        //
+        // Создаю 4 ячейки, заполняю данными наугад.
+        //
+        table_->setItem(row, col, new QTableWidgetItem(""));
+        table_->item(row, col)->setText("Навальный");
 
-        //Change Cell Texts Here
-        table_->item(row, col)->setText("Putin");
+        table_->setItem(++row, col, new QTableWidgetItem(""));
+        table_->item(row, col)->setText("Медведев");
 
-        table_->item(row, col)->setText("Naval'ny");
+        table_->setItem(--row, ++col, new QTableWidgetItem(""));
+        table_->item(row, col)->setText("100");
+
+        table_->setItem(++row, col, new QTableWidgetItem(""));
+        table_->item(row, col)->setText("390");
     });
 
 

@@ -11,3 +11,5 @@ SOURCES     = main.cpp \
     generalstatwidget.cpp \
     dailystatwidget.cpp \
     namestatwidget.cpp
+
+#DESTDIR = /bin
