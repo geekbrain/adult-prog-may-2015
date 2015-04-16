@@ -1,4 +1,5 @@
 QT += widgets
+QMAKE_CXXFLAGS += -std=c++0x
 
 HEADERS     = \
               window.h \

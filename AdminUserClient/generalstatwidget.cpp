@@ -1,4 +1,5 @@
 #include <QtWidgets>
+#include <QDebug>
 #include "generalstatwidget.h"
 
 GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString &title,
@@ -40,7 +41,30 @@ GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString 
     QBoxLayout *slidersLayout = new QBoxLayout(direction);
     slidersLayout->addWidget(leftGroup_, 1, 0);
     slidersLayout->addWidget(rightGroup_, 3, 0);
-    setLayout(slidersLayout);
+    setLayout(slidersLayout);    
+
+    QObject::connect(okBt_, &QPushButton::clicked, [&](){
+        //        this->m_objects.remove(sender);
+        //        QTableWidgetItem medvedev("Медведев");
+        //        table_->setItem(0, 0, &medvedev);
+        qDebug() << "Сработала лямбда";
+        int row = 0;
+        int col = 0;
+        table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+        //Set Header Label Texts Here
+        table_->setHorizontalHeaderLabels(QString("HEADER 1;HEADER 2;HEADER 3").split(";"));
+
+        //Add Table items here With Default Cell Texts
+        table_->setItem(row, col, new QTableWidgetItem("ITEM 1"));
+
+        //Change Cell Texts Here
+        table_->item(row, col)->setText("Putin");
+
+        table_->item(row, col)->setText("Naval'ny");
+    });
+
+
 }
 
 //GeneralStatWidget::~GeneralStatWidget()
