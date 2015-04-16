@@ -17,6 +17,7 @@ Window::Window() :
 
 
     stackedWidget_ = new QStackedWidget;
+    stackedWidget_->addWidget(new QWidget(this));
     stackedWidget_->addWidget(generalStatWidget_.data());
     stackedWidget_->addWidget(dailyStatWidget_.data());
     stackedWidget_->addWidget(nameStatWidget_.data());
