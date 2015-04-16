@@ -4,9 +4,6 @@
 #include <QGroupBox>
 
 QT_BEGIN_NAMESPACE
-class QDial;
-class QScrollBar;
-class QSlider;
 class QComboBox;
 class QPushButton;
 class QGroupBox;

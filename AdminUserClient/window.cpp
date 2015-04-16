@@ -25,12 +25,19 @@ Window::Window() :
     stackedWidget_->addWidget(verticalSliders_);
 
     createControls(tr("Controls"));
-//! [0]
+            //! [0]
 
-//! [1]
-    connect(horizontalSliders_, SIGNAL(valueChanged(int)),
+    //! [1]
+    QObject::connect(generalStatBt_, &QPushButton::clicked, [&](){
+        stackedWidget_->setCurrentIndex(1);
+    });
+    QObject::connect(dailyStatBt_, &QPushButton::clicked, [&](){
+        stackedWidget_->setCurrentIndex(2);
+    });
+    QObject::connect(nameStatBt_, &QPushButton::clicked, [&](){
+        stackedWidget_->setCurrentIndex(3);
+    });
 //! [1] //! [2]
-            verticalSliders_, SLOT(setValue(int)));
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(controlsGroup_);
