@@ -15,9 +15,13 @@ GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString 
 //    sitesLayout->addWidget(okBt_, 1, 0);
 //    sitesGroup_->setLayout(sitesLayout);
     okBt_ = new QPushButton("ok");
+    sitesCombo_ = new QComboBox();
+    sitesCombo_->addItem("lenta.ru");
     leftGroup_ = new QGroupBox("left");
     QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
+    leftLayout->addWidget(sitesCombo_);
     leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
+    leftLayout->addStretch();
     leftGroup_->setLayout(leftLayout);
 
     rightGroup_ = new QGroupBox("right");
