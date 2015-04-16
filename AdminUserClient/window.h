@@ -26,9 +26,8 @@ private:
     Area2 *horizontalSliders_;
     Area2 *verticalSliders_;
     GeneralStatWidget* generalStatWidget_;
-    DailyStatWidget dailyStatWidget_;
+    DailyStatWidget* dailyStatWidget_;
     QStackedWidget *stackedWidget_;
-
 
     QGroupBox *controlsGroup_;
     QPushButton *generalStatBt_;
