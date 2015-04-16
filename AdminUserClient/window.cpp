@@ -3,6 +3,7 @@
 #include "area2.h"
 #include "generalstatwidget.h"
 #include "dailystatwidget.h"
+#include "namestatwidget.h"
 #include "window.h"
 
 //! [0]
@@ -12,10 +13,12 @@ Window::Window()
     verticalSliders_ = new Area2(Qt::Vertical, tr("Vertical"));
     generalStatWidget_ = new GeneralStatWidget(Qt::Vertical, tr("Общая статистика"));
     dailyStatWidget_ = new DailyStatWidget(Qt::Vertical, tr("Ежедневная статистика"));
+    nameStatWidget_ = new NameStatWidget(Qt::Vertical, tr("Статистика по именам"));
 
     stackedWidget_ = new QStackedWidget;
     stackedWidget_->addWidget(generalStatWidget_);
     stackedWidget_->addWidget(dailyStatWidget_);
+    stackedWidget_->addWidget(nameStatWidget_);
     stackedWidget_->addWidget(horizontalSliders_);
     stackedWidget_->addWidget(verticalSliders_);
 

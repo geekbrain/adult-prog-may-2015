@@ -11,6 +11,7 @@ QT_END_NAMESPACE
 class Area2;
 class GeneralStatWidget;
 class DailyStatWidget;
+class NameStatWidget;
 
 //! [0]
 class Window : public QWidget
@@ -27,6 +28,8 @@ private:
     Area2 *verticalSliders_;
     GeneralStatWidget* generalStatWidget_;
     DailyStatWidget* dailyStatWidget_;
+    NameStatWidget* nameStatWidget_;
+
     QStackedWidget *stackedWidget_;
 
     QGroupBox *controlsGroup_;
