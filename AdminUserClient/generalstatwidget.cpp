@@ -44,10 +44,6 @@ GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString 
     setLayout(slidersLayout);    
 
     QObject::connect(okBt_, &QPushButton::clicked, [&](){
-        //        this->m_objects.remove(sender);
-        //        QTableWidgetItem medvedev("Медведев");
-        //        table_->setItem(0, 0, &medvedev);
-        qDebug() << "Сработала лямбда";
         int row = 0;
         int col = 0;
         table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
