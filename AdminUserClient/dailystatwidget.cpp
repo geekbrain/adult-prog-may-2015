@@ -34,20 +34,28 @@ DailyStatWidget::DailyStatWidget(Qt::Orientation orientation, const QString &tit
     setLayout(slidersLayout);
 
     QObject::connect(okBt_, &QPushButton::clicked, [&](){
+        // по кнопке ок пока заполняем тестовыми данными
         int row = 0;
         int col = 0;
         table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
         //Set Header Label Texts Here
-        table_->setHorizontalHeaderLabels(QString("HEADER 1;HEADER 2;HEADER 3").split(";"));
+        table_->setHorizontalHeaderLabels(QString("персонаж;упоминаний;").split(";"));
 
-        //Add Table items here With Default Cell Texts
-        table_->setItem(row, col, new QTableWidgetItem("ITEM 1"));
+        //
+        // Создаю 4 ячейки, заполняю данными наугад.
+        //
+        table_->setItem(row, col, new QTableWidgetItem(""));
+        table_->item(row, col)->setText("Навальный");
 
-        //Change Cell Texts Here
-        table_->item(row, col)->setText("Putin");
+        table_->setItem(++row, col, new QTableWidgetItem(""));
+        table_->item(row, col)->setText("Медведев");
 
-        table_->item(row, col)->setText("Naval'ny");
+        table_->setItem(--row, ++col, new QTableWidgetItem(""));
+        table_->item(row, col)->setText("1");
+
+        table_->setItem(++row, col, new QTableWidgetItem(""));
+        table_->item(row, col)->setText("3");
     });
 
 
