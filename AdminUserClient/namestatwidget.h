@@ -19,6 +19,13 @@ public:
     explicit NameStatWidget(QList<QString> names, Qt::Orientation orientation, const QString &title,
                              QWidget *parent = 0);
 
+
+
+signals:
+
+public slots:
+
+private:
     QList<QString> names; // Список лиц, по которым подсчитываем статистику.
     QGroupBox *leftGroup;
     QGroupBox *rightGroup;
@@ -27,12 +34,6 @@ public:
 //    QCalendarWidget *beginPeriod;
 //    QCalendarWidget *endPeriod;
     QPushButton *okBt;
-
-signals:
-
-public slots:
-
-private:
 
 };
 

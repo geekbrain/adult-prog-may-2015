@@ -17,16 +17,17 @@ public:
     explicit DailyStatWidget(Qt::Orientation orientation, const QString &title,
                              QWidget *parent = 0);
 
+signals:
+
+public slots:
+
+private:
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;
     QPushButton *okBt_;
     QTableWidget *table_;
     QGroupBox *leftGroup_;
     QGroupBox *rightGroup_;
-
-signals:
-
-public slots:
 };
 
 #endif // DAILYSTATWIDGET_H

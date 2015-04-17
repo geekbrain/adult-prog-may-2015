@@ -14,7 +14,6 @@ class GeneralStatWidget;
 class DailyStatWidget;
 class NameStatWidget;
 
-//! [0]
 class Window : public QWidget
 {
     Q_OBJECT
@@ -39,6 +38,5 @@ private:
     QPushButton *nameStatBt_;
 
 };
-//! [0]
 
 #endif

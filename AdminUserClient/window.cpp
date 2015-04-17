@@ -5,7 +5,6 @@
 #include "namestatwidget.h"
 #include "window.h"
 
-//! [0]
 Window::Window() :
     names_({"Медведев", "Навальный"}),
     generalStatWidget_(new GeneralStatWidget(Qt::Vertical, tr("Общая статистика"))),
@@ -20,9 +19,7 @@ Window::Window() :
     stackedWidget_->addWidget(nameStatWidget_.data());
 
     createControls(tr("Controls"));
-            //! [0]
 
-    //! [1]
     QObject::connect(generalStatBt_, &QPushButton::clicked, [&](){
         stackedWidget_->setCurrentIndex(1);
     });
@@ -32,7 +29,6 @@ Window::Window() :
     QObject::connect(nameStatBt_, &QPushButton::clicked, [&](){
         stackedWidget_->setCurrentIndex(3);
     });
-//! [1] //! [2]
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(controlsGroup_);
@@ -43,7 +39,6 @@ Window::Window() :
 }
 
 void Window::createControls(const QString &title)
-//! [3] //! [4]
 {
     controlsGroup_ = new QGroupBox(title);
 
@@ -59,4 +54,3 @@ void Window::createControls(const QString &title)
     controlsLayout->addWidget(nameStatBt_, 2, 0);
     controlsGroup_->setLayout(controlsLayout);
 }
-//! [8]

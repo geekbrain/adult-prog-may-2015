@@ -22,7 +22,6 @@ GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString 
     rightLay->addWidget(table_);
     rightGroup_->setLayout(rightLay);
     QBoxLayout::Direction direction;
-//! [3] //! [4]
 
     if (orientation == Qt::Horizontal)
         direction = QBoxLayout::TopToBottom;

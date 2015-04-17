@@ -21,7 +21,6 @@ DailyStatWidget::DailyStatWidget(Qt::Orientation orientation, const QString &tit
     rightLay->addWidget(table_);
     rightGroup_->setLayout(rightLay);
     QBoxLayout::Direction direction;
-//! [3] //! [4]
 
     if (orientation == Qt::Horizontal)
         direction = QBoxLayout::TopToBottom;
@@ -57,8 +56,6 @@ DailyStatWidget::DailyStatWidget(Qt::Orientation orientation, const QString &tit
         table_->setItem(++row, col, new QTableWidgetItem(""));
         table_->item(row, col)->setText("3");
     });
-
-
 }
 
 
