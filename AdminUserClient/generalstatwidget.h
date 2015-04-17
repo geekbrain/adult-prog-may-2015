@@ -22,6 +22,24 @@ signals:
 public slots:
 
 private:
+    /**
+     * @brief createControls Создание и размещение элементов управления показом статистики.
+     */
+    void createControls();
+
+    /**
+     * @brief placementResultsArea Размещение группы элементов для отображения общей статистики.
+     */
+    void placementResultsArea();
+
+    /**
+     * @brief placementAreas Соединение 2 областей - 1) с контрольными элементами и 2) таблицей
+     * в результате данный виджет получит окончательный вид.
+     * @param orientation Горизонтально либо вертикально.
+     */
+    void finalPlacementAreas(Qt::Orientation orientation = Qt::Horizontal);
+
+    void fillTableTmpData();
 
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;
