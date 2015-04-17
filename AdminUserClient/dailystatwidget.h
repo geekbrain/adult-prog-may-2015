@@ -26,8 +26,14 @@ private:
     QComboBox *sitesCombo_;
     QPushButton *okBt_;
     QTableWidget *table_;
-    QGroupBox *rightGroup_;
+    QGroupBox *resultGroup_;
 
+    void configControlArea() const;
+    void configResultsArea() const;
+    void resultTableTuning() const;
+    void setFinalFace(Qt::Orientation orientation);
+
+private slots:
     void fillTableTempData() const;
 };
 
