@@ -11,7 +11,6 @@ Window::Window() :
     dailyStatWidget_(new DailyStatWidget(Qt::Vertical, tr("Ежедневная статистика"))),
     nameStatWidget_(new NameStatWidget(names_, Qt::Vertical, tr("Статистика по имени")))
 {
-
     stackedWidget_ = new QStackedWidget;
     stackedWidget_->addWidget(new QWidget(this));
     stackedWidget_->addWidget(generalStatWidget_.data());
@@ -19,16 +18,7 @@ Window::Window() :
     stackedWidget_->addWidget(nameStatWidget_.data());
 
     createControls(tr("Controls"));
-
-    QObject::connect(generalStatBt_, &QPushButton::clicked, [&](){
-        stackedWidget_->setCurrentIndex(1);
-    });
-    QObject::connect(dailyStatBt_, &QPushButton::clicked, [&](){
-        stackedWidget_->setCurrentIndex(2);
-    });
-    QObject::connect(nameStatBt_, &QPushButton::clicked, [&](){
-        stackedWidget_->setCurrentIndex(3);
-    });
+    configControls();
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(controlsGroup_);
@@ -45,12 +35,23 @@ void Window::createControls(const QString &title)
     generalStatBt_ = new QPushButton("Общая статистика", this);
     dailyStatBt_ = new QPushButton("Дневная статистика", this);
     nameStatBt_ = new QPushButton("Имена", this);
-//    connect(orientationCombo, SIGNAL(activated(int)),
-//            stackedWidget, SLOT(setCurrentIndex(int)));
 
     QGridLayout *controlsLayout = new QGridLayout;
     controlsLayout->addWidget(generalStatBt_, 0, 0);
     controlsLayout->addWidget(dailyStatBt_, 1, 0);
     controlsLayout->addWidget(nameStatBt_, 2, 0);
     controlsGroup_->setLayout(controlsLayout);
+}
+
+void Window::configControls() const
+{
+    QObject::connect(generalStatBt_, &QPushButton::clicked, [&](){
+        stackedWidget_->setCurrentIndex(1);
+    });
+    QObject::connect(dailyStatBt_, &QPushButton::clicked, [&](){
+        stackedWidget_->setCurrentIndex(2);
+    });
+    QObject::connect(nameStatBt_, &QPushButton::clicked, [&](){
+        stackedWidget_->setCurrentIndex(3);
+    });
 }

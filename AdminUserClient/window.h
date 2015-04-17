@@ -22,7 +22,16 @@ public:
     Window();
 
 private:
+    /**
+     * @brief createControls Создание и размещение виджета с котрольными элементами.
+     * @param title Заголовок группы.
+     */
     void createControls(const QString &title);
+
+    /**
+     * @brief configControls Настройка работы контрольных элементов.
+     */
+    void configControls() const;
 
     QList<QString> names_; // Список личностей, о которых смотрится статистика.
 
@@ -36,7 +45,6 @@ private:
     QPushButton *generalStatBt_;
     QPushButton *dailyStatBt_;
     QPushButton *nameStatBt_;
-
 };
 
 #endif
