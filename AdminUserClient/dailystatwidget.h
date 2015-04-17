@@ -26,8 +26,9 @@ private:
     QComboBox *sitesCombo_;
     QPushButton *okBt_;
     QTableWidget *table_;
-    QGroupBox *leftGroup_;
     QGroupBox *rightGroup_;
+
+    void fillTableTempData() const;
 };
 
 #endif // DAILYSTATWIDGET_H

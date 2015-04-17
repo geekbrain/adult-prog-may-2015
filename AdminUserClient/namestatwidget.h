@@ -19,8 +19,6 @@ public:
     explicit NameStatWidget(QList<QString> names, Qt::Orientation orientation, const QString &title,
                              QWidget *parent = 0);
 
-
-
 signals:
 
 public slots:
