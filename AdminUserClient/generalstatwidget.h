@@ -23,9 +23,9 @@ public slots:
 
 private:
     /**
-     * @brief createControls Создание и размещение элементов управления показом статистики.
+     * @brief createControlsArea Создание и размещение элементов управления показом статистики.
      */
-    void createControls();
+    void createControlsArea();
 
     /**
      * @brief placementResultsArea Размещение группы элементов для отображения общей статистики.
@@ -40,6 +40,8 @@ private:
     void finalPlacementAreas(Qt::Orientation orientation = Qt::Horizontal);
 
     void fillTableTmpData();
+    void configTableView();
+    void setOkBtBehavior() const;
 
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;

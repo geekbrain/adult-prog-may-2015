@@ -7,32 +7,19 @@ GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString 
               : QGroupBox(title, parent),
                 table_(new QTableWidget(4, 2, this))
 {
-    createControls();
+    createControlsArea();
     placementResultsArea();
     finalPlacementAreas(orientation);
-
-    QObject::connect(okBt_, &QPushButton::clicked, [&](){
-        // по кнопке ок пока заполняем тестовыми данными
-        int row = 0;
-        int col = 0;
-        table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-        //Set Header Label Texts Here
-        table_->setHorizontalHeaderLabels(QString("персонаж;упоминаний;").split(";"));
-
-        fillTableTmpData();
-    });
-
-
+    setOkBtBehavior();
 }
 
-void GeneralStatWidget::createControls()
+void GeneralStatWidget::createControlsArea()
 {
-    okBt_ = new QPushButton("ok");
-    sitesCombo_ = new QComboBox();
+    okBt_ = new QPushButton("ok", this);
+    sitesCombo_ = new QComboBox(this);
     sitesCombo_->addItem("lenta.ru");
-    leftGroup_ = new QGroupBox("Выбор сайта");
-    QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
+    leftGroup_ = new QGroupBox("Выбор сайта", this);
+    QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom, this);
     leftLayout->addWidget(sitesCombo_);
     leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
     leftLayout->addStretch();
@@ -44,6 +31,7 @@ void GeneralStatWidget::placementResultsArea()
     rightGroup_ = new QGroupBox("Результаты", this);
 
     QVBoxLayout *rightLay = new QVBoxLayout(this);
+    configTableView();
     rightLay->addWidget(table_);
     rightGroup_->setLayout(rightLay);
 }
@@ -57,7 +45,7 @@ void GeneralStatWidget::finalPlacementAreas(Qt::Orientation orientation)
     else
         direction = QBoxLayout::LeftToRight;
 
-    QBoxLayout *slidersLayout = new QBoxLayout(direction);
+    QBoxLayout *slidersLayout = new QBoxLayout(direction, this);
     slidersLayout->addWidget(leftGroup_, 1, 0);
     slidersLayout->addWidget(rightGroup_, 3, 0);
     setLayout(slidersLayout);
@@ -76,6 +64,21 @@ void GeneralStatWidget::fillTableTmpData()
 
     table_->setItem(1, 1, new QTableWidgetItem(""));
     table_->item(1, 1)->setText("390");
+}
+
+void GeneralStatWidget::configTableView()
+{
+    table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    //Set Header Label Texts Here
+    table_->setHorizontalHeaderLabels(QString("персонаж;упоминаний;").split(";"));
+}
+
+void GeneralStatWidget::setOkBtBehavior() const
+{
+    QObject::connect(okBt_, &QPushButton::clicked, [&](){
+        fillTableTmpData();
+    });
 }
 
 //GeneralStatWidget::~GeneralStatWidget()
