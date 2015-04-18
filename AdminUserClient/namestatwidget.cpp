@@ -19,18 +19,7 @@ NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, cons
     QVBoxLayout *rightLay = new QVBoxLayout(this);
 //    rightLay->addWidget(table_);
     rightGroup_->setLayout(rightLay);
-
-
-    QBoxLayout::Direction direction;
-    if (orientation == Qt::Horizontal)
-        direction = QBoxLayout::TopToBottom;
-    else
-        direction = QBoxLayout::LeftToRight;
-
-    QBoxLayout *slidersLayout = new QBoxLayout(direction, this);
-    slidersLayout->addWidget(leftGroup_, 1, 0);
-    slidersLayout->addWidget(rightGroup_, 3, 0);
-    setLayout(slidersLayout);
+    setFinalFace(orientation);
 }
 
 void NameStatWidget::configLeftArea(const NameDao& names) const
@@ -58,6 +47,20 @@ void NameStatWidget::configLeftArea(const NameDao& names) const
     leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
     leftLayout->addStretch();
     leftGroup_->setLayout(leftLayout);
+}
+
+void NameStatWidget::setFinalFace(Qt::Orientation orientation)
+{
+    QBoxLayout::Direction direction;
+    if (orientation == Qt::Horizontal)
+        direction = QBoxLayout::TopToBottom;
+    else
+        direction = QBoxLayout::LeftToRight;
+
+    QBoxLayout* slidersLayout = new QBoxLayout(direction, this);
+    slidersLayout->addWidget(leftGroup_, 1, 0);
+    slidersLayout->addWidget(rightGroup_, 3, 0);
+    setLayout(slidersLayout);
 }
 
 

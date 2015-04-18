@@ -35,7 +35,7 @@ private:
     QPushButton *okBt_;
 
     void configLeftArea(const NameDao& names) const;
-    void setFinalFace() const;
+    void setFinalFace(Qt::Orientation orientation);
 };
 
 #endif // NAMESTATWIDGET_H
