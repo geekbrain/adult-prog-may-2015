@@ -2,10 +2,10 @@
 #include <QCalendarWidget>
 #include "namestatwidget.h"
 
-NameStatWidget::NameStatWidget(const NameDao& names, Qt::Orientation orientation, const QString &title,
+NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
                                QWidget *parent)
         : QGroupBox(title, parent),
-          names_(&names),
+          names_(names),
           leftGroup_(new QGroupBox("Параметры", this)),
           rightGroup_(new QGroupBox("Результаты", this)),
           sitesCombo_(new QComboBox(this)),
@@ -14,11 +14,11 @@ NameStatWidget::NameStatWidget(const NameDao& names, Qt::Orientation orientation
           endPeriod_(new QDateEdit(this)),
           okBt_(new QPushButton("Ok", this))
 {
-    configLeftArea(names);
+    configLeftArea(*names);
 //    table_ = new QTableWidget(4, 2);
-    QVBoxLayout *rightLay = new QVBoxLayout;
+    QVBoxLayout *rightLay = new QVBoxLayout(this);
 //    rightLay->addWidget(table_);
-    rightGroup->setLayout(rightLay);
+    rightGroup_->setLayout(rightLay);
 
 
     QBoxLayout::Direction direction;
@@ -27,37 +27,37 @@ NameStatWidget::NameStatWidget(const NameDao& names, Qt::Orientation orientation
     else
         direction = QBoxLayout::LeftToRight;
 
-    QBoxLayout *slidersLayout = new QBoxLayout(direction);
-    slidersLayout->addWidget(leftGroup, 1, 0);
-    slidersLayout->addWidget(rightGroup, 3, 0);
+    QBoxLayout *slidersLayout = new QBoxLayout(direction, this);
+    slidersLayout->addWidget(leftGroup_, 1, 0);
+    slidersLayout->addWidget(rightGroup_, 3, 0);
     setLayout(slidersLayout);
 }
 
-void NameStatWidget::configLeftArea(QList<QString> names) const
+void NameStatWidget::configLeftArea(const NameDao& names) const
 {
-    sitesCombo->addItem("lenta.ru");
-
+    sitesCombo_->addItem("lenta.ru");
+    auto namesList = names.names();
     // Заполняю выпадающий список именами.
-    foreach (auto var, names) {
-        namesCombo->addItem(var);
+    foreach (auto var, namesList) {
+        namesCombo_->addItem(var);
     }
 
     QBoxLayout* leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
-    leftLayout->addWidget(sitesCombo);
-    leftLayout->addWidget(namesCombo);    
+    leftLayout->addWidget(sitesCombo_);
+    leftLayout->addWidget(namesCombo_);
     QLabel* labelFrom = new QLabel(tr("&От:"));
-    labelFrom->setBuddy(beginPeriod);
+    labelFrom->setBuddy(beginPeriod_);
     leftLayout->addWidget(labelFrom);
-    leftLayout->addWidget(beginPeriod);
+    leftLayout->addWidget(beginPeriod_);
 
     QLabel* labelTo = new QLabel(tr("&До:"));
-    labelTo->setBuddy(endPeriod);
+    labelTo->setBuddy(endPeriod_);
     leftLayout->addWidget(labelTo);
-    leftLayout->addWidget(endPeriod);
+    leftLayout->addWidget(endPeriod_);
 
-    leftLayout->addWidget(okBt, 2, Qt::AlignRight);
+    leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
     leftLayout->addStretch();
-    leftGroup->setLayout(leftLayout);
+    leftGroup_->setLayout(leftLayout);
 }
 
 
