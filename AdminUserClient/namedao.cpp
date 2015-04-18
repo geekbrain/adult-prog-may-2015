@@ -2,7 +2,7 @@
 
 NameDao::NameDao(QObject *parent) : QObject(parent)
 {
-
+    initTempData();
 }
 
 NameDao::~NameDao()

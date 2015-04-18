@@ -2,16 +2,17 @@
 #include <QCalendarWidget>
 #include "namestatwidget.h"
 
-NameStatWidget::NameStatWidget(QList<QString> names, Qt::Orientation orientation, const QString &title,
+NameStatWidget::NameStatWidget(const NameDao& names, Qt::Orientation orientation, const QString &title,
                                QWidget *parent)
         : QGroupBox(title, parent),
-          leftGroup(new QGroupBox("Параметры", this)),
-          rightGroup(new QGroupBox("Результаты", this)),
-          sitesCombo(new QComboBox(this)),
-          namesCombo(new QComboBox(this)),
-          beginPeriod(new QDateEdit(this)),
-          endPeriod(new QDateEdit(this)),
-          okBt(new QPushButton("Ok", this))
+          names_(&names),
+          leftGroup_(new QGroupBox("Параметры", this)),
+          rightGroup_(new QGroupBox("Результаты", this)),
+          sitesCombo_(new QComboBox(this)),
+          namesCombo_(new QComboBox(this)),
+          beginPeriod_(new QDateEdit(this)),
+          endPeriod_(new QDateEdit(this)),
+          okBt_(new QPushButton("Ok", this))
 {
     configLeftArea(names);
 //    table_ = new QTableWidget(4, 2);

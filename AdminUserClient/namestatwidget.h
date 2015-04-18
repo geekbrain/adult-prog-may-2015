@@ -2,7 +2,7 @@
 #define NAMESTATWIDGET_H
 
 #include <QGroupBox>
-#include <QList>
+#include "namedao.h"
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -16,7 +16,7 @@ class NameStatWidget : public QGroupBox
 {
     Q_OBJECT
 public:
-    explicit NameStatWidget(QList<QString> names, Qt::Orientation orientation, const QString &title,
+    explicit NameStatWidget(const NameDao& names, Qt::Orientation orientation, const QString &title,
                              QWidget *parent = 0);
 
 signals:
@@ -24,14 +24,14 @@ signals:
 public slots:
 
 private:
-    QList<QString> names; // Список лиц, по которым подсчитываем статистику.
-    QGroupBox *leftGroup;
-    QGroupBox *rightGroup;
-    QComboBox *sitesCombo;
-    QComboBox *namesCombo;
-    QDateEdit *beginPeriod;
-    QDateEdit *endPeriod;
-    QPushButton *okBt;
+    NameDao* names_; // Список лиц, по которым подсчитываем статистику.
+    QGroupBox *leftGroup_;
+    QGroupBox *rightGroup_;
+    QComboBox *sitesCombo_;
+    QComboBox *namesCombo_;
+    QDateEdit *beginPeriod_;
+    QDateEdit *endPeriod_;
+    QPushButton *okBt_;
 
     void configLeftArea(QList<QString> names) const;
     void setFinalFace() const;

@@ -13,6 +13,7 @@ QT_END_NAMESPACE
 class GeneralStatWidget;
 class DailyStatWidget;
 class NameStatWidget;
+class NameDao;
 
 class Window : public QWidget
 {
@@ -33,7 +34,7 @@ private:
      */
     void configControls() const;
 
-    QList<QString> names_; // Список личностей, о которых смотрится статистика.
+    NameDao* names_; // Список личностей, о которых смотрится статистика.
 
     QSharedPointer<GeneralStatWidget> generalStatWidget_;
     QSharedPointer<DailyStatWidget> dailyStatWidget_;
