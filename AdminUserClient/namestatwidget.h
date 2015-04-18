@@ -34,6 +34,7 @@ private:
     QPushButton *okBt;
 
     void configLeftArea(QList<QString> names) const;
+    void setFinalFace() const;
 };
 
 #endif // NAMESTATWIDGET_H
