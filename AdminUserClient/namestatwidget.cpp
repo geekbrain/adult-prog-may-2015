@@ -9,27 +9,11 @@ NameStatWidget::NameStatWidget(QList<QString> names, Qt::Orientation orientation
           rightGroup(new QGroupBox("right", this)),
           sitesCombo(new QComboBox(this)),
           namesCombo(new QComboBox(this)),
-//          beginPeriod(new QCalendarWidget(this)),
-//          endPeriod(new QCalendarWidget(this)),
+          beginPeriod(new QDateEdit(this)),
+          endPeriod(new QDateEdit(this)),
           okBt(new QPushButton("Ok", this))
 {
-    sitesCombo->addItem("lenta.ru");
-
-    // Заполняю выпадающий список именами.
-    foreach (auto var, names) {
-        namesCombo->addItem(var);
-    }
-
-//    beginPeriod->setGridVisible(false);
-
-    QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
-    leftLayout->addWidget(sitesCombo);
-    leftLayout->addWidget(namesCombo);
-//    leftLayout->addWidget(beginPeriod);
-    leftLayout->addWidget(okBt, 2, Qt::AlignRight);
-    leftLayout->addStretch();
-    leftGroup->setLayout(leftLayout);
-
+    configLeftArea(names);
 //    table_ = new QTableWidget(4, 2);
     QVBoxLayout *rightLay = new QVBoxLayout;
 //    rightLay->addWidget(table_);
@@ -46,7 +30,28 @@ NameStatWidget::NameStatWidget(QList<QString> names, Qt::Orientation orientation
     slidersLayout->addWidget(leftGroup, 1, 0);
     slidersLayout->addWidget(rightGroup, 3, 0);
     setLayout(slidersLayout);
+}
 
+void NameStatWidget::configLeftArea(QList<QString> names) const
+{
+    sitesCombo->addItem("lenta.ru");
+
+    // Заполняю выпадающий список именами.
+    foreach (auto var, names) {
+        namesCombo->addItem(var);
+    }
+
+//    beginPeriod->setGridVisible(false);
+
+    QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
+    leftLayout->addWidget(sitesCombo);
+    leftLayout->addWidget(namesCombo);
+//    leftLayout->addWidget(beginPeriod);
+    leftLayout->addWidget(beginPeriod);
+    leftLayout->addWidget(endPeriod);
+    leftLayout->addWidget(okBt, 2, Qt::AlignRight);
+    leftLayout->addStretch();
+    leftGroup->setLayout(leftLayout);
 }
 
 

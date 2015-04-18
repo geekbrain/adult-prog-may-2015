@@ -9,7 +9,7 @@ class QComboBox;
 class QPushButton;
 class QGroupBox;
 class QTableWidget;
-class QCalendarWidget;
+class QDateEdit;
 QT_END_NAMESPACE
 
 class NameStatWidget : public QGroupBox
@@ -29,10 +29,11 @@ private:
     QGroupBox *rightGroup;
     QComboBox *sitesCombo;
     QComboBox *namesCombo;
-//    QCalendarWidget *beginPeriod;
-//    QCalendarWidget *endPeriod;
+    QDateEdit *beginPeriod;
+    QDateEdit *endPeriod;
     QPushButton *okBt;
 
+    void configLeftArea(QList<QString> names) const;
 };
 
 #endif // NAMESTATWIDGET_H
