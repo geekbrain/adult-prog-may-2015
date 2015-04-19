@@ -65,7 +65,17 @@ void NameStatWidget::congigRightArea()
     table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     //Set Header Label Texts Here
-    table_->setHorizontalHeaderLabels(QString("адрес;упоминаний;").split(";"));
+    //    table_->setHorizontalHeaderLabels(QString("адрес;упоминаний;").split(";"));
+    QStringList tableHeader;
+    tableHeader<<"адрес"<<"упоминаний";
+    table_->setHorizontalHeaderLabels(tableHeader);
+    table_->verticalHeader()->setVisible(true);
+    table_->setEditTriggers(QAbstractItemView::NoEditTriggers); // Редактировать нельзя будет.
+    table_->setSelectionBehavior(QAbstractItemView::SelectRows);
+    table_->setSelectionMode(QAbstractItemView::SingleSelection);
+    table_->setShowGrid(true);
+    table_->setStyleSheet("QTableView {selection-background-color: red;}");
+    table_->setGeometry(QApplication::desktop()->screenGeometry());
     QVBoxLayout *rightLay = new QVBoxLayout(this);
     rightLay->addWidget(table_);
     rightGroup_->setLayout(rightLay);
