@@ -37,8 +37,8 @@ private:
     QLineEdit* pageCountEdit_;
     QTableWidget *table_;
     size_t rowsCount_;
-    const size_t ColCount = 3; // Число исходя из документации п. 3121 «Номер по порядку», «Адрес
-                               // страницы», «Количество упоминаний».
+    const size_t ColCount = 2; //«Адрес страницы», «Количество упоминаний», номер в таблице и так
+                                // отобразится
 
     const int MinPagesCount = 0; // Наименьшая глубина в страницах для сбора статистики.
     const int MaxPagesCount = 9; // Наибольшая глубина в страницах для сбора статистики.
