@@ -1,0 +1,7 @@
+﻿namespace SharpCrawler
+{
+    class WsAdapter
+    {
+
+    }
+}

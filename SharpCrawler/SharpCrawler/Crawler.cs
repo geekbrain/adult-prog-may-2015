@@ -69,12 +69,13 @@ namespace SharpCrawler
 
             foreach (var nameAliases in namesAliases)
             {
-                var amountNames = new Regex(nameAliases.Key).Matches(html).Count;
+                var amountNames =
+                    new Regex(nameAliases.Key, RegexOptions.IgnoreCase).Matches(html).Count;
                 var amountAliases = 0;
                 if (nameAliases.Value != null)
                 {
-                    amountAliases =
-                        nameAliases.Value.Sum(alias => new Regex(alias).Matches(html).Count);
+                    amountAliases = nameAliases.Value.Sum(alias =>
+                        new Regex(alias, RegexOptions.IgnoreCase).Matches(html).Count);
                 }
                 namesAmountDictionary.Add(nameAliases.Key, amountNames + amountAliases);
             }
