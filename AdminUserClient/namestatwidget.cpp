@@ -89,13 +89,12 @@ void NameStatWidget::fillTableTmpData()
 {
     rowsCount_ = pageCountEdit_->text().toUInt();
     table_->setRowCount(rowsCount_);
-    for (size_t row = 1; row <= rowsCount_; ++row) {
-        for (size_t col = 1; col < ColCount; ++col) {
+    for (size_t row = 0; row < rowsCount_; ++row)
+        for (size_t col = 0; col < ColCount; ++col) {
             table_->setItem(row, col, new QTableWidgetItem(""));
-//            table_->item(row, col)->setData(Qt::DisplayRole, col * row);
+            table_->item(row, col)->setData(Qt::DisplayRole, col * row);
         }
-    }
-//    table_->sortByColumn(2, Qt::DescendingOrder);
+    table_->sortByColumn(1, Qt::/*AscendingOrder*/DescendingOrder);
 }
 
 void NameStatWidget::showResults()
