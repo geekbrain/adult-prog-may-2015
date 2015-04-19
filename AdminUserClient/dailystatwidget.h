@@ -26,8 +26,8 @@ private:
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;
     QPushButton *okBt_;
-    QTableWidget *table_;
-    const size_t TableCols_ = 2; // Столбцов у таблицы.
+    const int TableCols_ = 2; // Столбцов у таблицы.
+    QTableWidget *table_;    
     QGroupBox *resultGroup_;
 
     void configControlArea() const;
