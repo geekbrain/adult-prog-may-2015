@@ -38,7 +38,8 @@ namespace SharpCrawler
                     .Where(link => regexRelativeLink.IsMatch(link))
                     .Distinct().ToList();
 
-            links.AddRange(relativeLinks.Select(relativeLink => scheme + "://" + host + relativeLink));
+            links.AddRange(relativeLinks.Select(relativeLink =>
+                scheme + "://" + host + relativeLink));
 
             return links;
         }

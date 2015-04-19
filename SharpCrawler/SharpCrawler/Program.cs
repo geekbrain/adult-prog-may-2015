@@ -6,10 +6,11 @@ namespace SharpCrawler
     {
         static void Main(string[] args)
         {
-            var crawler = new Crawler("http://rbc.ru");
+            var downloader = new Downloader();
+            var crawler = new Crawler(downloader);
             try
             {
-                var links = crawler.GetLinks();
+                var links = crawler.GetLinks("http://rbc.ru");
                 links.ForEach(x => Console.WriteLine(x));
                 Console.ReadLine();
             }
