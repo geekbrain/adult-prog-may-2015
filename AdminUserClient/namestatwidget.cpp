@@ -14,15 +14,11 @@ NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, cons
           endPeriod_(new QDateEdit(this)),
           okBt_(new QPushButton("Ok", this)),
           pageCountEdit_(new QLineEdit("1", this)),
-          table_(new QTableWidget()),
+//          table_(new QTableWidget()),
           rowsCount_(0)
 {
     configLeftArea(*names);
     congigRightArea();
-//    table_ = new QTableWidget(4, 2);
-    QVBoxLayout *rightLay = new QVBoxLayout(this);
-//    rightLay->addWidget(table_);
-    rightGroup_->setLayout(rightLay);
     setFinalFace(orientation);
 }
 
@@ -63,9 +59,16 @@ void NameStatWidget::configLeftArea(const NameDao& names)
     connect(okBt_, SIGNAL(clicked()), this, SLOT(showResults()));
 }
 
-void NameStatWidget::congigRightArea() const
+void NameStatWidget::congigRightArea()
 {
+    table_ = new QTableWidget(rowsCount_, ColCount, this);
+    table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
+    //Set Header Label Texts Here
+    table_->setHorizontalHeaderLabels(QString("№;адрес;упоминаний;").split(";"));
+    QVBoxLayout *rightLay = new QVBoxLayout(this);
+    rightLay->addWidget(table_);
+    rightGroup_->setLayout(rightLay);
 }
 
 void NameStatWidget::setFinalFace(Qt::Orientation orientation)
@@ -82,14 +85,20 @@ void NameStatWidget::setFinalFace(Qt::Orientation orientation)
     setLayout(slidersLayout);
 }
 
-void NameStatWidget::fillTableTmpData() const
+void NameStatWidget::fillTableTmpData()
 {
 
+    rowsCount_ = pageCountEdit_->text().toUInt();
+    for (size_t row = 0; row < rowsCount_; ++row)
+        for (size_t col = 0; col < ColCount; ++col) {
+            table_->setItem(row, col, new QTableWidgetItem(""));
+            table_->item(row, col)->setText(QString::number(col * row));
+        }
 }
 
 void NameStatWidget::showResults()
 {
-
+    fillTableTmpData();
 }
 
 

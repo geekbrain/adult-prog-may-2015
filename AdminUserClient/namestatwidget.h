@@ -37,16 +37,18 @@ private:
     QLineEdit* pageCountEdit_;
     QTableWidget *table_;
     size_t rowsCount_;
+    const size_t ColCount = 3; // Число исходя из документации п. 3121 «Номер по порядку», «Адрес
+                               // страницы», «Количество упоминаний».
 
     const int MinPagesCount = 0; // Наименьшая глубина в страницах для сбора статистики.
     const int MaxPagesCount = 9; // Наибольшая глубина в страницах для сбора статистики.
 
     void configLeftArea(const NameDao& names);
-    void congigRightArea() const;
+    void congigRightArea();
     void setFinalFace(Qt::Orientation orientation);
 
 private slots:
-    void fillTableTmpData() const;
+    void fillTableTmpData();
     void showResults();
 };
 
