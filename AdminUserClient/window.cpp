@@ -41,6 +41,7 @@ void Window::createControls(const QString &title)
     controlsLayout->addWidget(generalStatBt_, 0, 0);
     controlsLayout->addWidget(dailyStatBt_, 1, 0);
     controlsLayout->addWidget(nameStatBt_, 2, 0);
+    controlsLayout->setRowStretch(3, 1);
     controlsGroup_->setLayout(controlsLayout);
 }
 

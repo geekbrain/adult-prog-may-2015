@@ -33,8 +33,10 @@ private:
     QDateEdit *beginPeriod_;
     QDateEdit *endPeriod_;
     QPushButton *okBt_;
+    QComboBox* pageCountCombo_;
 
     void configLeftArea(const NameDao& names) const;
+    void congigRightArea() const;
     void setFinalFace(Qt::Orientation orientation);
 };
 

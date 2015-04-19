@@ -12,7 +12,8 @@ NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, cons
           namesCombo_(new QComboBox(this)),
           beginPeriod_(new QDateEdit(this)),
           endPeriod_(new QDateEdit(this)),
-          okBt_(new QPushButton("Ok", this))
+          okBt_(new QPushButton("Ok", this)),
+          pageCountCombo_(new QComboBox(this))
 {
     configLeftArea(*names);
 //    table_ = new QTableWidget(4, 2);
@@ -34,6 +35,12 @@ void NameStatWidget::configLeftArea(const NameDao& names) const
     QBoxLayout* leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
     leftLayout->addWidget(sitesCombo_);
     leftLayout->addWidget(namesCombo_);
+
+    QLabel* pages = new QLabel(tr("Страниц (шт):"));
+    pages->setBuddy(pageCountCombo_);
+    leftLayout->addWidget(pages);
+    leftLayout->addWidget(pageCountCombo_);
+
     QLabel* labelFrom = new QLabel(tr("&От:"));
     labelFrom->setBuddy(beginPeriod_);
     leftLayout->addWidget(labelFrom);
@@ -47,6 +54,11 @@ void NameStatWidget::configLeftArea(const NameDao& names) const
     leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
     leftLayout->addStretch();
     leftGroup_->setLayout(leftLayout);
+}
+
+void NameStatWidget::congigRightArea() const
+{
+
 }
 
 void NameStatWidget::setFinalFace(Qt::Orientation orientation)
