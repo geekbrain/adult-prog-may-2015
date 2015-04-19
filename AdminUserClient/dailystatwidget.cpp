@@ -39,7 +39,8 @@ void DailyStatWidget::configControlArea() const
     sitesCombo_->addItem("lenta.ru");
     QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
     leftLayout->addWidget(sitesCombo_);
-    leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
+    int okBtStretch = 2;
+    leftLayout->addWidget(okBt_, okBtStretch, Qt::AlignRight);
     leftLayout->addStretch();
     sitesGroup_->setLayout(leftLayout);
 
@@ -71,8 +72,10 @@ void DailyStatWidget::setFinalFace(Qt::Orientation orientation)
         direction = QBoxLayout::LeftToRight;
 
     QBoxLayout *slidersLayout = new QBoxLayout(direction);
-    slidersLayout->addWidget(sitesGroup_, 1, 0);
-    slidersLayout->addWidget(resultGroup_, 3, 0);
+    int stretch = 1; // Фактор растяжения для левой группы.
+    slidersLayout->addWidget(sitesGroup_, stretch);
+    stretch = 3; // Фактор рястяжения для провой группы виджетов.
+    slidersLayout->addWidget(resultGroup_, stretch);
     setLayout(slidersLayout);
 }
 
