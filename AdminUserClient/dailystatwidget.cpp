@@ -1,13 +1,13 @@
 #include <QtWidgets>
 #include "dailystatwidget.h"
 
-DailyStatWidget::DailyStatWidget(Qt::Orientation orientation, const QString &title,
+DailyStatWidget::DailyStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
                                  QWidget *parent)
           : QGroupBox(title, parent),
             sitesGroup_(new QGroupBox("Выбор сайта", this)),
             sitesCombo_(new QComboBox(this)),
             okBt_(new QPushButton("ok", this)),
-            table_(new QTableWidget(4, 2, this)),
+            table_(new QTableWidget(names->namesList().size(), TableCols_, this)),
             resultGroup_(new QGroupBox("Результаты", this))
 {
     configControlArea();

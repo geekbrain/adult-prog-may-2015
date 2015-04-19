@@ -11,7 +11,7 @@ public:
     explicit NameDao(QObject *parent = 0);
     ~NameDao();
 
-    QList<QString> names() const;
+    QList<QString> namesList() const;
 signals:
 
 public slots:

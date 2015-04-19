@@ -9,7 +9,7 @@
 Window::Window() :
     names_(new NameDao(this)),
     generalStatWidget_(new GeneralStatWidget(Qt::Vertical, tr("Общая статистика"))),
-    dailyStatWidget_(new DailyStatWidget(Qt::Vertical, tr("Ежедневная статистика"))),
+    dailyStatWidget_(new DailyStatWidget(names_, Qt::Vertical, tr("Ежедневная статистика"))),
     nameStatWidget_(new NameStatWidget(names_, Qt::Vertical, tr("Статистика по имени")))
 {
     stackedWidget_ = new QStackedWidget;

@@ -10,7 +10,7 @@ NameDao::~NameDao()
 
 }
 
-QList<QString> NameDao::names() const
+QList<QString> NameDao::namesList() const
 {
     return names_;
 }

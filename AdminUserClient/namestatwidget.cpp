@@ -25,7 +25,7 @@ NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, cons
 void NameStatWidget::configLeftArea(const NameDao& names)
 {
     sitesCombo_->addItem("lenta.ru");
-    auto namesList = names.names();
+    auto namesList = names.namesList();
     // Заполняю выпадающий список именами.
     foreach (auto var, namesList) {
         namesCombo_->addItem(var);

@@ -2,6 +2,7 @@
 #define DAILYSTATWIDGET_H
 
 #include <QGroupBox>
+#include "namedao.h"
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -14,7 +15,7 @@ class DailyStatWidget : public QGroupBox
 {
     Q_OBJECT
 public:
-    explicit DailyStatWidget(Qt::Orientation orientation, const QString &title,
+    explicit DailyStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
                              QWidget *parent = 0);
 
 signals:
@@ -26,6 +27,7 @@ private:
     QComboBox *sitesCombo_;
     QPushButton *okBt_;
     QTableWidget *table_;
+    const size_t TableCols_ = 2; // Столбцов у таблицы.
     QGroupBox *resultGroup_;
 
     void configControlArea() const;
