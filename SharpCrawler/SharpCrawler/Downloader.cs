@@ -30,13 +30,13 @@ namespace SharpCrawler
             catch (HttpRequestException httpRequestException)
             {
                 throw new CrawlerException(
-                    "SharpCrawler.Downloader: Error has occured downloading website! " +
+                    "SharpCrawler.Downloader.GetHtml: Error has occured during downloading website! " +
                     httpRequestException.Message);
             }
             catch (Exception exception)
             {
                 throw new CrawlerException(
-                    "SharpCrawler.Downloader: Error has occured downloading website! " +
+                    "SharpCrawler.Downloader.GetHtml: Error has occured during downloading website! " +
                     exception.Message);
             }
         }

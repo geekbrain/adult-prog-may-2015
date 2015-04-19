@@ -17,31 +17,49 @@ namespace SharpCrawler
 
         public List<string> GetLinks(string url)
         {
+            Uri uri;
+            try
+            {
+                uri = new Uri(url);
+            }
+            catch (Exception exception)
+            {
+                throw new CrawlerException(
+                    "SharpCrawler.Crawler.GetLinks: Bad URL! " +
+                    exception.Message);
+            }
+            var host = uri.Host.Replace("www.","");
+            var scheme = uri.Scheme;
+
             var document = new HtmlDocument();
 
             var html = _downloader.GetHtml(url).Result;
             document.LoadHtml(html);
 
-            var uri = new Uri(url);
-            var host = uri.Host.Replace("www.","");
-            var scheme = uri.Scheme;
+            var linkNodes = document.DocumentNode.SelectNodes("//a[@href]");
+            if (linkNodes == null)
+            {
+                return null;
+            }
+            var links = linkNodes.
+                Select(link => link.Attributes["href"].Value).ToList();
+
+            var validLinks = new List<string>();
 
             var regexAbsoluteLink = new Regex("^http://[[a-z]*[.]*]*" + host + "");
-            var links = document.DocumentNode.SelectNodes("//a[@href]")
-                .Select(link => link.Attributes["href"].Value)
+            var absoluteLinks = links
                 .Where(link => regexAbsoluteLink.IsMatch(link))
-                .Distinct().ToList();
+                .Distinct();
+            validLinks.AddRange(absoluteLinks);
 
             var regexRelativeLink = new Regex("^/");
-            var relativeLinks = document.DocumentNode.SelectNodes("//a[@href]")
-                    .Select(link => link.Attributes["href"].Value)
-                    .Where(link => regexRelativeLink.IsMatch(link))
-                    .Distinct().ToList();
-
-            links.AddRange(relativeLinks.Select(relativeLink =>
+            var relativeLinks = links
+                .Where(link => regexRelativeLink.IsMatch(link))
+                .Distinct();
+            validLinks.AddRange(relativeLinks.Select(relativeLink =>
                 scheme + "://" + host + relativeLink));
 
-            return links;
+            return validLinks;
         }
     }
 }
