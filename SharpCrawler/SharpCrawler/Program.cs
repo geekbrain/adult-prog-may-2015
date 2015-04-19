@@ -6,7 +6,7 @@ namespace SharpCrawler
     {
         static void Main(string[] args)
         {
-            var crawler = new UrlCrawler("http://rbc.ru");
+            var crawler = new Crawler("http://rbc.ru");
             try
             {
                 var links = crawler.GetLinks();
