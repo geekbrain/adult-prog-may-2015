@@ -87,8 +87,8 @@ void NameStatWidget::setFinalFace(Qt::Orientation orientation)
 
 void NameStatWidget::fillTableTmpData()
 {
-
     rowsCount_ = pageCountEdit_->text().toUInt();
+    table_->setRowCount(rowsCount_);
     for (size_t row = 0; row < rowsCount_; ++row)
         for (size_t col = 0; col < ColCount; ++col) {
             table_->setItem(row, col, new QTableWidgetItem(""));
