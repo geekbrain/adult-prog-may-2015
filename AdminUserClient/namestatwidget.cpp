@@ -13,9 +13,12 @@ NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, cons
           beginPeriod_(new QDateEdit(this)),
           endPeriod_(new QDateEdit(this)),
           okBt_(new QPushButton("Ok", this)),
-          pageCountCombo_(new QComboBox(this))
+          pageCountEdit_(new QLineEdit("1", this)),
+          table_(new QTableWidget()),
+          rowsCount_(0)
 {
     configLeftArea(*names);
+    congigRightArea();
 //    table_ = new QTableWidget(4, 2);
     QVBoxLayout *rightLay = new QVBoxLayout(this);
 //    rightLay->addWidget(table_);
@@ -23,7 +26,7 @@ NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, cons
     setFinalFace(orientation);
 }
 
-void NameStatWidget::configLeftArea(const NameDao& names) const
+void NameStatWidget::configLeftArea(const NameDao& names)
 {
     sitesCombo_->addItem("lenta.ru");
     auto namesList = names.names();
@@ -36,10 +39,12 @@ void NameStatWidget::configLeftArea(const NameDao& names) const
     leftLayout->addWidget(sitesCombo_);
     leftLayout->addWidget(namesCombo_);
 
+    QIntValidator* pagesValidator = new QIntValidator(MinPagesCount, MaxPagesCount, this);
+    pageCountEdit_->setValidator(pagesValidator); // Разрешим вводить в поле только цифры.
     QLabel* pages = new QLabel(tr("Страниц (шт):"));
-    pages->setBuddy(pageCountCombo_);
+    pages->setBuddy(pageCountEdit_);
     leftLayout->addWidget(pages);
-    leftLayout->addWidget(pageCountCombo_);
+    leftLayout->addWidget(pageCountEdit_);
 
     QLabel* labelFrom = new QLabel(tr("&От:"));
     labelFrom->setBuddy(beginPeriod_);
@@ -54,6 +59,8 @@ void NameStatWidget::configLeftArea(const NameDao& names) const
     leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
     leftLayout->addStretch();
     leftGroup_->setLayout(leftLayout);
+
+    connect(okBt_, SIGNAL(clicked()), this, SLOT(showResults()));
 }
 
 void NameStatWidget::congigRightArea() const
@@ -73,6 +80,16 @@ void NameStatWidget::setFinalFace(Qt::Orientation orientation)
     slidersLayout->addWidget(leftGroup_, 1, 0);
     slidersLayout->addWidget(rightGroup_, 3, 0);
     setLayout(slidersLayout);
+}
+
+void NameStatWidget::fillTableTmpData() const
+{
+
+}
+
+void NameStatWidget::showResults()
+{
+
 }
 
 

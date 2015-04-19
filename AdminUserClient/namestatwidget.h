@@ -11,6 +11,7 @@ class QPushButton;
 class QGroupBox;
 class QTableWidget;
 class QDateEdit;
+class QLineEdit;
 QT_END_NAMESPACE
 
 class NameStatWidget : public QGroupBox
@@ -33,11 +34,20 @@ private:
     QDateEdit *beginPeriod_;
     QDateEdit *endPeriod_;
     QPushButton *okBt_;
-    QComboBox* pageCountCombo_;
+    QLineEdit* pageCountEdit_;
+    QTableWidget *table_;
+    size_t rowsCount_;
 
-    void configLeftArea(const NameDao& names) const;
+    const int MinPagesCount = 0; // Наименьшая глубина в страницах для сбора статистики.
+    const int MaxPagesCount = 9; // Наибольшая глубина в страницах для сбора статистики.
+
+    void configLeftArea(const NameDao& names);
     void congigRightArea() const;
     void setFinalFace(Qt::Orientation orientation);
+
+private slots:
+    void fillTableTmpData() const;
+    void showResults();
 };
 
 #endif // NAMESTATWIDGET_H
