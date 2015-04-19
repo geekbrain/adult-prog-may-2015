@@ -8,14 +8,9 @@ namespace SharpCrawler
 {
     class Crawler
     {
-        private readonly Downloader _downloader;
+        public Crawler() { }
 
-        public Crawler(Downloader downloader)
-        {
-            _downloader = downloader;
-        }
-
-        public List<string> GetLinks(string url)
+        public List<string> GetLinks(string html, string url)
         {
             Uri uri;
             try
@@ -33,7 +28,6 @@ namespace SharpCrawler
 
             var document = new HtmlDocument();
 
-            var html = _downloader.GetHtml(url).Result;
             document.LoadHtml(html);
 
             var linkNodes = document.DocumentNode.SelectNodes("//a[@href]");
@@ -60,6 +54,32 @@ namespace SharpCrawler
                 scheme + "://" + host + relativeLink));
 
             return validLinks;
+        }
+
+        public Dictionary<string, int> GetNamesAmountDictionary(string html,
+            Dictionary<string, List<string>> namesAliases)
+        {
+            if ((namesAliases == null) || (html == null))
+            {
+                throw new CrawlerException(
+                    "SharpCrawler.Crawler.GetNamesCount: Argument null exception!");
+            }
+
+            var namesAmountDictionary = new Dictionary<string, int>();
+
+            foreach (var nameAliases in namesAliases)
+            {
+                var amountNames = new Regex(nameAliases.Key).Matches(html).Count;
+                var amountAliases = 0;
+                if (nameAliases.Value != null)
+                {
+                    amountAliases =
+                        nameAliases.Value.Sum(alias => new Regex(alias).Matches(html).Count);
+                }
+                namesAmountDictionary.Add(nameAliases.Key, amountNames + amountAliases);
+            }
+
+            return namesAmountDictionary;
         }
     }
 }

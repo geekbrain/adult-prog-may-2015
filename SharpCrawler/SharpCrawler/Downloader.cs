@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -23,7 +21,7 @@ namespace SharpCrawler
             {
                 var httpResponseMessage = await _httpClient.GetAsync(url);
                 httpResponseMessage.EnsureSuccessStatusCode();
-
+                
                 var html = await httpResponseMessage.Content.ReadAsStringAsync();
                 return html;
             }
