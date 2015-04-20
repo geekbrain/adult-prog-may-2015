@@ -9,34 +9,50 @@ namespace SharpCrawler
         {
             var downloader = new Downloader();
             var crawler = new Crawler();
-            try
+            var wsAdapter = new WsAdapter();
+
+            while (true)
             {
-                const string url = "http://lenta.ru/lib/14160711/";
-                var html = downloader.GetHtml(url).Result;
-                var links = crawler.GetLinks(html, url);
-                
-                links.ForEach(Console.WriteLine);
-                Console.ReadLine();
-
-                var aliasesDictionary = new Dictionary<string, List<string>>();
-                var aliases1 = new List<string>();
-                aliases1.Add("Владимир Владимирович");
-                aliases1.Add("Президент");
-                aliasesDictionary.Add("Путин", aliases1);
-                aliasesDictionary.Add("Медведев", null);
-
-                var namesAmountDictionary = crawler.GetNamesAmountDictionary(html, aliasesDictionary);
-                foreach (var nameAmount in namesAmountDictionary)
+                try
                 {
-                    Console.WriteLine("name:\t" + nameAmount.Key + "\tamount:\t" +
-                        nameAmount.Value.ToString());
+                    var url = wsAdapter.GetLink();
+                    if (url == null)
+                    {
+                        break;
+                    }
+
+                    var html = downloader.GetHtml(url);
+                    var links = crawler.GetLinks(html, url);
+                    if ((links != null) && (links.Count > 0))
+                    {
+                        wsAdapter.SendLinks(links);
+                        links.ForEach(Console.WriteLine);
+                        Console.ReadLine();
+                    }
+
+                    var namesDictionary = wsAdapter.GetNamesDictionary();
+                    if ((namesDictionary == null) || (namesDictionary.Count == 0))
+                    {
+                        break;
+                    }
+
+                    var namesAmountDictionary =
+                        crawler.GetNamesAmountDictionary(html, namesDictionary);
+
+                    wsAdapter.SendAmountDictionary(namesAmountDictionary);
+
+                    foreach (var nameAmount in namesAmountDictionary)
+                    {
+                        Console.WriteLine("name:\t" + nameAmount.Key + "\tamount:\t" +
+                                          nameAmount.Value.ToString());
+                    }
+                    Console.ReadLine();
                 }
-                Console.ReadLine();
-            }
-            catch (CrawlerException exception)
-            {
-                Console.WriteLine(exception.Message);
-                Console.ReadLine();
+                catch (CrawlerException exception)
+                {
+                    Console.WriteLine(exception.Message);
+                    Console.ReadLine();
+                }
             }
         }
     }

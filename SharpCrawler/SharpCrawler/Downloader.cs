@@ -15,7 +15,7 @@ namespace SharpCrawler
                 "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
         }
 
-        public async Task<string> GetHtml(string url)
+        public async Task<string> GetHtmlAsync(string url)
         {
             try
             {
@@ -37,6 +37,11 @@ namespace SharpCrawler
                     "SharpCrawler.Downloader.GetHtml: Error has occured during downloading website! " +
                     exception.Message);
             }
+        }
+
+        public string GetHtml(string url)
+        {
+            return GetHtmlAsync(url).Result;
         }
     }
 }
