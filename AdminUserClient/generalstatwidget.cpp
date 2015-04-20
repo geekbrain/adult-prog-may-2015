@@ -30,7 +30,6 @@ void GeneralStatWidget::createControlsArea()
 void GeneralStatWidget::placementResultsArea()
 {
     rightGroup_ = new QGroupBox("Результаты", this);
-
     QVBoxLayout *rightLay = new QVBoxLayout(this);
     configTableView();
     rightLay->addWidget(table_);
@@ -40,7 +39,6 @@ void GeneralStatWidget::placementResultsArea()
 void GeneralStatWidget::finalPlacementAreas(Qt::Orientation orientation)
 {
     QBoxLayout::Direction direction;
-
     if (orientation == Qt::Horizontal)
         direction = QBoxLayout::TopToBottom;
     else
@@ -74,7 +72,16 @@ void GeneralStatWidget::configTableView()
     table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     //Set Header Label Texts Here
-    table_->setHorizontalHeaderLabels(QString("персонаж;упоминаний;").split(";"));
+    QStringList tableHeader;
+    tableHeader<<"адрес"<<"упоминаний";
+    table_->setHorizontalHeaderLabels(tableHeader);
+    table_->verticalHeader()->setVisible(true);
+    table_->setEditTriggers(QAbstractItemView::NoEditTriggers); // Редактировать нельзя будет.
+    table_->setSelectionBehavior(QAbstractItemView::SelectRows);
+    table_->setSelectionMode(QAbstractItemView::SingleSelection);
+    table_->setShowGrid(true);
+    table_->setStyleSheet("QTableView {selection-background-color: red;}");
+    table_->setGeometry(QApplication::desktop()->screenGeometry());
 }
 
 void GeneralStatWidget::setOkBtBehavior() const

@@ -10,23 +10,13 @@ Window::Window() :
     names_(new NameDao(this)),
     generalStatWidget_(new GeneralStatWidget(names_, Qt::Vertical, tr("Общая статистика"))),
     dailyStatWidget_(new DailyStatWidget(names_, Qt::Vertical, tr("Ежедневная статистика"))),
-    nameStatWidget_(new NameStatWidget(names_, Qt::Vertical, tr("Статистика по имени")))
+    nameStatWidget_(new NameStatWidget(names_, Qt::Vertical, tr("Статистика по имени"))),
+    stackedWidget_(new QStackedWidget(this))
 {
-    stackedWidget_ = new QStackedWidget;
-    stackedWidget_->addWidget(new QWidget(this));
-    stackedWidget_->addWidget(generalStatWidget_.data());
-    stackedWidget_->addWidget(dailyStatWidget_.data());
-    stackedWidget_->addWidget(nameStatWidget_.data());
-
+    fillStackedWidget();
     createControls(tr("Controls"));
     configControls();
-
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(controlsGroup_);
-    layout->addWidget(stackedWidget_);
-    setLayout(layout);
-
-    setWindowTitle(tr("User Plus Admin Client"));
+    configFinalFace();
 }
 
 void Window::createControls(const QString &title)
@@ -56,4 +46,22 @@ void Window::configControls() const
     QObject::connect(nameStatBt_, &QPushButton::clicked, [&](){
         stackedWidget_->setCurrentIndex(3);
     });
+}
+
+void Window::fillStackedWidget()
+{
+    stackedWidget_->addWidget(new QWidget(this));
+    stackedWidget_->addWidget(generalStatWidget_.data());
+    stackedWidget_->addWidget(dailyStatWidget_.data());
+    stackedWidget_->addWidget(nameStatWidget_.data());
+}
+
+void Window::configFinalFace()
+{
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(controlsGroup_);
+    layout->addWidget(stackedWidget_);
+    setLayout(layout);
+
+    setWindowTitle(tr("User Plus Admin Client"));
 }

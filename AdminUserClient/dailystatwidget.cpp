@@ -43,7 +43,6 @@ void DailyStatWidget::configControlArea() const
     leftLayout->addWidget(okBt_, okBtStretch, Qt::AlignRight);
     leftLayout->addStretch();
     sitesGroup_->setLayout(leftLayout);
-
     connect(okBt_, SIGNAL(clicked()), this, SLOT(fillTableTempData()));
 }
 
@@ -59,7 +58,16 @@ void DailyStatWidget::resultTableTuning() const
     table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     //Set Header Label Texts Here
-    table_->setHorizontalHeaderLabels(QString("персонаж;упоминаний;").split(";"));
+    QStringList tableHeader;
+    tableHeader<<"адрес"<<"упоминаний";
+    table_->setHorizontalHeaderLabels(tableHeader);
+    table_->verticalHeader()->setVisible(true);
+    table_->setEditTriggers(QAbstractItemView::NoEditTriggers); // Редактировать нельзя будет.
+    table_->setSelectionBehavior(QAbstractItemView::SelectRows);
+    table_->setSelectionMode(QAbstractItemView::SingleSelection);
+    table_->setShowGrid(true);
+    table_->setStyleSheet("QTableView {selection-background-color: red;}");
+    table_->setGeometry(QApplication::desktop()->screenGeometry());
 }
 
 void DailyStatWidget::setFinalFace(Qt::Orientation orientation)
@@ -74,7 +82,7 @@ void DailyStatWidget::setFinalFace(Qt::Orientation orientation)
     QBoxLayout *slidersLayout = new QBoxLayout(direction);
     int stretch = 1; // Фактор растяжения для левой группы.
     slidersLayout->addWidget(sitesGroup_, stretch);
-    stretch = 3; // Фактор рястяжения для провой группы виджетов.
+    stretch = 3; // Фактор рястяжения для прaвой группы виджетов.
     slidersLayout->addWidget(resultGroup_, stretch);
     setLayout(slidersLayout);
 }

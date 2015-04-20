@@ -34,6 +34,9 @@ private:
      */
     void configControls() const;
 
+    void fillStackedWidget();
+    void configFinalFace();
+
     NameDao* names_; // Список личностей, о которых смотрится статистика.
 
     QSharedPointer<GeneralStatWidget> generalStatWidget_;
