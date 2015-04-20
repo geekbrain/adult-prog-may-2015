@@ -1,4 +1,3 @@
-import javax.swing.text.html.HTML;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,10 +22,7 @@ public class Spectator {
         String input;
         while ((input = bufferedReader.readLine()) != null) {
             textOfSite.append(input);
-            System.out.println(HTML.Tag.A);
         }
-
-
     }
 
     public StringBuffer getTextOfSite() {
