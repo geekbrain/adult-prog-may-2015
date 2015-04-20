@@ -2,10 +2,10 @@
 #include <QDebug>
 #include "generalstatwidget.h"
 
-GeneralStatWidget::GeneralStatWidget(Qt::Orientation orientation, const QString &title,
+GeneralStatWidget::GeneralStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
                                      QWidget *parent)
               : QGroupBox(title, parent),
-                table_(new QTableWidget(4, 2, this))
+                table_(new QTableWidget(names->namesList().size(), TableCols_, this))
 {
     createControlsArea();
     placementResultsArea();

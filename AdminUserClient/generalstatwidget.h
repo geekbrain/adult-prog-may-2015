@@ -2,6 +2,7 @@
 #define GENERALSTATWIDGET_H
 
 #include <QGroupBox>
+#include "namedao.h"
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -14,7 +15,7 @@ class GeneralStatWidget : public QGroupBox
 {
     Q_OBJECT
 public:
-    explicit GeneralStatWidget(Qt::Orientation orientation, const QString &title,
+    explicit GeneralStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
                                QWidget *parent = 0);
 //    ~GeneralStatWidget();
 signals:
@@ -46,6 +47,7 @@ private:
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;
     QPushButton *okBt_;
+    const int TableCols_ = 2; // Столбцов у таблицы: "имя" и "число упоминаний".
     QTableWidget *table_;
     QGroupBox *leftGroup_;
     QGroupBox *rightGroup_;
