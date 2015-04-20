@@ -3,7 +3,7 @@ var React = require('react');
 module.exports = React.createClass({
     render: function() {
         return (
-            <h1>Generator</h1>
+            <h1>Статистика по имени</h1>
         );
     }
 });

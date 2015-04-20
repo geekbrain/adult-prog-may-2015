@@ -1,39 +1,37 @@
-require('./_styles/_config.scss');
-var React = require('react');
-var Router = require('react-router');
-var Col = require('react-bootstrap').Col;
-var Grid = require('react-bootstrap').Grid;
-var Row = require('react-bootstrap').Row;
-var Nav = require('react-bootstrap').Nav;
-var NavItem = require('react-bootstrap').NavItem;
-var StatsStatus = require('./StatsStatus');
-var Header = require('./header/Header');
-var Menu = require('./menu/Menu');
-var ListGroup = require('react-bootstrap').ListGroup;
-var ListGroupItem = require('react-bootstrap').ListGroupItem;
-var Glyphicon = require('react-bootstrap').Glyphicon;
+var React         = require('react'),
+    Router        = require('react-router'),
+    Col           = require('react-bootstrap').Col,
+    Grid          = require('react-bootstrap').Grid,
+    Row           = require('react-bootstrap').Row,
+    Nav           = require('react-bootstrap').Nav,
+    NavItem       = require('react-bootstrap').NavItem,
+    Header        = require('./header/Header'),
+    Menu          = require('./menu/Menu'),
+    ListGroup     = require('react-bootstrap').ListGroup,
+    ListGroupItem = require('react-bootstrap').ListGroupItem,
+    Glyphicon     = require('react-bootstrap').Glyphicon,
 
-var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
+    RouteHandler  = Router.RouteHandler,
+    Link          = Router.Link;
 
 module.exports = React.createClass({
     render: function() {
         return (
-            <Grid>
+            <Grid fluid={true}>
                 <Row className='show-grid'>
                     <Col xsOffset={3} xs={6}>
                         <Header />
                     </Col>
                 </Row>
                 <Row className='show-grid'>
-                    <Col className="section" sm={3}>
+                    <Col className="section main-menu" sm={3} md={2}>
                         <Menu />
                     </Col>
-                    <Col className="section" sm={3}>
-                        <RouteHandler />
-                    </Col>
-                    <Col className="section" sm={6}>
+                    <Col className="section" sm={3} md={2}>
 
+                    </Col>
+                    <Col className="section main-content" sm={6} md={8}>
+                        <RouteHandler />
                     </Col>
                 </Row>
             </Grid>

@@ -1,4 +1,3 @@
-require('./menu.scss');
 var React = require('react');
 var Router = require('react-router');
 var ListGroup = require('react-bootstrap').ListGroup;

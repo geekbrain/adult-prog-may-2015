@@ -5,7 +5,10 @@ module.exports = {
         CLICK_DATA: null,
         RECEIVE_RAW_DATA: null,
         STOP_INTERVAL: null,
-        RUN_INTERVAL: null,
+        RUN_INTERVAL: null
+    }),
+    StoreTypes: keyMirror({
+        CHANGE_EVENT: null
     })
 };
 

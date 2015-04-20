@@ -5,15 +5,15 @@ var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
 
 var App = require('./components/Main');
-var Generator = require('./components/Generator.js');
+var DailyStats = require('./components/DailyStats.js');
+var StatsByName = require('./components/StatsByName.js');
 var Stats = require('./components/Stats.js');
-var Dashboard = require('./components/Dashboard.js');
 
 var routes = (
     <Route name="app" path="/" handler={App}>
-        <Route name="dailystat" handler={Generator}/>
-        <Route name="statbyname" handler={Stats}/>
-        <DefaultRoute handler={Dashboard}/>
+        <Route name="dailystat" handler={DailyStats}/>
+        <Route name="statbyname" handler={StatsByName}/>
+        <DefaultRoute handler={Stats}/>
     </Route>
 );
 

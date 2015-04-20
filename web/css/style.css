@@ -1,1 +1,79 @@
+html {
+    background: url('city.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+header.main {
+    text-align: center;
+    font-family: Georgia, Arial;
+    margin-bottom: 30px;
+}
+header.main .glyphicon {
+    color: #FF5252;
+    top: 5px;
+}
+header.main h1 {
+    margin: 20px 0 0;
+    line-height: 40px;
+}
 
+body {background: transparent;
+    color: white;
+}
+.section {
+    text-align: center;
+}
+.section.main-content {
+    text-align: left;
+    color: white
+}
+.list-group-item {
+    padding: 0 15px 0 25px;
+    position: relative;
+}
+.list-group a {
+    padding: 10px 15px;
+    display: block;
+    text-transform: uppercase;
+    font-family: Impact;
+    font-size: 17px;
+}
+.list-group-item {
+    background: transparent;
+}
+.list-group {}
+.list-group .white {
+    border-color: white;
+    border: 3px solid white;
+}
+.list-group .white a {color: white;}
+.list-group .blue {
+    border-color: #2196F3;
+    border: 3px solid #2196F3;
+    border-top: 0;
+}
+.list-group .blue a {color: #2196F3;}
+.list-group .red {
+    border-color: #FF5252;
+    border: 3px solid #FF5252;
+    border-top: 0;
+}
+.list-group .red a {color: #FF5252;}
+.list-group-item .glyphicon {
+    display: none;
+    position: absolute;
+    left: 10px;
+    top: 13px;
+}
+.list-group-item:hover .glyphicon {display: inline;}
+table.table{
+    text-align: center;
+}
+.main-menu {
+    margin-top: 2em;
+}
+.top-section {
+    margin-bottom: 10px;
+}
