@@ -1,3 +1,7 @@
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,6 +20,11 @@ public class Spectator {
     private void setTextOfSite() throws IOException {
         URL url = new URL(site);
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+        Document doc = Jsoup.connect(String.valueOf(url)).get();
+        Elements aElements = doc.select("a");
+        System.out.println(aElements);
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
 
