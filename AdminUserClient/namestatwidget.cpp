@@ -90,8 +90,8 @@ void NameStatWidget::setFinalFace(Qt::Orientation orientation)
         direction = QBoxLayout::LeftToRight;
 
     QBoxLayout* slidersLayout = new QBoxLayout(direction, this);
-    slidersLayout->addWidget(leftGroup_, 1, 0);
-    slidersLayout->addWidget(rightGroup_, 3, 0);
+    slidersLayout->addWidget(leftGroup_, 1);
+    slidersLayout->addWidget(rightGroup_, 3);
     setLayout(slidersLayout);
 }
 
@@ -104,7 +104,8 @@ void NameStatWidget::fillTableTmpData()
             table_->setItem(row, col, new QTableWidgetItem(""));
             table_->item(row, col)->setData(Qt::DisplayRole, col * row);
         }
-    table_->sortByColumn(1, Qt::/*AscendingOrder*/DescendingOrder);
+    int sortColNumber = 1;
+    table_->sortByColumn(sortColNumber, Qt::DescendingOrder); // Сортируем столбец sortColNumber по убыванию.
 }
 
 void NameStatWidget::showResults()
