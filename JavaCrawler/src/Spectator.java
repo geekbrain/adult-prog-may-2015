@@ -1,40 +1,34 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class Spectator {
     private String site;
-    private StringBuffer textOfSite = new StringBuffer();
+    private Document document;
 
     public Spectator() throws IOException {
         site = WebServiceAdapter.getURL();
-        setTextOfSite();
+        setDocument();
+        getAllAttrsByTegAndAttr("a", "href");
     }
 
-    private void setTextOfSite() throws IOException {
-        URL url = new URL(site);
-        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-
-        Document doc = Jsoup.connect(String.valueOf(url)).get();
-        Elements aElements = doc.select("a");
-        System.out.println(aElements);
-
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
-
-        String input;
-        while ((input = bufferedReader.readLine()) != null) {
-            textOfSite.append(input);
+    private void setDocument() {
+        try {
+            document = Jsoup.connect(String.valueOf(site)).get();
+        } catch (IOException e) {
+            System.out.println("Не удаётся подключиться к сайту");
+            e.printStackTrace();
         }
     }
 
-    public StringBuffer getTextOfSite() {
-        return textOfSite;
+    private void getAllAttrsByTegAndAttr(String teg, String attr) {
+        Elements aElements = document.select(teg);
+        for (Element aElement : aElements) {
+            System.out.println(aElement.attr(attr));
+        }
     }
+
 }
