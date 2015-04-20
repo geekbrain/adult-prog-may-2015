@@ -21,7 +21,8 @@ void GeneralStatWidget::createControlsArea()
     leftGroup_ = new QGroupBox("Выбор сайта", this);
     QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom, this);
     leftLayout->addWidget(sitesCombo_);
-    leftLayout->addWidget(okBt_, 2, Qt::AlignRight);
+    int stretchForOkBt = 2; // Фактор растягивания для кнопки ок.
+    leftLayout->addWidget(okBt_, stretchForOkBt, Qt::AlignRight);
     leftLayout->addStretch();
     leftGroup_->setLayout(leftLayout);
 }
@@ -46,23 +47,25 @@ void GeneralStatWidget::finalPlacementAreas(Qt::Orientation orientation)
         direction = QBoxLayout::LeftToRight;
 
     QBoxLayout *slidersLayout = new QBoxLayout(direction, this);
-    slidersLayout->addWidget(leftGroup_, 1, 0);
-    slidersLayout->addWidget(rightGroup_, 3, 0);
+    int stretch = 1;
+    slidersLayout->addWidget(leftGroup_, stretch);
+    stretch = 3;
+    slidersLayout->addWidget(rightGroup_, stretch);
     setLayout(slidersLayout);
 }
 
 void GeneralStatWidget::fillTableTmpData()
 {
-    table_->setItem(0, 0, new QTableWidgetItem(""));
+    table_->setItem(0, 0, new QTableWidgetItem("")); // Столбец 0, строка 0.
     table_->item(0, 0)->setText("Навальный");
 
-    table_->setItem(1, 0, new QTableWidgetItem(""));
+    table_->setItem(1, 0, new QTableWidgetItem("")); // Столбец 0, строка 1.
     table_->item(1, 0)->setText("Медведев");
 
-    table_->setItem(0, 1, new QTableWidgetItem(""));
+    table_->setItem(0, 1, new QTableWidgetItem("")); // Столбец 1, строка 0.
     table_->item(0, 1)->setText("100");
 
-    table_->setItem(1, 1, new QTableWidgetItem(""));
+    table_->setItem(1, 1, new QTableWidgetItem("")); // Столбец 1, строка 1.
     table_->item(1, 1)->setText("390");
 }
 
