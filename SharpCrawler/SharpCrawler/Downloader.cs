@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SharpCrawler
 {
-    class Downloader
+    class Downloader: IDisposable
     {
         private readonly HttpClient _httpClient;
 
@@ -42,6 +42,11 @@ namespace SharpCrawler
         public string GetHtml(string url)
         {
             return GetHtmlAsync(url).Result;
+        }
+
+        public void Dispose()
+        {
+            _httpClient.Dispose();
         }
     }
 }

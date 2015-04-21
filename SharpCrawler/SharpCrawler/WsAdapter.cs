@@ -29,7 +29,6 @@ namespace SharpCrawler
                 {"Медведев", null}
             };
 
-
             return aliasesDictionary;
         }
 
