@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7a347388-dc31-486c-a3c7-2dea825b4b6a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:17047/WsSoap.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WsSoap.xsd" MetadataType="Schema" ID="84ac249f-6802-4e46-b82a-765a1158ed6d" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?xsd=xsd0" />
+    <MetadataFile FileName="WsSoap.disco" MetadataType="Disco" ID="efdd3543-2cac-4779-afdd-90f4a08ec53f" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?disco" />
+    <MetadataFile FileName="WsSoap1.xsd" MetadataType="Schema" ID="a0cd9829-dfe3-4bca-b015-df5867c49179" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?xsd=xsd2" />
+    <MetadataFile FileName="WsSoap2.xsd" MetadataType="Schema" ID="9be306ba-976a-4444-9996-cc1a17289b4c" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="202a5639-119f-4b79-9ede-46aa2c0f26ce" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

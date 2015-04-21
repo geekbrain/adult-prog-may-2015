@@ -3,7 +3,9 @@ using System.ServiceModel;
 
 namespace WsSoap
 {
-    [ServiceContract]
+    [ServiceContract(
+        SessionMode = SessionMode.Required
+        )]
     public interface IService
     {
 
