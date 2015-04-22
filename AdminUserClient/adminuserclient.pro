@@ -7,13 +7,15 @@ HEADERS     = \
     dailystatwidget.h \
     namestatwidget.h \
     namedao.h \
-    statisticsextractor.h
+    statisticsextractor.h \
+    statistics.h
 SOURCES     = main.cpp \
               window.cpp \
     generalstatwidget.cpp \
     dailystatwidget.cpp \
     namestatwidget.cpp \
     namedao.cpp \
-    statisticsextractor.cpp
+    statisticsextractor.cpp \
+    statistics.cpp
 
 #DESTDIR = /bin
