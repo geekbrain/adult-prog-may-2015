@@ -1,5 +1,6 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -35,9 +36,14 @@ public class Spectator {
     }
 
     private void handlingHrefs(String attr) {
-        elements.stream().
-                filter(element -> checkLinkByDomainName(element.attr(attr))).
-                forEach(element -> System.out.println(element.attr(attr)));
+        String link;
+//        elements.stream().
+//                filter(element -> checkLinkByDomainName(element.attr(attr))).
+//                forEach(element -> System.out.println(element.attr(attr)));
+        for (Element element : elements) {
+            link = element.attr(attr);
+            if (checkLinkAsRelativeLocal(link) || checkLinkByDomainName(link)) System.out.println(link);
+        }
     }
 
     private String getDomainName() {
@@ -53,5 +59,10 @@ public class Spectator {
         Pattern pat = Pattern.compile(domainName);
         Matcher mat = pat.matcher(link);
         return mat.find();
+    }
+
+    private boolean checkLinkAsRelativeLocal(String link) {
+        char firstSymbolOfLink = link.charAt(0);
+        return (firstSymbolOfLink == '.' || firstSymbolOfLink == '/');
     }
 }
