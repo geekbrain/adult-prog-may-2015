@@ -17,6 +17,8 @@ QList<QString> NameDao::namesList() const
 
 void NameDao::initTempData()
 {
-    names_ = {"Медведев", "Навальный"};
+//    names_ = {"Медведев", "Навальный"};
+    names_.append("Медведев");
+    names_.append("Навальный");
 }
 

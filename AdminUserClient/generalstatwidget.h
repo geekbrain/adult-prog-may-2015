@@ -42,7 +42,7 @@ private:
 
     void fillTableTmpData();
     void configTableView();
-    void setOkBtBehavior() const;
+    void setOkBtBehavior();
 
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;
