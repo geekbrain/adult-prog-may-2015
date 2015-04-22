@@ -2,16 +2,23 @@
 #define STATISTICSEXTRACTOR_H
 
 #include <QObject>
+#include <QScopedPointer>
+
+class GeneralStatistics;
 
 class StatisticsExtractor : public QObject
 {
     Q_OBJECT
 public:
     explicit StatisticsExtractor(QObject *parent = 0);
+    void getGeneralStatistics(QScopedPointer<GeneralStatistics>&) const;
 
 signals:
 
 public slots:
+
+private:
+    void fillTempGeneralStatistics(QScopedPointer<GeneralStatistics>&) const;
 
 };
 
