@@ -84,7 +84,7 @@ void GeneralStatWidget::configTableView()
     table_->setGeometry(QApplication::desktop()->screenGeometry());
 }
 
-void GeneralStatWidget::setOkBtBehavior()
+void GeneralStatWidget::setOkBtBehavior() const
 {
     QObject::connect(okBt_, &QPushButton::clicked, [&](){
         fillTableTmpData();
