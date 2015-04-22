@@ -1,4 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,11 +9,13 @@ import java.util.regex.Pattern;
 
 public class Spectator {
     private String site;
+    private String domainName;
     private Document document;
     private Elements elements;
 
     public Spectator() throws IOException {
         site = WebServiceAdapter.getURL();
+        domainName = getDomainName();
         setDocument();
         getAllElementsByTeg("a");
         handlingHrefs("href");
@@ -36,18 +37,24 @@ public class Spectator {
 
     private void handlingHrefs(String attr) {
         for (Element element : elements) {
-            checkLink(element.attr(attr));
+            if (checkLinkByDomainName(element.attr(attr))) System.out.println(element.attr(attr));
         }
     }
 
-    private void checkLink(String link) {
-        Pattern pat = Pattern.compile("lenta");
+    private String getDomainName() {
+        Pattern patStart = Pattern.compile("https?://");
+        Pattern patEnd = Pattern.compile("/.*");
+        Matcher mat = patStart.matcher(site);
+        String siteWithoutStart = mat.replaceFirst("");
+        mat = patEnd.matcher(siteWithoutStart);
+        String domainName = mat.replaceFirst("");
+        return domainName;
+    }
+
+    private Boolean checkLinkByDomainName(String link) {
+        Pattern pat = Pattern.compile(domainName);
         Matcher mat = pat.matcher(link);
-        Boolean found;
-
-        System.out.println(link);
-        found = mat.find();
-
-        System.out.println(found);
+        Boolean found = mat.find();
+        return found;
     }
 }
