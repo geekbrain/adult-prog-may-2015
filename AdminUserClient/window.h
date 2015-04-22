@@ -14,6 +14,7 @@ class GeneralStatWidget;
 class DailyStatWidget;
 class NameStatWidget;
 class NameDao;
+class StatisticsExtractor;
 
 class Window : public QWidget
 {
@@ -44,11 +45,12 @@ private:
     QSharedPointer<NameStatWidget> nameStatWidget_;
 
     QStackedWidget *stackedWidget_;
-
     QGroupBox *controlsGroup_;
     QPushButton *generalStatBt_;
     QPushButton *dailyStatBt_;
     QPushButton *nameStatBt_;
+
+    StatisticsExtractor *statExtractor_;
 };
 
 #endif
