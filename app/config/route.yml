@@ -1,4 +1,48 @@
-root:
-  method: get
-  url: /
-  action: Geekbrains\wswesite\Controller\StatsController::index
+api_version: v1
+path: /api
+api:
+  v1:
+    root:
+      method: get
+      url: /test
+      action: Geekbrains\WSWesite\Controller\StatsController::index
+    stats:
+      method: get
+      url: /stats
+      action: Geekbrains\WSWesite\Controller\StatsController::getStats
+    dailyStats:
+      method: get
+      url: /dailyStats
+      action: Geekbrains\WSWesite\Controller\StatsController::getDailyStats
+    statsByName:
+      method: get
+      url: /statsByName
+      action: Geekbrains\WSWesite\Controller\StatsController::getStatsByName
+    names:
+      method: get
+      url: /names
+      action: Geekbrains\WSWesite\Controller\StatsController::getNames
+    sites:
+      method: get
+      url: /sites
+      action: Geekbrains\WSWesite\Controller\StatsController::getSites
+    pages:
+      method: get
+      url: /pages
+      action: Geekbrains\WSWesite\Controller\StatsController::getPages
+    searchPhrases:
+      method: get
+      url: /searchPhrases
+      action: Geekbrains\WSWesite\Controller\StatsController::getSearchPhrases
+    setSite:
+      method: post
+      url: /site
+      action: Geekbrains\WSWesite\Controller\StatsController::setSite
+    setName:
+      method: post
+      url: /name
+      action: Geekbrains\WSWesite\Controller\StatsController::setName
+    setPhrase:
+      method: post
+      url: /searchPhrase
+      action: Geekbrains\WSWesite\Controller\StatsController::setSearchPhrase

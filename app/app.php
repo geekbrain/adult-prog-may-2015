@@ -1,11 +1,10 @@
 <?php
 
+use Geekbrains\WSWesite\Model\FakeStatsModel;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Silex\Application;
 use Symfony\Component\Debug\ErrorHandler;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Yaml\Parser;
 
 ini_set('display_errors', 0);
@@ -20,9 +19,9 @@ if ($_SERVER['REMOTE_ADDR'] === '127.0.0.1' && substr($_SERVER['HTTP_HOST'], -4)
 $app['logger'] = $app->share(function() {
     return new Logger(
         'service',
-        array(
+        [
             new StreamHandler(__DIR__ . '/../log/default.log'),
-        )
+        ]
     );
 });
 
@@ -36,11 +35,11 @@ $app->error(function (Exception $e, $code = 500) use ($app) {
 
     $logger->addError(
         $e->getMessage(),
-        array(
+        [
             'ErrorCode' => $code,
             'ExceptionCode' => $e->getCode(),
             'ExceptionTrace' => $e->getTrace(),
-        )
+        ]
     );
 
     if ($code == 500) {
@@ -71,14 +70,10 @@ $yaml = new Parser();
 $app['config'] = $yaml->parse(file_get_contents(__DIR__ . '/../app/config/app.yml'));
 $app['config.route'] = $yaml->parse(file_get_contents(__DIR__ . '/../app/config/route.yml'));
 
-/*$app['event.dispatcher'] = $app->share(function() use ($app) {
-    $dispatcher = new Dispatcher(
-        $app['config.configuration']['config.services']['dispatcher']['v1']['url'] .
-        $app['config.configuration']['api']['dispatcher']['addEvent'],
-        $app['config.configuration']['config.system-token']
-    );
-    return $dispatcher;
+$app['stats.model'] = $app->share(function() use ($app) {
+    $statsModel = new FakeStatsModel();
+    return $statsModel;
 
-});*/
+});
 
 return $app;
