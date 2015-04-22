@@ -11,4 +11,10 @@ public:
     SelectedData();
 };
 
+class SelectedSite : public SelectedData
+{
+public:
+    SelectedData();
+};
+
 #endif // SELECTEDDATA_H

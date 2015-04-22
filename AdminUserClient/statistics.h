@@ -17,4 +17,14 @@ protected:
     size_t fieldCount;
 };
 
+/**
+ * @brief The GeneralStatistics class
+ * Для представления общей статистики.
+ */
+class GeneralStatistics : public Statistics
+{
+public:
+    GeneralStatistics();
+};
+
 #endif // STATISTICS_H
