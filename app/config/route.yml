@@ -1,0 +1,4 @@
+root:
+  method: get
+  url: /
+  action: Geekbrains\wswesite\Controller\StatsController::index

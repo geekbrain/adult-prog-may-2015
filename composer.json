@@ -1,0 +1,27 @@
+{
+  "name": "gb/wesiteWS",
+  "authors": [
+    {
+      "name": "Maxim Kutyrev",
+      "email": "axigreat@mail.ru"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Geekbrains\\": "src/"
+    }
+  },
+  "require": {
+    "silex/silex": "~1.2",
+    "symfony/config": "~2.6",
+    "symfony/yaml": "~2.3",
+    "symfony/debug": "~2.3",
+    "monolog/monolog": ">=1.0.0",
+    "symfony/form": "~2.6",
+    "twig/twig": "~1.13",
+    "symfony/security-csrf": "~2.6",
+    "symfony/validator": "~2.6",
+    "symfony/translation": "~2.6",
+    "symfony/twig-bridge": "~2.6"
+  }
+}
