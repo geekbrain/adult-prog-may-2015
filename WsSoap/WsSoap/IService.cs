@@ -3,22 +3,20 @@ using System.ServiceModel;
 
 namespace WsSoap
 {
-    [ServiceContract(
-        SessionMode = SessionMode.Required
-        )]
+    [ServiceContract]
     public interface IService
     {
 
-        [OperationContract]
+        [OperationContract(AsyncPattern = false)]
         string GetLink();
 
-        [OperationContract]
+        [OperationContract(AsyncPattern = false)]
         Dictionary<string, List<string>> GetNamesDictionary();
 
-        [OperationContract]
+        [OperationContract(AsyncPattern = false)]
         void SendLinks(List<string> links);
 
-        [OperationContract]
+        [OperationContract(AsyncPattern = false)]
         void SendAmountDictionary(Dictionary<string, int> namesAmountDictionary);
     }
 }

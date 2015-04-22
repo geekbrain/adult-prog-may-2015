@@ -7,7 +7,7 @@ namespace SharpCrawler
 {
     class WsAdapter: IDisposable
     {
-        private readonly ServiceClient _wsSoapClient;
+        private readonly  ServiceClient _wsSoapClient;
 
         public WsAdapter()
         {
@@ -16,6 +16,7 @@ namespace SharpCrawler
 
         public string GetLink()
         {
+            
             return _wsSoapClient.GetLink();
         }
 

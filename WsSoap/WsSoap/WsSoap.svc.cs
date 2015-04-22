@@ -3,10 +3,8 @@ using System.ServiceModel;
 
 namespace WsSoap
 {
-    [ServiceBehavior(
-        ConcurrencyMode = ConcurrencyMode.Single,
-        InstanceContextMode = InstanceContextMode.PerSession
-        )]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single,
+        InstanceContextMode = InstanceContextMode.Single)]
     public class Service : IService
     {
         private int _counter = 0;
