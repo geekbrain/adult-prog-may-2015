@@ -17,7 +17,8 @@ void StatisticsExtractor::fillTempGeneralStatistics(QScopedPointer<GeneralStatis
 {
     QUrl url("localhost");
     statistics.reset(new GeneralStatistics(url));
-
+    statistics->setNameStat("Медведев", 405);
+    statistics->setNameStat("Навальный", 220);
 }
 
 void StatisticsExtractor::getNamesFromService()

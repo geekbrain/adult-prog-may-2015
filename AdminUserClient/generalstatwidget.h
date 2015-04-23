@@ -46,7 +46,7 @@ private:
     void fillTableTmpData();
     void configTableView();
     void setOkBtBehavior(const StatisticsExtractor& statsExtractor);
-    void inputStatsInTable(const QScopedPointer<GeneralStatistics>& stat);
+    void inputStatsToTable(const QScopedPointer<GeneralStatistics>& stat);
 
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;

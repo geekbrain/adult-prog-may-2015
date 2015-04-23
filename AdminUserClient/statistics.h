@@ -31,6 +31,7 @@ class GeneralStatistics : public Statistics
 public:
     GeneralStatistics(const QUrl& site);
     void setNameStat(const QString& name, quint32 mentionCount);
+    QMap<QString,quint32> getNamesMentions() const;
 private:
     QUrl url_; // Сайт, на котором собираем статистику.
     NameDao *names_;

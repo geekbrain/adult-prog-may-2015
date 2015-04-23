@@ -89,18 +89,28 @@ void GeneralStatWidget::configTableView()
 void GeneralStatWidget::setOkBtBehavior(const StatisticsExtractor& statsExtractor)
 {
     QObject::connect(okBt_, &QPushButton::clicked, [&](){
-//        fillTableTmpData();
         QUrl url("http://www." + sitesCombo_->currentText());
         QScopedPointer<GeneralStatistics> genStats(new GeneralStatistics(url));
         statsExtractor.getGeneralStatistics(genStats);
-        inputStatsInTable(genStats);
+        inputStatsToTable(genStats);
     });
 }
 
-void GeneralStatWidget::inputStatsInTable(const QScopedPointer<GeneralStatistics> &stat)
+void GeneralStatWidget::inputStatsToTable(const QScopedPointer<GeneralStatistics> &stat)
 {
-    table_->setRowCount(stat->getTupleCount());
+    size_t tupleCount = stat->getTupleCount();
+    table_->setRowCount(tupleCount);
     table_->setColumnCount(stat->getFieldCount());
+    QMap<QString,quint32> rowStats = stat->getNamesMentions();
+    int row = 0;
+    foreach (QString name, rowStats.keys()) {
+        int col = 0;
+        table_->setItem(row, col, new QTableWidgetItem(name));
+        col++;
+        table_->setItem(row, col, new QTableWidgetItem(""));
+        table_->item(row, col)->setData(Qt::DisplayRole, rowStats.value(name));
+        row++; // Переходим на следующую строку.
+    }
 }
 
 //GeneralStatWidget::~GeneralStatWidget()
