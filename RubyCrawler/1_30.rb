@@ -3,6 +3,7 @@
 require 'open-uri'
 
 class Webpage
+	attr_accessor :page_name, :page_url
 	def initialize(name, url)
 		@page_name, @page_url = name, url
 	end
