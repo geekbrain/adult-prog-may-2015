@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b76ac1fa-a298-4b5f-a5e9-673f1546a31c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://adultprog2015.somee.com/WsSoap.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WsSoap.xsd" MetadataType="Schema" ID="cb997b90-b29c-4eee-abfd-908d21eb08f0" SourceId="1" SourceUrl="http://adultprog2015.somee.com/WsSoap.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="8acdd25c-1955-4e0e-8922-bbda43fb5a91" SourceId="1" SourceUrl="http://adultprog2015.somee.com/WsSoap.svc?wsdl" />
+    <MetadataFile FileName="WsSoap1.xsd" MetadataType="Schema" ID="d02f1e40-a253-4f6a-b3a8-3394e801b175" SourceId="1" SourceUrl="http://adultprog2015.somee.com/WsSoap.svc?xsd=xsd0" />
+    <MetadataFile FileName="WsSoap2.xsd" MetadataType="Schema" ID="0f355ffd-97c2-4cf4-b08a-4afd42b9f1e9" SourceId="1" SourceUrl="http://adultprog2015.somee.com/WsSoap.svc?xsd=xsd1" />
+    <MetadataFile FileName="WsSoap3.xsd" MetadataType="Schema" ID="0fd6a659-bb3c-496f-a474-e78ac4ea7ef8" SourceId="1" SourceUrl="http://adultprog2015.somee.com/WsSoap.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
