@@ -5,6 +5,7 @@ public class Main {
         try {
             Downloader downloader = new Downloader();
             LinkChecker linkChecker = new LinkChecker(downloader.getDocument(), downloader.getSite());
+            linkChecker.getListOfGoodLinks();
         } catch (IOException e) {
             e.printStackTrace();
         }

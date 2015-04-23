@@ -1,16 +1,20 @@
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class LinkChecker {
     private Document document;
     private String site;
     private String domainName;
     private Elements elements;
-    private LinkedList<String> listOfLinks = new LinkedList<>();
+    private List<String> listOfAllLinks = new ArrayList<>();
+    private List<String> listOfGoodLinks = new ArrayList<>();
     private final String tegA = "a";
     private final String attrHref = "href";
 
@@ -29,13 +33,13 @@ public class LinkChecker {
 
     private void getAllLinks(String attr) {
         elements.stream().
-                forEach(element -> listOfLinks.add(element.attr(attr)));
+                forEach(element -> listOfAllLinks.add(element.attr(attr)));
     }
 
     private void handlingLinks() {
-        listOfLinks.stream().
-                filter(element -> checkLinkByDomainName(element) || checkLinkAsRelativeLocal(element)).
-                forEach(System.out::println);
+        listOfGoodLinks.addAll(listOfAllLinks.stream().
+                filter(link -> isLinkDomainName(link) || isLinkLocal(link)).
+                collect(Collectors.toList()));
     }
 
     private String getDomainName() {
@@ -47,17 +51,21 @@ public class LinkChecker {
         return mat.replaceFirst("");
     }
 
-    private Boolean checkLinkByDomainName(String link) {
+    private Boolean isLinkDomainName(String link) {
         Pattern pat = Pattern.compile(domainName);
         Matcher mat = pat.matcher(link);
         return mat.find();
     }
 
-    private boolean checkLinkAsRelativeLocal(String link) {
-        if (link != "") {
+    private boolean isLinkLocal(String link) {
+        if (!Objects.equals(link, "")) {
             char firstSymbolOfLink = link.charAt(0);
             return (firstSymbolOfLink == '.' || firstSymbolOfLink == '/');
         }
         return false;
+    }
+
+    public List<String> getListOfGoodLinks() {
+        return listOfGoodLinks;
     }
 }
