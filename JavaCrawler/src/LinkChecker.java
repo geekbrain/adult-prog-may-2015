@@ -1,37 +1,26 @@
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Spectator {
+public class LinkChecker {
+    private Document document;
     private String site;
     private String domainName;
-    private Document document;
     private Elements elements;
     private LinkedList<String> listOfLinks = new LinkedList<>();
     private final String tegA = "a";
     private final String attrHref = "href";
 
-    public Spectator() throws IOException {
-        site = WebServiceAdapter.getURL();
+    public LinkChecker(Document document, String site) {
+        this.document = document;
+        this.site = site;
         domainName = getDomainName();
-        setDocument();
         getAllElementsByTeg(tegA);
         getAllLinks(attrHref);
         handlingLinks();
-    }
-
-    private void setDocument() {
-        try {
-            document = Jsoup.connect(site).get();
-        } catch (IOException e) {
-            System.out.println("Не удаётся подключиться к сайту");
-            e.printStackTrace();
-        }
     }
 
     private void getAllElementsByTeg(String teg) {
@@ -46,7 +35,7 @@ public class Spectator {
     private void handlingLinks() {
         listOfLinks.stream().
                 filter(element -> checkLinkByDomainName(element) || checkLinkAsRelativeLocal(element)).
-                forEach(element -> System.out.println(element));
+                forEach(System.out::println);
     }
 
     private String getDomainName() {
