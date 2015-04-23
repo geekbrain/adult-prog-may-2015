@@ -54,7 +54,10 @@ public class LinkChecker {
     }
 
     private boolean checkLinkAsRelativeLocal(String link) {
-        char firstSymbolOfLink = link.charAt(0);
-        return (firstSymbolOfLink == '.' || firstSymbolOfLink == '/');
+        if (link != "") {
+            char firstSymbolOfLink = link.charAt(0);
+            return (firstSymbolOfLink == '.' || firstSymbolOfLink == '/');
+        }
+        return false;
     }
 }
