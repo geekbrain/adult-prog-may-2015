@@ -56,6 +56,13 @@ namespace WsSoap
     [DataContract]
     public class Page
     {
+        public Page(int id, string site, string sitePage)
+        {
+            Id = id;
+            Site = site;
+            SitePage = sitePage;
+        }
+
         [DataMember]
         public int Id { get; set; }
 

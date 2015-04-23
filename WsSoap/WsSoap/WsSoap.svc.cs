@@ -8,9 +8,6 @@ namespace WsSoap
         InstanceContextMode = InstanceContextMode.Single)]
     public class Service : IService
     {
-        private List<string> _links = new List<string>();
-        private Dictionary<string, int> _namesAmountDictionary =
-            new Dictionary<string, int>();
         private readonly Db _db = new Db();
 
         public string GetLink()
@@ -42,6 +39,8 @@ namespace WsSoap
             };
             
             return statsDictionary;
+
+            return _db.GetStats();
         }
 
         public Dictionary<DateTime, Dictionary<string, int>> GetDailyStats()
@@ -63,6 +62,8 @@ namespace WsSoap
             };
 
             return dailyStatsDictionary;
+
+            return _db.GetDailyStats();
         }
 
         public Dictionary<DateTime, int> GetStatsByName(string name)
@@ -72,7 +73,9 @@ namespace WsSoap
                 {new DateTime(2015, 04, 21), 80}
             };
 
-            return statsByNameDictionary;           
+            return statsByNameDictionary;
+
+            return _db.GetStatsByName(name);
         }
 
         public Dictionary<int, string> GetNames()
@@ -84,7 +87,9 @@ namespace WsSoap
                 {3, "Навальный"}
             };
 
-            return namesDictionary;                      
+            return namesDictionary;
+
+            return _db.GetNamesWithId();
         }
 
         public Dictionary<int, string> GetSites()
@@ -96,23 +101,27 @@ namespace WsSoap
             };
 
             return sitesDictionary;
+
+            return _db.GetSites();
         }
 
         public List<Page> GetPages()
         {
             var pages = new List<Page>
             {
-                new Page{
-                Id = 11,
-                Site = "http://www.lenta.ru",
-                SitePage = "http://www.lenta.ru/article/22"},
-                new Page{
-                Id = 12,
-                Site = "http://www.rbc.ru",
-                SitePage = "http://www.rbc.ru/rbcfreenews/55387e9d9a7947521ef5851b"},
+                new Page(
+                11,
+                "http://www.lenta.ru",
+                "http://www.lenta.ru/article/22"),
+                new Page(
+                12,
+                "http://www.rbc.ru",
+                "http://www.rbc.ru/rbcfreenews/55387e9d9a7947521ef5851b"),
             };
 
             return pages;
+
+            return _db.GetPages();
         }
 
         public Dictionary<string, Dictionary<int, string>> GetSearchPhrases()
@@ -133,21 +142,23 @@ namespace WsSoap
             };
 
             return searchPhrasesDictionary;
+
+            return _db.GetSearchPhrases();
         }
 
         public void SetSite(string url)
         {
-            
+            _db.SetSite(url);
         }
 
         public void SetName(string name)
         {
-            
+            _db.SetName(name);
         }
 
         public void SetSearchPhrase(string name, string searchPhrase)
         {
-            
+            _db.SetSearchPhrase(name, searchPhrase);
         }
     }
 }

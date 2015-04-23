@@ -42,7 +42,7 @@ namespace WsSoap
             from
                 name n;";
 
-        private const string SelectSearchPhrasesSql =
+        private const string SelectSearchPhrasesByNameIdSql =
             @"select
                     sph.id, sph.name
             from
@@ -74,6 +74,43 @@ namespace WsSoap
             @"select n.id
             from name n
             where n.name = ?name";
+
+        private const string SelectStatsSql =
+            @"select n.name, sum(dc.data_fact) as cnt
+            from name n
+            join data_cube dc on dc.name_id = n.id
+            group by n.name";
+
+        private const string SelectDailyStatsSql =
+            @"select dc.date, n.name, sum(dc.data_fact) as cnt
+            from name n
+            join data_cube dc on dc.name_id = n.id
+            group by dc.date, n.name";
+
+        private const string SelectStatsByNameSql =
+            @"select dc.date, sum(dc.data_fact) as cnt
+            from data_cube dc on dc.name_id = n.id
+                where dc.name_id = ?id
+            group by dc.date";
+
+        private const string SelectSitePagesSql =
+            @"select sp.id, sp.url, s.url as site_url
+            from site_page sp
+            join site s on s.id = sp.site_id";
+
+        private const string SelectSearchPhrasesSql =
+            @"select n.name, sph.id, sph.name as search_phrase
+            from search_phrases sph
+            join name n on n.id = sph.name_id";
+
+        private const string InsertSiteSql =
+            @"insert into site (url) values (?url)";
+
+        private const string InsertNameSql =
+            @"insert into name (name) values (?name)";
+
+        private const string InsertSearchPhraseSql =
+            @"insertn into search_phrase (name, name_id) values (?name, ?name_id)";
 
         public Db()
         {
@@ -194,7 +231,7 @@ namespace WsSoap
             var searchPhrases = new List<string>();
             using (var selectSearchPhrases = _connection.CreateCommand())
             {
-                selectSearchPhrases.CommandText = SelectSearchPhrasesSql;
+                selectSearchPhrases.CommandText = SelectSearchPhrasesByNameIdSql;
                 selectSearchPhrases.Parameters.AddWithValue("?name_id", nameId);
                 using (var searchPhrasesReader = selectSearchPhrases.ExecuteReader())
                 {
@@ -278,6 +315,178 @@ namespace WsSoap
                 selectSiteIdBySitePageId.Parameters.AddWithValue("?id", sitePageId);
 
                 return (int)selectSiteIdBySitePageId.ExecuteScalar();
+            }
+        }
+
+        public Dictionary<string, int> GetStats()
+        {
+            var statsDictionary = new Dictionary<string, int>();
+
+            using (var selectStats = _connection.CreateCommand())
+            {
+                selectStats.CommandText = SelectStatsSql;
+                using (var statsReader = selectStats.ExecuteReader())
+                {
+                    while (statsReader.Read())
+                    {
+                        statsDictionary.Add(statsReader["name"].ToString(),
+                            (int) statsReader["cnt"]);
+                    }
+                }
+            }
+
+            return statsDictionary;
+        }
+
+        public Dictionary<DateTime, Dictionary<string, int>> GetDailyStats()
+        {
+            var dailyStatsDictionary = new Dictionary<DateTime, Dictionary<string, int>>();
+
+            using (var selectDailyStats = _connection.CreateCommand())
+            {
+                selectDailyStats.CommandText = SelectDailyStatsSql;
+                using (var dailyStatsReader = selectDailyStats.ExecuteReader())
+                {
+                    while (dailyStatsReader.Read())
+                    {
+                        var statsDictionary = new Dictionary<string, int>
+                        {
+                            {dailyStatsReader["name"].ToString(), (int) dailyStatsReader["cnt"]}
+                        };
+                        dailyStatsDictionary[(DateTime) dailyStatsReader["date"]] =
+                            statsDictionary;
+                    }
+                }
+            }
+
+            return dailyStatsDictionary;
+        }
+
+        public Dictionary<DateTime, int> GetStatsByName(string name)
+        {
+            var nameId = SelectNameIdByName(name);
+            if (nameId == null) throw new WsSoapException(
+                "WsSoap.Db.GetStatsByName exception! Can't find name in database!");
+
+            var statsDictionary = new Dictionary<DateTime, int>();
+            using (var selectStats = _connection.CreateCommand())
+            {
+                selectStats.CommandText = SelectStatsByNameSql;
+                using (var statsReader = selectStats.ExecuteReader())
+                {
+                    while (statsReader.Read())
+                    {
+                        statsDictionary.Add((DateTime) statsReader["date"],
+                            (int) statsReader["cnt"]);
+                    }
+                }
+            }
+
+            return statsDictionary;
+        }
+
+        public Dictionary<int, string> GetNamesWithId()
+        {
+            return SelectNames();
+        }
+
+        public Dictionary<int, string> GetSites()
+        {
+            var sitesDictionary = new Dictionary<int, string>();
+
+            using (var selectSite = _connection.CreateCommand())
+            {
+                selectSite.CommandText = SelectSiteSql;
+                using (var siteReader = selectSite.ExecuteReader())
+                {
+                    while (siteReader.Read())
+                    {
+                        sitesDictionary.Add((int) siteReader["id"], siteReader["url"].ToString());
+                    }
+                }
+            }
+
+            return sitesDictionary;
+        }
+
+        public List<Page> GetPages()
+        {
+            var sitePages = new List<Page>();
+
+            using (var selectSitePages = _connection.CreateCommand())
+            {
+                selectSitePages.CommandText = SelectSitePagesSql;
+                using (var sitePagesReader = selectSitePages.ExecuteReader())
+                {
+                    while (sitePagesReader.Read())
+                    {
+                        sitePages.Add(new Page((int) sitePagesReader["id"],
+                            sitePagesReader["url"].ToString(),
+                            sitePagesReader["site_url"].ToString()));
+                    }
+                }
+            }
+
+            return sitePages;
+        }
+
+        public Dictionary<string, Dictionary<int, string>> GetSearchPhrases()
+        {
+            var namesSearchPhrasesDictionary = new Dictionary<string, Dictionary<int, string>>();
+
+            using (var selectSearchPhrases = _connection.CreateCommand())
+            {
+                selectSearchPhrases.CommandText = SelectSearchPhrasesSql;
+                using (var searchPhrasesReader = selectSearchPhrases.ExecuteReader())
+                {
+                    while (searchPhrasesReader.Read())
+                    {
+                        var searchPhrasesDictionary = new Dictionary<int, string>
+                        {
+                            {(int) searchPhrasesReader["id"],
+                                searchPhrasesReader["search_phrase"].ToString()}
+                        };
+                        namesSearchPhrasesDictionary[searchPhrasesReader["name"].ToString()] =
+                            searchPhrasesDictionary;
+                    }
+                }
+            }
+
+            return namesSearchPhrasesDictionary;
+        }
+
+        public void SetSite(string url)
+        {
+            using (var insertSite = _connection.CreateCommand())
+            {
+                insertSite.CommandText = InsertSiteSql;
+                insertSite.Parameters.AddWithValue("?url", url);
+                insertSite.ExecuteNonQuery();
+            }
+        }
+
+        public void SetName(string name)
+        {
+            using (var insertName = _connection.CreateCommand())
+            {
+                insertName.CommandText = InsertNameSql;
+                insertName.Parameters.AddWithValue("?name", name);
+                insertName.ExecuteNonQuery();
+            }
+        }
+
+        public void SetSearchPhrase(string name, string searchPhrase)
+        {
+            var nameId = SelectNameIdByName(name);
+            if (nameId == null) throw new WsSoapException(
+                "WsSoap.Db.SetSearchPhrase exception! Can't find url in database!");
+
+            using (var insertSearchPhrase = _connection.CreateCommand())
+            {
+                insertSearchPhrase.CommandText = InsertSearchPhraseSql;
+                insertSearchPhrase.Parameters.AddWithValue("?name_id", nameId);
+                insertSearchPhrase.Parameters.AddWithValue("?name", searchPhrase);
+                insertSearchPhrase.ExecuteNonQuery();
             }
         }
 
