@@ -8,40 +8,29 @@ namespace WsSoap
         InstanceContextMode = InstanceContextMode.Single)]
     public class Service : IService
     {
-        private int _counter = 0;
         private List<string> _links = new List<string>();
         private Dictionary<string, int> _namesAmountDictionary =
             new Dictionary<string, int>();
+        private readonly Db _db = new Db();
 
         public string GetLink()
         {
-            if (_counter > 0)
-            {
-                return null;
-            }
-            _counter++;
-            return "http://lenta.ru/lib/14160711/";
+            return _db.GetLink();
         }
 
         public Dictionary<string, List<string>> GetNamesDictionary()
         {
-            var aliasesDictionary = new Dictionary<string, List<string>>
-            {
-                {"Путин", new List<string> {"Владимир Владимирович", "Президент"}},
-                {"Медведев", null}
-            };
-
-            return aliasesDictionary;
+            return _db.GetNames();
         }
 
         public void SendLinks(List<string> links, string url)
         {
-            _links = links;
+            _db.InsertLinks(links, url);
         }
 
         public void SendAmountDictionary(Dictionary<string, int> namesAmountDictionary, string url)
         {
-            _namesAmountDictionary = namesAmountDictionary;
+            _db.InsertAmount(namesAmountDictionary, url);
         }
 
         public Dictionary<string, int> GetStats()

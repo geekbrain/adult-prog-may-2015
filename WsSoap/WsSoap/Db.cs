@@ -40,7 +40,7 @@ namespace WsSoap
             @"select
                     n.id, n.name
             from
-                names n;";
+                name n;";
 
         private const string SelectSearchPhrasesSql =
             @"select
@@ -57,6 +57,14 @@ namespace WsSoap
                 site_page sp
             where
                 sp.url = ?url";
+
+        private const string SelectSiteIdBySitePageIdSql =
+            @"select
+                    sp.site_id
+            from
+                site_page sp
+            where
+                sp.id = ?id";
 
         private const string InsertDataCubeSql =
             @"insert data_cube (date, name_id, site_page_id, data_fact)
@@ -84,14 +92,14 @@ namespace WsSoap
             _connection.Open();
         }
 
-        private int? SelectSiteByUrl(string url)
+        private int? SelectSiteIdByUrl(string url)
         {
             using (var selectSiteIdByUrl = _connection.CreateCommand())
             {
                 selectSiteIdByUrl.CommandText = SelectSiteIdByUrlSql;
                 selectSiteIdByUrl.Parameters.AddWithValue("?url", url);
 
-                return (int) selectSiteIdByUrl.ExecuteScalar();
+                return (int?) selectSiteIdByUrl.ExecuteScalar();
             }
         }
 
@@ -107,6 +115,7 @@ namespace WsSoap
                         var id = (int) siteReader["id"];
                         var url = siteReader["url"].ToString();
 
+                        siteReader.Close();
                         InsertSitePage(id, url);
                     }
                 }
@@ -139,12 +148,27 @@ namespace WsSoap
 
         public void InsertLinks(List<string> links, string url)
         {
-            var id = SelectSiteByUrl(url);
-            if (id == null) throw new WsSoapException(
+            var sitePageId = SelectSitePageIdByUrl(url);
+            if (sitePageId == null) throw new WsSoapException(
                 "WsSoap.Db.InsertLinks exception! Can't find url in database!");
+            var siteId = SelectSiteIdByUrl(url);
+            int? id = 0;
+            if ((siteId != null) && (siteId == sitePageId))
+            {
+                id = (int) siteId;
+            }
+            else
+            {
+                id = SelectSiteIdBySitePageId(sitePageId ?? default(int));
+                if (id == null)
+                {
+                    throw new WsSoapException(
+                        "WsSoap.Db.InsertLinks exception! Can't find url in database!");
+                }
+            }
             foreach (var link in links)
             {
-                InsertSitePage((int) id, url);
+                InsertSitePage((int) id, link);
             }
         }
 
@@ -222,7 +246,7 @@ namespace WsSoap
         {
             using (var insertDataCube = _connection.CreateCommand())
             {
-                insertDataCube.CommandText = InsertSitePageSql;
+                insertDataCube.CommandText = InsertDataCubeSql;
                 insertDataCube.Parameters.AddWithValue("?date", date);
                 insertDataCube.Parameters.AddWithValue("?name_id", nameId);
                 insertDataCube.Parameters.AddWithValue("?site_page_id", sitePageId);
@@ -243,6 +267,17 @@ namespace WsSoap
                     "WsSoap.Db.InsertAmount exception! Can't find name in database!");
                 InsertDataCube(DateTime.Today, (int) nameId, (int) sitePageId,
                     nameAmount.Value);
+            }
+        }
+
+        private int? SelectSiteIdBySitePageId(int sitePageId)
+        {
+            using (var selectSiteIdBySitePageId = _connection.CreateCommand())
+            {
+                selectSiteIdBySitePageId.CommandText = SelectSiteIdBySitePageIdSql;
+                selectSiteIdBySitePageId.Parameters.AddWithValue("?id", sitePageId);
+
+                return (int)selectSiteIdBySitePageId.ExecuteScalar();
             }
         }
 
