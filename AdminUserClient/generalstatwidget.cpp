@@ -7,7 +7,7 @@
 GeneralStatWidget::GeneralStatWidget(const StatisticsExtractor& statsExtractor, Qt::Orientation orientation, const QString &title,
                                      QWidget *parent)
               : QGroupBox(title, parent),
-                table_(new QTableWidget(1, TableCols_, this))
+                table_(new QTableWidget(this))
 {
     createControlsArea();
     placementResultsArea();
@@ -89,7 +89,7 @@ void GeneralStatWidget::configTableView()
 void GeneralStatWidget::setOkBtBehavior(const StatisticsExtractor& statsExtractor)
 {
     QObject::connect(okBt_, &QPushButton::clicked, [&](){
-        QUrl url("http://www." + sitesCombo_->currentText());
+        QUrl url = QUrl::fromUserInput(sitesCombo_->currentText());
         QScopedPointer<GeneralStatistics> genStats(new GeneralStatistics(url));
         statsExtractor.getGeneralStatistics(genStats);
         inputStatsToTable(genStats);
