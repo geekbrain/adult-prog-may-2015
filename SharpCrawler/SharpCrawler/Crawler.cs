@@ -39,7 +39,7 @@ namespace SharpCrawler
                 .Where(link => regexAbsoluteLink.IsMatch(link))
                 .Distinct();
 
-            return (List<string>) absoluteLinks;
+            return absoluteLinks;
         }
 
         private static IEnumerable<string> GetRelativeLinks(IEnumerable<string> links)
