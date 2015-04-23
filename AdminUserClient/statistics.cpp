@@ -15,7 +15,13 @@ size_t Statistics::getFieldCount() const
 }
 
 
-GeneralStatistics::GeneralStatistics()
+GeneralStatistics::GeneralStatistics(const QUrl& site) :
+    url_(site)
 {
     fieldCount = 2; // Согласно п. 1.1.2.1. документации: это поля «Имя» и «Количество упоминаний».
+}
+
+void GeneralStatistics::setNameStat(const QString &name, quint32 mentionCount)
+{
+    namesMentions_[name] = mentionCount;
 }

@@ -10,7 +10,6 @@ HEADERS     = \
     namedao.h \
     statisticsextractor.h \
     statistics.h \
-    selecteddata.h \
     wssoap.h
 SOURCES     = main.cpp \
               window.cpp \
@@ -20,7 +19,6 @@ SOURCES     = main.cpp \
     namedao.cpp \
     statisticsextractor.cpp \
     statistics.cpp \
-    selecteddata.cpp \
     wssoap.cpp
 
 #DESTDIR = /bin

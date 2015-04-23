@@ -12,6 +12,8 @@ public:
     ~NameDao();
 
     QList<QString> namesList() const;
+    void addName(QString&);
+
 signals:
 
 public slots:

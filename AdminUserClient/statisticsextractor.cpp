@@ -1,5 +1,7 @@
 #include "statisticsextractor.h"
 #include "statistics.h"
+#include "namedao.h"
+#include <QUrl>
 
 StatisticsExtractor::StatisticsExtractor(QObject *parent) :
     QObject(parent)
@@ -13,5 +15,11 @@ void StatisticsExtractor::getGeneralStatistics(QScopedPointer<GeneralStatistics>
 
 void StatisticsExtractor::fillTempGeneralStatistics(QScopedPointer<GeneralStatistics>& statistics) const
 {
-    statistics.reset(new GeneralStatistics());
+    QUrl url("localhost");
+    statistics.reset(new GeneralStatistics(url));
+
+}
+
+void StatisticsExtractor::getNamesFromService()
+{
 }

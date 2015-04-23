@@ -39,6 +39,7 @@ private:
     void configFinalFace();
 
     NameDao* names_; // Список личностей, о которых смотрится статистика.
+    StatisticsExtractor *statExtractor_;
 
     QSharedPointer<GeneralStatWidget> generalStatWidget_;
     QSharedPointer<DailyStatWidget> dailyStatWidget_;
@@ -50,7 +51,6 @@ private:
     QPushButton *dailyStatBt_;
     QPushButton *nameStatBt_;
 
-    StatisticsExtractor *statExtractor_;
 };
 
 #endif

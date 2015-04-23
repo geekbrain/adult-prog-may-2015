@@ -2,7 +2,8 @@
 #define GENERALSTATWIDGET_H
 
 #include <QGroupBox>
-#include "namedao.h"
+#include <QScopedPointer>
+#include "statisticsextractor.h"
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -11,11 +12,13 @@ class QGroupBox;
 class QTableWidget;
 QT_END_NAMESPACE
 
+class GeneralStatistics;
+
 class GeneralStatWidget : public QGroupBox
 {
     Q_OBJECT
 public:
-    explicit GeneralStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
+    GeneralStatWidget(const StatisticsExtractor& statsExtractor, Qt::Orientation orientation, const QString &title,
                                QWidget *parent = 0);
 //    ~GeneralStatWidget();
 signals:
@@ -42,7 +45,8 @@ private:
 
     void fillTableTmpData();
     void configTableView();
-    void setOkBtBehavior();
+    void setOkBtBehavior(const StatisticsExtractor& statsExtractor);
+    void inputStatsInTable(const QScopedPointer<GeneralStatistics>& stat);
 
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;

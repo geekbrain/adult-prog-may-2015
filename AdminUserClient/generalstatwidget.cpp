@@ -1,16 +1,18 @@
 #include <QtWidgets>
 #include <QDebug>
+#include <QUrl>
 #include "generalstatwidget.h"
+#include "statistics.h"
 
-GeneralStatWidget::GeneralStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
+GeneralStatWidget::GeneralStatWidget(const StatisticsExtractor& statsExtractor, Qt::Orientation orientation, const QString &title,
                                      QWidget *parent)
               : QGroupBox(title, parent),
-                table_(new QTableWidget(names->namesList().size(), TableCols_, this))
+                table_(new QTableWidget(1, TableCols_, this))
 {
     createControlsArea();
     placementResultsArea();
     finalPlacementAreas(orientation);
-    setOkBtBehavior();
+    setOkBtBehavior(statsExtractor);
 }
 
 void GeneralStatWidget::createControlsArea()
@@ -73,7 +75,7 @@ void GeneralStatWidget::configTableView()
 
     //Set Header Label Texts Here
     QStringList tableHeader;
-    tableHeader<<"адрес"<<"упоминаний";
+    tableHeader<<"имя"<<"упоминаний";
     table_->setHorizontalHeaderLabels(tableHeader);
     table_->verticalHeader()->setVisible(true);
     table_->setEditTriggers(QAbstractItemView::NoEditTriggers); // Редактировать нельзя будет.
@@ -84,11 +86,21 @@ void GeneralStatWidget::configTableView()
     table_->setGeometry(QApplication::desktop()->screenGeometry());
 }
 
-void GeneralStatWidget::setOkBtBehavior()
+void GeneralStatWidget::setOkBtBehavior(const StatisticsExtractor& statsExtractor)
 {
     QObject::connect(okBt_, &QPushButton::clicked, [&](){
-        fillTableTmpData();
+//        fillTableTmpData();
+        QUrl url("http://www." + sitesCombo_->currentText());
+        QScopedPointer<GeneralStatistics> genStats(new GeneralStatistics(url));
+        statsExtractor.getGeneralStatistics(genStats);
+        inputStatsInTable(genStats);
     });
+}
+
+void GeneralStatWidget::inputStatsInTable(const QScopedPointer<GeneralStatistics> &stat)
+{
+    table_->setRowCount(stat->getTupleCount());
+    table_->setColumnCount(stat->getFieldCount());
 }
 
 //GeneralStatWidget::~GeneralStatWidget()

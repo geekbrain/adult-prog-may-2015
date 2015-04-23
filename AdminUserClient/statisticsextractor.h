@@ -5,6 +5,7 @@
 #include <QScopedPointer>
 
 class GeneralStatistics;
+class NameDao;
 
 class StatisticsExtractor : public QObject
 {
@@ -19,7 +20,8 @@ public slots:
 
 private:
     void fillTempGeneralStatistics(QScopedPointer<GeneralStatistics>&) const;
-
+    void fillTempSitesList();
+    void getNamesFromService();
 };
 
 #endif // STATISTICSEXTRACTOR_H
