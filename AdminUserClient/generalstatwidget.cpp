@@ -3,6 +3,7 @@
 #include <QUrl>
 #include "generalstatwidget.h"
 #include "statistics.h"
+#include "worksites.h"
 
 GeneralStatWidget::GeneralStatWidget(const StatisticsExtractor& statsExtractor, Qt::Orientation orientation, const QString &title,
                                      QWidget *parent)
@@ -19,7 +20,11 @@ void GeneralStatWidget::createControlsArea(const StatisticsExtractor& statsExtra
 {
     okBt_ = new QPushButton("ok", this);
     sitesCombo_ = new QComboBox(this);
-    sitesCombo_->addItem("lenta.ru");
+    QSharedPointer<WorkSites> workSites(new WorkSites);
+    statsExtractor.getWorkSites(workSites);
+    foreach (QUrl site, workSites->sitesSet()) {
+        sitesCombo_->addItem(site.host(/*QUrl::PrettyDecoded*/));
+    }
 
     leftGroup_ = new QGroupBox("Выбор сайта", this);    
     QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom, this);
@@ -91,13 +96,13 @@ void GeneralStatWidget::setOkBtBehavior(const StatisticsExtractor& statsExtracto
 {
     QObject::connect(okBt_, &QPushButton::clicked, [&](){
         QUrl url = QUrl::fromUserInput(sitesCombo_->currentText());
-        QScopedPointer<GeneralStatistics> genStats(new GeneralStatistics(url));
+        QSharedPointer<GeneralStatistics> genStats(new GeneralStatistics(url));
         statsExtractor.getGeneralStatistics(genStats);
         inputStatsToTable(genStats);
     });
 }
 
-void GeneralStatWidget::inputStatsToTable(const QScopedPointer<GeneralStatistics> &stat)
+void GeneralStatWidget::inputStatsToTable(const QSharedPointer<GeneralStatistics> &stat)
 {
     size_t tupleCount = stat->getTupleCount();
     table_->setRowCount(tupleCount);

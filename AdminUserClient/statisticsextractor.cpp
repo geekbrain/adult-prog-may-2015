@@ -1,6 +1,7 @@
 #include "statisticsextractor.h"
 #include "statistics.h"
 #include "namedao.h"
+#include "worksites.h"
 #include <QUrl>
 
 StatisticsExtractor::StatisticsExtractor(QObject *parent) :
@@ -8,17 +9,17 @@ StatisticsExtractor::StatisticsExtractor(QObject *parent) :
 {
 }
 
-void StatisticsExtractor::getGeneralStatistics(QScopedPointer<GeneralStatistics>& statistics) const
+void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const
 {
     fillTempGeneralStatistics(statistics);
 }
 
-void StatisticsExtractor::getWorkSites(QScopedPointer<WorkSites> &workSites) const
+void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) const
 {
-
+    fillTempSitesList(workSites);
 }
 
-void StatisticsExtractor::fillTempGeneralStatistics(QScopedPointer<GeneralStatistics>& statistics) const
+void StatisticsExtractor::fillTempGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const
 {
     QUrl url("localhost");
     statistics.reset(new GeneralStatistics(url));
@@ -26,9 +27,10 @@ void StatisticsExtractor::fillTempGeneralStatistics(QScopedPointer<GeneralStatis
     statistics->setNameStat("Навальный", 220);
 }
 
-void StatisticsExtractor::fillTempSitesList(QScopedPointer<WorkSites> &workSites)
+void StatisticsExtractor::fillTempSitesList(QSharedPointer<WorkSites> &workSites) const
 {
-
+    workSites.reset(new WorkSites);
+    workSites->append(QUrl::fromUserInput("lenta.ru"));
 }
 
 void StatisticsExtractor::getNamesFromService()

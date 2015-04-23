@@ -21,7 +21,7 @@ signals:
 public slots:
 
 private:
-    QSet<QUrl> sitesList_;
+    QSet<QUrl> sitesSet_;
 
 };
 

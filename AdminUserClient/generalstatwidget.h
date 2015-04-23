@@ -2,7 +2,7 @@
 #define GENERALSTATWIDGET_H
 
 #include <QGroupBox>
-#include <QScopedPointer>
+#include <QSharedPointer>
 #include "statisticsextractor.h"
 
 QT_BEGIN_NAMESPACE
@@ -46,7 +46,7 @@ private:
     void fillTableTmpData();
     void configTableView();
     void setOkBtBehavior(const StatisticsExtractor& statsExtractor);
-    void inputStatsToTable(const QScopedPointer<GeneralStatistics>& stat);
+    void inputStatsToTable(const QSharedPointer<GeneralStatistics>& stat);
 
     QGroupBox *sitesGroup_;
     QComboBox *sitesCombo_;

@@ -5,9 +5,9 @@ WorkSites::WorkSites(QObject *parent) :
 {
 }
 
-QSet<QUrl> WorkSites::sitesList() const
+QSet<QUrl> WorkSites::sitesSet() const
 {
-    return sitesList_;
+    return sitesSet_;
 }
 
 void WorkSites::append(QUrl &url)

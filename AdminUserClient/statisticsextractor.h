@@ -2,7 +2,7 @@
 #define STATISTICSEXTRACTOR_H
 
 #include <QObject>
-#include <QScopedPointer>
+#include <QSharedPointer>
 
 class GeneralStatistics;
 class NameDao;
@@ -13,20 +13,20 @@ class StatisticsExtractor : public QObject
     Q_OBJECT
 public:
     explicit StatisticsExtractor(QObject *parent = 0);
-    void getGeneralStatistics(QScopedPointer<GeneralStatistics>&) const;
+    void getGeneralStatistics(QSharedPointer<GeneralStatistics>&) const;
 
     /**
      * @brief getWorkSites Сообщает о наборе сайтов, с которых собирается статистика.
      */
-    void getWorkSites(QScopedPointer<WorkSites>&) const;
+    void getWorkSites(QSharedPointer<WorkSites>&) const;
 
 signals:
 
 public slots:
 
 private:
-    void fillTempGeneralStatistics(QScopedPointer<GeneralStatistics>&) const;
-    void fillTempSitesList(QScopedPointer<WorkSites> &workSites);
+    void fillTempGeneralStatistics(QSharedPointer<GeneralStatistics>&) const;
+    void fillTempSitesList(QSharedPointer<WorkSites> &workSites) const;
     void getNamesFromService();
 };
 
