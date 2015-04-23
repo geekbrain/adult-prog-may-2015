@@ -14,13 +14,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/19/2013 23:35:14</publishTime>
     </File>
     <File Include="bin/WsSoap.dll">
-      <publishTime>04/23/2015 10:31:22</publishTime>
+      <publishTime>04/23/2015 18:33:08</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/23/2015 10:31:58</publishTime>
+      <publishTime>04/23/2015 19:10:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/23/2015 10:31:28</publishTime>
+      <publishTime>04/23/2015 19:10:48</publishTime>
     </File>
     <File Include="WsSoap.svc">
       <publishTime>04/21/2015 21:26:41</publishTime>
