@@ -22,7 +22,8 @@ namespace SharpCrawler
             }
             catch (Exception e)
             {
-                throw new CrawlerException("SharpCrawler.WsAdapter.GetLink: Error connecting to service!");
+                throw new CrawlerException(
+                    "SharpCrawler.WsAdapter.GetLink: Error connecting to service! " + e.Message);
             }
         }
 
@@ -34,7 +35,8 @@ namespace SharpCrawler
             }
             catch (Exception e)
             {
-                throw new CrawlerException("SharpCrawler.WsAdapter.GetLink: Error connecting to service!");
+                throw new CrawlerException(
+                    "SharpCrawler.WsAdapter.GetLink: Error connecting to service!" + e.Message);
             }
         }
 
@@ -46,7 +48,8 @@ namespace SharpCrawler
             }
             catch (Exception e)
             {
-                throw new CrawlerException("SharpCrawler.WsAdapter.GetLink: Error connecting to service!");
+                throw new CrawlerException(
+                    "SharpCrawler.WsAdapter.GetLink: Error connecting to service!" + e.Message);
             }
         }
 
@@ -58,7 +61,8 @@ namespace SharpCrawler
             }
             catch (Exception e)
             {
-                throw new CrawlerException("SharpCrawler.WsAdapter.GetLink: Error connecting to service!");
+                throw new CrawlerException(
+                    "SharpCrawler.WsAdapter.GetLink: Error connecting to service!" + e.Message);
             }
         }
 
@@ -68,15 +72,15 @@ namespace SharpCrawler
             {
                 _wsSoapClient.Close();
             }
-            catch (CommunicationException e)
+            catch (CommunicationException)
             {
                 _wsSoapClient.Abort();
             }
-            catch (TimeoutException e)
+            catch (TimeoutException)
             {
                 _wsSoapClient.Abort();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _wsSoapClient.Abort();
                 throw;
