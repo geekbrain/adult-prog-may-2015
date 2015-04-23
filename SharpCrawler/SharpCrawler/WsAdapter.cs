@@ -16,23 +16,50 @@ namespace SharpCrawler
 
         public string GetLink()
         {
-            
-            return _wsSoapClient.GetLink();
+            try
+            {
+                return _wsSoapClient.GetLink();
+            }
+            catch (Exception e)
+            {
+                throw new CrawlerException("SharpCrawler.WsAdapter.GetLink: Error connecting to service!");
+            }
         }
 
         public Dictionary<string, List<string>> GetNamesDictionary()
         {
-            return _wsSoapClient.GetNamesDictionary();
+            try
+            {
+                return _wsSoapClient.GetNamesDictionary();
+            }
+            catch (Exception e)
+            {
+                throw new CrawlerException("SharpCrawler.WsAdapter.GetLink: Error connecting to service!");
+            }
         }
 
-        public void SendLinks(List<string> links)
+        public void SendLinks(List<string> links, string url)
         {
-            _wsSoapClient.SendLinks(links);
+            try
+            {
+                _wsSoapClient.SendLinks(links, url);
+            }
+            catch (Exception e)
+            {
+                throw new CrawlerException("SharpCrawler.WsAdapter.GetLink: Error connecting to service!");
+            }
         }
 
-        public void SendAmountDictionary(Dictionary<string, int> namesAmountDictionary)
+        public void SendAmountDictionary(Dictionary<string, int> namesAmountDictionary, string url)
         {
-            _wsSoapClient.SendAmountDictionary(namesAmountDictionary);
+            try
+            {
+                _wsSoapClient.SendAmountDictionary(namesAmountDictionary, url);
+            }
+            catch (Exception e)
+            {
+                throw new CrawlerException("SharpCrawler.WsAdapter.GetLink: Error connecting to service!");
+            }
         }
 
         public void Dispose()

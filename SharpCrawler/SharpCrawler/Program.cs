@@ -24,7 +24,7 @@ namespace SharpCrawler
                     var links = crawler.GetLinks(html, url);
                     if ((links != null) && (links.Count > 0))
                     {
-                        wsAdapter.SendLinks(links);
+                        wsAdapter.SendLinks(links, url);
                         links.ForEach(Console.WriteLine);
                         Console.ReadLine();
                     }
@@ -38,7 +38,7 @@ namespace SharpCrawler
                     var namesAmountDictionary =
                         crawler.GetNamesAmountDictionary(html, namesDictionary);
 
-                    wsAdapter.SendAmountDictionary(namesAmountDictionary);
+                    wsAdapter.SendAmountDictionary(namesAmountDictionary, url);
 
                     foreach (var nameAmount in namesAmountDictionary)
                     {

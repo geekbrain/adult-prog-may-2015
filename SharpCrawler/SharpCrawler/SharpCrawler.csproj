@@ -88,14 +88,20 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\WsSoap\Service.wsdl" />
-    <None Include="Service References\WsSoap\WsSoap.xsd">
+    <None Include="Service References\WsSoap\Service1.wsdl" />
+    <None Include="Service References\WsSoap\SharpCrawler.WsSoap.Page.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsSoap\WsSoap4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WsSoap\WsSoap1.xsd">
+    <None Include="Service References\WsSoap\WsSoap41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WsSoap\WsSoap2.xsd">
+    <None Include="Service References\WsSoap\WsSoap42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WsSoap\WsSoap43.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -126,9 +132,6 @@
     <WCFMetadataStorage Include="Service References\WsSoap\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WsSoap\WsSoap.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\WsSoap\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +142,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsSoap\WsSoap1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
