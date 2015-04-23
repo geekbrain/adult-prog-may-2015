@@ -15,6 +15,12 @@ namespace WsSoap
             where
                 not exists(select sp.site_id from site_page sp where sp.site_id = s.id)";
 
+        private const string SelectSitesSql =
+            @"select
+                    s.id, s.url
+            from
+                site s";
+
         private const string SelectSiteIdByUrlSql =
             @"select
                     s.id
@@ -89,7 +95,7 @@ namespace WsSoap
 
         private const string SelectStatsByNameSql =
             @"select dc.date, sum(dc.data_fact) as cnt
-            from data_cube dc on dc.name_id = n.id
+            from data_cube dc
                 where dc.name_id = ?id
             group by dc.date";
 
@@ -100,7 +106,7 @@ namespace WsSoap
 
         private const string SelectSearchPhrasesSql =
             @"select n.name, sph.id, sph.name as search_phrase
-            from search_phrases sph
+            from search_phrase sph
             join name n on n.id = sph.name_id";
 
         private const string InsertSiteSql =
@@ -110,7 +116,7 @@ namespace WsSoap
             @"insert into name (name) values (?name)";
 
         private const string InsertSearchPhraseSql =
-            @"insertn into search_phrase (name, name_id) values (?name, ?name_id)";
+            @"insert into search_phrase (name, name_id) values (?name, ?name_id)";
 
         public Db()
         {
@@ -330,7 +336,7 @@ namespace WsSoap
                     while (statsReader.Read())
                     {
                         statsDictionary.Add(statsReader["name"].ToString(),
-                            (int) statsReader["cnt"]);
+                            (int) Math.Floor((double) statsReader["cnt"]));
                     }
                 }
             }
@@ -351,7 +357,8 @@ namespace WsSoap
                     {
                         var statsDictionary = new Dictionary<string, int>
                         {
-                            {dailyStatsReader["name"].ToString(), (int) dailyStatsReader["cnt"]}
+                            {dailyStatsReader["name"].ToString(),
+                                (int) Math.Floor((double) dailyStatsReader["cnt"])}
                         };
                         dailyStatsDictionary[(DateTime) dailyStatsReader["date"]] =
                             statsDictionary;
@@ -372,12 +379,13 @@ namespace WsSoap
             using (var selectStats = _connection.CreateCommand())
             {
                 selectStats.CommandText = SelectStatsByNameSql;
+                selectStats.Parameters.AddWithValue("?id", (int) nameId);
                 using (var statsReader = selectStats.ExecuteReader())
                 {
                     while (statsReader.Read())
                     {
                         statsDictionary.Add((DateTime) statsReader["date"],
-                            (int) statsReader["cnt"]);
+                            (int) Math.Floor((double) statsReader["cnt"]));
                     }
                 }
             }
@@ -396,7 +404,7 @@ namespace WsSoap
 
             using (var selectSite = _connection.CreateCommand())
             {
-                selectSite.CommandText = SelectSiteSql;
+                selectSite.CommandText = SelectSitesSql;
                 using (var siteReader = selectSite.ExecuteReader())
                 {
                     while (siteReader.Read())

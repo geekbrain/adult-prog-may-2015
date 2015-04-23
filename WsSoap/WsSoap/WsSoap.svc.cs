@@ -32,6 +32,8 @@ namespace WsSoap
 
         public Dictionary<string, int> GetStats()
         {
+            return _db.GetStats();
+
             var statsDictionary = new Dictionary<string, int>{
                 {"Путин", 89},
                 {"Медведев", 2},
@@ -39,12 +41,12 @@ namespace WsSoap
             };
             
             return statsDictionary;
-
-            return _db.GetStats();
         }
 
         public Dictionary<DateTime, Dictionary<string, int>> GetDailyStats()
         {
+            return _db.GetDailyStats();
+
             var dailyStatsDictionary = new Dictionary<DateTime, Dictionary<string, int>>
             {
                 {new DateTime(2015, 04, 21), new Dictionary<string, int>
@@ -62,24 +64,24 @@ namespace WsSoap
             };
 
             return dailyStatsDictionary;
-
-            return _db.GetDailyStats();
         }
 
         public Dictionary<DateTime, int> GetStatsByName(string name)
         {
+            return _db.GetStatsByName(name);
+
             var statsByNameDictionary = new Dictionary<DateTime, int>
             {
                 {new DateTime(2015, 04, 21), 80}
             };
 
             return statsByNameDictionary;
-
-            return _db.GetStatsByName(name);
         }
 
         public Dictionary<int, string> GetNames()
         {
+            return _db.GetNamesWithId();
+
             var namesDictionary = new Dictionary<int, string>
             {
                 {1, "Путин"},
@@ -88,12 +90,12 @@ namespace WsSoap
             };
 
             return namesDictionary;
-
-            return _db.GetNamesWithId();
         }
 
         public Dictionary<int, string> GetSites()
         {
+            return _db.GetSites();
+
             var sitesDictionary = new Dictionary<int, string>
             {
                 {12, @"http://www.lenta.ru"},
@@ -101,12 +103,12 @@ namespace WsSoap
             };
 
             return sitesDictionary;
-
-            return _db.GetSites();
         }
 
         public List<Page> GetPages()
         {
+            return _db.GetPages();
+
             var pages = new List<Page>
             {
                 new Page(
@@ -120,12 +122,12 @@ namespace WsSoap
             };
 
             return pages;
-
-            return _db.GetPages();
         }
 
         public Dictionary<string, Dictionary<int, string>> GetSearchPhrases()
         {
+            return _db.GetSearchPhrases();
+
             var searchPhrasesDictionary = new Dictionary<string, Dictionary<int, string>>
             {
                 {"Путин", new Dictionary<int, string>
@@ -142,8 +144,6 @@ namespace WsSoap
             };
 
             return searchPhrasesDictionary;
-
-            return _db.GetSearchPhrases();
         }
 
         public void SetSite(string url)
@@ -151,7 +151,7 @@ namespace WsSoap
             _db.SetSite(url);
         }
 
-        public void SetName(string name)
+        public void SetNamer(string name)
         {
             _db.SetName(name);
         }

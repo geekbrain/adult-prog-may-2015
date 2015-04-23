@@ -46,7 +46,7 @@ namespace WsSoap
         void SetSite(string url);
 
         [OperationContract(AsyncPattern = false)]
-        void SetName(string name);
+        void SetNamer(string name);
 
         [OperationContract(AsyncPattern = false)]
         void SetSearchPhrase(string name, string searchPhrase);
