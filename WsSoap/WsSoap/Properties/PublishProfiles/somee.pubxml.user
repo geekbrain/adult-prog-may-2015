@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAIbK4tX+ltk6EvmpAyJ0LcAAAAAACAAAAAAAQZgAAAAEAACAAAABxWiXtnbQ4T/3wQnmyqE/QX19zdEx4Rb/SVELmfU3NaQAAAAAOgAAAAAIAACAAAAAdUgLY09pj2IJKDsVLg/mDuxR2CsJYKzSfyc4pCL96DiAAAABo2hk1A2HLJntB/B60rz/eFw2a6PU3r09+RuLsxperFkAAAADyHvHdl5z8zr9MLVkebUQuIGhNxzvbyhx6vOPvUnMY9odUWQDoNA5MPVfnp/TZyTxXDrN9o+amdEPJYmsnc+QH</EncryptedPassword>
+    <_PublishTargetUrl>ftp://adultprog2015.somee.com/www.adultprog2015.somee.com</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>06/19/2013 23:35:14</publishTime>
+    </File>
+    <File Include="bin/WsSoap.dll">
+      <publishTime>04/23/2015 10:34:05</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>04/23/2015 10:34:10</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/23/2015 10:34:10</publishTime>
+    </File>
+    <File Include="WsSoap.svc">
+      <publishTime>04/21/2015 21:26:41</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
