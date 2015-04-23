@@ -1,6 +1,7 @@
-QT += widgets
+QT += widgets network core
 QMAKE_CXXFLAGS += -std=c++0x
-
+LIBS += -LC:/Projects/kdsoap/lib -lkdsoapd1
+INCLUDEPATH += C:/Projects/kdsoap/include
 HEADERS     = \
               window.h \
     generalstatwidget.h \

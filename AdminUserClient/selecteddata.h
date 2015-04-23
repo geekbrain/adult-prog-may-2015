@@ -14,7 +14,7 @@ public:
 class SelectedSite : public SelectedData
 {
 public:
-    SelectedData();
+    SelectedSite();
 };
 
 #endif // SELECTEDDATA_H
