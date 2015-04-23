@@ -29,7 +29,7 @@ private:
     /**
      * @brief createControlsArea Создание и размещение элементов управления показом статистики.
      */
-    void createControlsArea();
+    void createControlsArea(const StatisticsExtractor& statsExtractor);
 
     /**
      * @brief placementResultsArea Размещение группы элементов для отображения общей статистики.

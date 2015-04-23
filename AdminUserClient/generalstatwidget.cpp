@@ -9,18 +9,19 @@ GeneralStatWidget::GeneralStatWidget(const StatisticsExtractor& statsExtractor, 
               : QGroupBox(title, parent),
                 table_(new QTableWidget(this))
 {
-    createControlsArea();
+    createControlsArea(statsExtractor);
     placementResultsArea();
     finalPlacementAreas(orientation);
     setOkBtBehavior(statsExtractor);
 }
 
-void GeneralStatWidget::createControlsArea()
+void GeneralStatWidget::createControlsArea(const StatisticsExtractor& statsExtractor)
 {
     okBt_ = new QPushButton("ok", this);
     sitesCombo_ = new QComboBox(this);
     sitesCombo_->addItem("lenta.ru");
-    leftGroup_ = new QGroupBox("Выбор сайта", this);
+
+    leftGroup_ = new QGroupBox("Выбор сайта", this);    
     QBoxLayout *leftLayout = new QBoxLayout(QBoxLayout::TopToBottom, this);
     leftLayout->addWidget(sitesCombo_);
     int stretchForOkBt = 2; // Фактор растягивания для кнопки ок.

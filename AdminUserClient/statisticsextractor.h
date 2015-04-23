@@ -6,6 +6,7 @@
 
 class GeneralStatistics;
 class NameDao;
+class WorkSites;
 
 class StatisticsExtractor : public QObject
 {
@@ -14,13 +15,18 @@ public:
     explicit StatisticsExtractor(QObject *parent = 0);
     void getGeneralStatistics(QScopedPointer<GeneralStatistics>&) const;
 
+    /**
+     * @brief getWorkSites Сообщает о наборе сайтов, с которых собирается статистика.
+     */
+    void getWorkSites(QScopedPointer<WorkSites>&) const;
+
 signals:
 
 public slots:
 
 private:
     void fillTempGeneralStatistics(QScopedPointer<GeneralStatistics>&) const;
-    void fillTempSitesList();
+    void fillTempSitesList(QScopedPointer<WorkSites> &workSites);
     void getNamesFromService();
 };
 

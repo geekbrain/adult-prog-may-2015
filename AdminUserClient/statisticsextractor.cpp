@@ -13,12 +13,22 @@ void StatisticsExtractor::getGeneralStatistics(QScopedPointer<GeneralStatistics>
     fillTempGeneralStatistics(statistics);
 }
 
+void StatisticsExtractor::getWorkSites(QScopedPointer<WorkSites> &workSites) const
+{
+
+}
+
 void StatisticsExtractor::fillTempGeneralStatistics(QScopedPointer<GeneralStatistics>& statistics) const
 {
     QUrl url("localhost");
     statistics.reset(new GeneralStatistics(url));
     statistics->setNameStat("Медведев", 405);
     statistics->setNameStat("Навальный", 220);
+}
+
+void StatisticsExtractor::fillTempSitesList(QScopedPointer<WorkSites> &workSites)
+{
+
 }
 
 void StatisticsExtractor::getNamesFromService()
