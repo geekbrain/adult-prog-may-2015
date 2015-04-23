@@ -1,9 +1,9 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,13 +12,17 @@ public class Spectator {
     private String domainName;
     private Document document;
     private Elements elements;
+    private LinkedList<String> listOfLinks = new LinkedList<>();
+    private final String tegA = "a";
+    private final String attrHref = "href";
 
     public Spectator() throws IOException {
         site = WebServiceAdapter.getURL();
         domainName = getDomainName();
         setDocument();
-        getAllElementsByTeg("a");
-        handlingHrefs("href");
+        getAllElementsByTeg(tegA);
+        getAllLinks(attrHref);
+        handlingLinks();
     }
 
     private void setDocument() {
@@ -30,20 +34,19 @@ public class Spectator {
         }
     }
 
-    private Elements getAllElementsByTeg(String teg) {
+    private void getAllElementsByTeg(String teg) {
         elements = document.select(teg);
-        return elements;
     }
 
-    private void handlingHrefs(String attr) {
-        String link;
-//        elements.stream().
-//                filter(element -> checkLinkByDomainName(element.attr(attr))).
-//                forEach(element -> System.out.println(element.attr(attr)));
-        for (Element element : elements) {
-            link = element.attr(attr);
-            if (checkLinkAsRelativeLocal(link) || checkLinkByDomainName(link)) System.out.println(link);
-        }
+    private void getAllLinks(String attr) {
+        elements.stream().
+                forEach(element -> listOfLinks.add(element.attr(attr)));
+    }
+
+    private void handlingLinks() {
+        listOfLinks.stream().
+                filter(element -> checkLinkByDomainName(element) || checkLinkAsRelativeLocal(element)).
+                forEach(element -> System.out.println(element));
     }
 
     private String getDomainName() {
