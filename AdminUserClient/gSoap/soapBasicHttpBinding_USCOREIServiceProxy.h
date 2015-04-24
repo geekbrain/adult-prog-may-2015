@@ -66,59 +66,59 @@ class SOAP_CMAC BasicHttpBinding_USCOREIServiceProxy
 #endif
 
 	/// Web service operation 'GetLink' (returns error code or SOAP_OK)
-	virtual	int GetLink(_ns1__GetLink *ns1__GetLink, _ns1__GetLinkResponse &ns1__GetLinkResponse) { return this->GetLink(NULL, NULL, ns1__GetLink, ns1__GetLinkResponse); }
-	virtual	int GetLink(const char *endpoint, const char *soap_action, _ns1__GetLink *ns1__GetLink, _ns1__GetLinkResponse &ns1__GetLinkResponse);
+	virtual	int GetLink(_tempuri__GetLink *tempuri__GetLink, _tempuri__GetLinkResponse &tempuri__GetLinkResponse) { return this->GetLink(NULL, NULL, tempuri__GetLink, tempuri__GetLinkResponse); }
+	virtual	int GetLink(const char *endpoint, const char *soap_action, _tempuri__GetLink *tempuri__GetLink, _tempuri__GetLinkResponse &tempuri__GetLinkResponse);
 
 	/// Web service operation 'GetNamesDictionary' (returns error code or SOAP_OK)
-	virtual	int GetNamesDictionary(_ns1__GetNamesDictionary *ns1__GetNamesDictionary, _ns1__GetNamesDictionaryResponse &ns1__GetNamesDictionaryResponse) { return this->GetNamesDictionary(NULL, NULL, ns1__GetNamesDictionary, ns1__GetNamesDictionaryResponse); }
-	virtual	int GetNamesDictionary(const char *endpoint, const char *soap_action, _ns1__GetNamesDictionary *ns1__GetNamesDictionary, _ns1__GetNamesDictionaryResponse &ns1__GetNamesDictionaryResponse);
+	virtual	int GetNamesDictionary(_tempuri__GetNamesDictionary *tempuri__GetNamesDictionary, _tempuri__GetNamesDictionaryResponse &tempuri__GetNamesDictionaryResponse) { return this->GetNamesDictionary(NULL, NULL, tempuri__GetNamesDictionary, tempuri__GetNamesDictionaryResponse); }
+	virtual	int GetNamesDictionary(const char *endpoint, const char *soap_action, _tempuri__GetNamesDictionary *tempuri__GetNamesDictionary, _tempuri__GetNamesDictionaryResponse &tempuri__GetNamesDictionaryResponse);
 
 	/// Web service operation 'SendLinks' (returns error code or SOAP_OK)
-	virtual	int SendLinks(_ns1__SendLinks *ns1__SendLinks, _ns1__SendLinksResponse &ns1__SendLinksResponse) { return this->SendLinks(NULL, NULL, ns1__SendLinks, ns1__SendLinksResponse); }
-	virtual	int SendLinks(const char *endpoint, const char *soap_action, _ns1__SendLinks *ns1__SendLinks, _ns1__SendLinksResponse &ns1__SendLinksResponse);
+	virtual	int SendLinks(_tempuri__SendLinks *tempuri__SendLinks, _tempuri__SendLinksResponse &tempuri__SendLinksResponse) { return this->SendLinks(NULL, NULL, tempuri__SendLinks, tempuri__SendLinksResponse); }
+	virtual	int SendLinks(const char *endpoint, const char *soap_action, _tempuri__SendLinks *tempuri__SendLinks, _tempuri__SendLinksResponse &tempuri__SendLinksResponse);
 
 	/// Web service operation 'SendAmountDictionary' (returns error code or SOAP_OK)
-	virtual	int SendAmountDictionary(_ns1__SendAmountDictionary *ns1__SendAmountDictionary, _ns1__SendAmountDictionaryResponse &ns1__SendAmountDictionaryResponse) { return this->SendAmountDictionary(NULL, NULL, ns1__SendAmountDictionary, ns1__SendAmountDictionaryResponse); }
-	virtual	int SendAmountDictionary(const char *endpoint, const char *soap_action, _ns1__SendAmountDictionary *ns1__SendAmountDictionary, _ns1__SendAmountDictionaryResponse &ns1__SendAmountDictionaryResponse);
+	virtual	int SendAmountDictionary(_tempuri__SendAmountDictionary *tempuri__SendAmountDictionary, _tempuri__SendAmountDictionaryResponse &tempuri__SendAmountDictionaryResponse) { return this->SendAmountDictionary(NULL, NULL, tempuri__SendAmountDictionary, tempuri__SendAmountDictionaryResponse); }
+	virtual	int SendAmountDictionary(const char *endpoint, const char *soap_action, _tempuri__SendAmountDictionary *tempuri__SendAmountDictionary, _tempuri__SendAmountDictionaryResponse &tempuri__SendAmountDictionaryResponse);
 
 	/// Web service operation 'GetStats' (returns error code or SOAP_OK)
-	virtual	int GetStats(_ns1__GetStats *ns1__GetStats, _ns1__GetStatsResponse &ns1__GetStatsResponse) { return this->GetStats(NULL, NULL, ns1__GetStats, ns1__GetStatsResponse); }
-	virtual	int GetStats(const char *endpoint, const char *soap_action, _ns1__GetStats *ns1__GetStats, _ns1__GetStatsResponse &ns1__GetStatsResponse);
+	virtual	int GetStats(_tempuri__GetStats *tempuri__GetStats, _tempuri__GetStatsResponse &tempuri__GetStatsResponse) { return this->GetStats(NULL, NULL, tempuri__GetStats, tempuri__GetStatsResponse); }
+	virtual	int GetStats(const char *endpoint, const char *soap_action, _tempuri__GetStats *tempuri__GetStats, _tempuri__GetStatsResponse &tempuri__GetStatsResponse);
 
 	/// Web service operation 'GetDailyStats' (returns error code or SOAP_OK)
-	virtual	int GetDailyStats(_ns1__GetDailyStats *ns1__GetDailyStats, _ns1__GetDailyStatsResponse &ns1__GetDailyStatsResponse) { return this->GetDailyStats(NULL, NULL, ns1__GetDailyStats, ns1__GetDailyStatsResponse); }
-	virtual	int GetDailyStats(const char *endpoint, const char *soap_action, _ns1__GetDailyStats *ns1__GetDailyStats, _ns1__GetDailyStatsResponse &ns1__GetDailyStatsResponse);
+	virtual	int GetDailyStats(_tempuri__GetDailyStats *tempuri__GetDailyStats, _tempuri__GetDailyStatsResponse &tempuri__GetDailyStatsResponse) { return this->GetDailyStats(NULL, NULL, tempuri__GetDailyStats, tempuri__GetDailyStatsResponse); }
+	virtual	int GetDailyStats(const char *endpoint, const char *soap_action, _tempuri__GetDailyStats *tempuri__GetDailyStats, _tempuri__GetDailyStatsResponse &tempuri__GetDailyStatsResponse);
 
 	/// Web service operation 'GetStatsByName' (returns error code or SOAP_OK)
-	virtual	int GetStatsByName(_ns1__GetStatsByName *ns1__GetStatsByName, _ns1__GetStatsByNameResponse &ns1__GetStatsByNameResponse) { return this->GetStatsByName(NULL, NULL, ns1__GetStatsByName, ns1__GetStatsByNameResponse); }
-	virtual	int GetStatsByName(const char *endpoint, const char *soap_action, _ns1__GetStatsByName *ns1__GetStatsByName, _ns1__GetStatsByNameResponse &ns1__GetStatsByNameResponse);
+	virtual	int GetStatsByName(_tempuri__GetStatsByName *tempuri__GetStatsByName, _tempuri__GetStatsByNameResponse &tempuri__GetStatsByNameResponse) { return this->GetStatsByName(NULL, NULL, tempuri__GetStatsByName, tempuri__GetStatsByNameResponse); }
+	virtual	int GetStatsByName(const char *endpoint, const char *soap_action, _tempuri__GetStatsByName *tempuri__GetStatsByName, _tempuri__GetStatsByNameResponse &tempuri__GetStatsByNameResponse);
 
 	/// Web service operation 'GetNames' (returns error code or SOAP_OK)
-	virtual	int GetNames(_ns1__GetNames *ns1__GetNames, _ns1__GetNamesResponse &ns1__GetNamesResponse) { return this->GetNames(NULL, NULL, ns1__GetNames, ns1__GetNamesResponse); }
-	virtual	int GetNames(const char *endpoint, const char *soap_action, _ns1__GetNames *ns1__GetNames, _ns1__GetNamesResponse &ns1__GetNamesResponse);
+	virtual	int GetNames(_tempuri__GetNames *tempuri__GetNames, _tempuri__GetNamesResponse &tempuri__GetNamesResponse) { return this->GetNames(NULL, NULL, tempuri__GetNames, tempuri__GetNamesResponse); }
+	virtual	int GetNames(const char *endpoint, const char *soap_action, _tempuri__GetNames *tempuri__GetNames, _tempuri__GetNamesResponse &tempuri__GetNamesResponse);
 
 	/// Web service operation 'GetSites' (returns error code or SOAP_OK)
-	virtual	int GetSites(_ns1__GetSites *ns1__GetSites, _ns1__GetSitesResponse &ns1__GetSitesResponse) { return this->GetSites(NULL, NULL, ns1__GetSites, ns1__GetSitesResponse); }
-	virtual	int GetSites(const char *endpoint, const char *soap_action, _ns1__GetSites *ns1__GetSites, _ns1__GetSitesResponse &ns1__GetSitesResponse);
+	virtual	int GetSites(_tempuri__GetSites *tempuri__GetSites, _tempuri__GetSitesResponse &tempuri__GetSitesResponse) { return this->GetSites(NULL, NULL, tempuri__GetSites, tempuri__GetSitesResponse); }
+	virtual	int GetSites(const char *endpoint, const char *soap_action, _tempuri__GetSites *tempuri__GetSites, _tempuri__GetSitesResponse &tempuri__GetSitesResponse);
 
 	/// Web service operation 'GetPages' (returns error code or SOAP_OK)
-	virtual	int GetPages(_ns1__GetPages *ns1__GetPages, _ns1__GetPagesResponse &ns1__GetPagesResponse) { return this->GetPages(NULL, NULL, ns1__GetPages, ns1__GetPagesResponse); }
-	virtual	int GetPages(const char *endpoint, const char *soap_action, _ns1__GetPages *ns1__GetPages, _ns1__GetPagesResponse &ns1__GetPagesResponse);
+	virtual	int GetPages(_tempuri__GetPages *tempuri__GetPages, _tempuri__GetPagesResponse &tempuri__GetPagesResponse) { return this->GetPages(NULL, NULL, tempuri__GetPages, tempuri__GetPagesResponse); }
+	virtual	int GetPages(const char *endpoint, const char *soap_action, _tempuri__GetPages *tempuri__GetPages, _tempuri__GetPagesResponse &tempuri__GetPagesResponse);
 
 	/// Web service operation 'GetSearchPhrases' (returns error code or SOAP_OK)
-	virtual	int GetSearchPhrases(_ns1__GetSearchPhrases *ns1__GetSearchPhrases, _ns1__GetSearchPhrasesResponse &ns1__GetSearchPhrasesResponse) { return this->GetSearchPhrases(NULL, NULL, ns1__GetSearchPhrases, ns1__GetSearchPhrasesResponse); }
-	virtual	int GetSearchPhrases(const char *endpoint, const char *soap_action, _ns1__GetSearchPhrases *ns1__GetSearchPhrases, _ns1__GetSearchPhrasesResponse &ns1__GetSearchPhrasesResponse);
+	virtual	int GetSearchPhrases(_tempuri__GetSearchPhrases *tempuri__GetSearchPhrases, _tempuri__GetSearchPhrasesResponse &tempuri__GetSearchPhrasesResponse) { return this->GetSearchPhrases(NULL, NULL, tempuri__GetSearchPhrases, tempuri__GetSearchPhrasesResponse); }
+	virtual	int GetSearchPhrases(const char *endpoint, const char *soap_action, _tempuri__GetSearchPhrases *tempuri__GetSearchPhrases, _tempuri__GetSearchPhrasesResponse &tempuri__GetSearchPhrasesResponse);
 
 	/// Web service operation 'SetSite' (returns error code or SOAP_OK)
-	virtual	int SetSite(_ns1__SetSite *ns1__SetSite, _ns1__SetSiteResponse &ns1__SetSiteResponse) { return this->SetSite(NULL, NULL, ns1__SetSite, ns1__SetSiteResponse); }
-	virtual	int SetSite(const char *endpoint, const char *soap_action, _ns1__SetSite *ns1__SetSite, _ns1__SetSiteResponse &ns1__SetSiteResponse);
+	virtual	int SetSite(_tempuri__SetSite *tempuri__SetSite, _tempuri__SetSiteResponse &tempuri__SetSiteResponse) { return this->SetSite(NULL, NULL, tempuri__SetSite, tempuri__SetSiteResponse); }
+	virtual	int SetSite(const char *endpoint, const char *soap_action, _tempuri__SetSite *tempuri__SetSite, _tempuri__SetSiteResponse &tempuri__SetSiteResponse);
 
 	/// Web service operation 'SetName' (returns error code or SOAP_OK)
-	virtual	int SetName(_ns1__SetName *ns1__SetName, _ns1__SetNameResponse &ns1__SetNameResponse) { return this->SetName(NULL, NULL, ns1__SetName, ns1__SetNameResponse); }
-	virtual	int SetName(const char *endpoint, const char *soap_action, _ns1__SetName *ns1__SetName, _ns1__SetNameResponse &ns1__SetNameResponse);
+	virtual	int SetName(_tempuri__SetName *tempuri__SetName, _tempuri__SetNameResponse &tempuri__SetNameResponse) { return this->SetName(NULL, NULL, tempuri__SetName, tempuri__SetNameResponse); }
+	virtual	int SetName(const char *endpoint, const char *soap_action, _tempuri__SetName *tempuri__SetName, _tempuri__SetNameResponse &tempuri__SetNameResponse);
 
 	/// Web service operation 'SetSearchPhrase' (returns error code or SOAP_OK)
-	virtual	int SetSearchPhrase(_ns1__SetSearchPhrase *ns1__SetSearchPhrase, _ns1__SetSearchPhraseResponse &ns1__SetSearchPhraseResponse) { return this->SetSearchPhrase(NULL, NULL, ns1__SetSearchPhrase, ns1__SetSearchPhraseResponse); }
-	virtual	int SetSearchPhrase(const char *endpoint, const char *soap_action, _ns1__SetSearchPhrase *ns1__SetSearchPhrase, _ns1__SetSearchPhraseResponse &ns1__SetSearchPhraseResponse);
+	virtual	int SetSearchPhrase(_tempuri__SetSearchPhrase *tempuri__SetSearchPhrase, _tempuri__SetSearchPhraseResponse &tempuri__SetSearchPhraseResponse) { return this->SetSearchPhrase(NULL, NULL, tempuri__SetSearchPhrase, tempuri__SetSearchPhraseResponse); }
+	virtual	int SetSearchPhrase(const char *endpoint, const char *soap_action, _tempuri__SetSearchPhrase *tempuri__SetSearchPhrase, _tempuri__SetSearchPhraseResponse &tempuri__SetSearchPhraseResponse);
 };
 #endif
