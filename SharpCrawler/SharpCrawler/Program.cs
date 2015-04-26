@@ -15,10 +15,10 @@ namespace SharpCrawler
                 try
                 {
                     var url = wsAdapter.GetLink();
-                    if (url == null)
-                    {
-                        break;
-                    }
+//                    if (url == null)
+//                    {
+//                        break;
+//                    }
 
                     var html = downloader.GetHtml(url);
                     var links = crawler.GetLinks(html, url);
@@ -32,7 +32,7 @@ namespace SharpCrawler
                     var namesDictionary = wsAdapter.GetNamesDictionary();
                     if ((namesDictionary == null) || (namesDictionary.Count == 0))
                     {
-                        break;
+                        continue;
                     }
 
                     var namesAmountDictionary =
