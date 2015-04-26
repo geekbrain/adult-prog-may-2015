@@ -1,6 +1,8 @@
 <?php
 
+use Geekbrains\WSWesite\Lib\DB;
 use Geekbrains\WSWesite\Model\FakeStatsModel;
+use Geekbrains\WSWesite\Model\StatsModel;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Silex\Application;
@@ -71,7 +73,18 @@ $app['config'] = $yaml->parse(file_get_contents(__DIR__ . '/../app/config/app.ym
 $app['config.route'] = $yaml->parse(file_get_contents(__DIR__ . '/../app/config/route.yml'));
 
 $app['stats.model'] = $app->share(function() use ($app) {
-    $statsModel = new FakeStatsModel();
+    $pdo = new PDO(
+        sprintf(
+            "mysql:host=%s;dbname=%s",
+            $app['config']['db']['host'],
+            $app['config']['db']['db_name']
+        ),
+        $app['config']['db']['db_user'],
+        $app['config']['db']['db_pass']
+    );
+    DB::setConnection($pdo);
+    $dbConnection = DB::getConnection();
+    $statsModel = new StatsModel($dbConnection, $app['config']['tables']);
     return $statsModel;
 
 });

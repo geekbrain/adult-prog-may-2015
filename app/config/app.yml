@@ -1,0 +1,11 @@
+db:
+  host: localhost
+  db_name: db_9c1482_rating
+  db_user: adultprog2015
+  db_pass: 1qaz@WSX
+tables:
+  data_cube: data_cube
+  site: site
+  name: name
+  search_phrase: search_phrase
+  site_page: site_page
