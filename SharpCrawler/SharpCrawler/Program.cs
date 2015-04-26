@@ -15,10 +15,10 @@ namespace SharpCrawler
                 try
                 {
                     var url = wsAdapter.GetLink();
-//                    if (url == null)
-//                    {
-//                        break;
-//                    }
+                    if (url == null)
+                    {
+                        continue;
+                    }
 
                     var html = downloader.GetHtml(url);
                     var links = crawler.GetLinks(html, url);
