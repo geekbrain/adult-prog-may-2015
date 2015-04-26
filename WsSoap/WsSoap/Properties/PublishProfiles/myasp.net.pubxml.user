@@ -17,10 +17,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2013 01:24:56</publishTime>
     </File>
     <File Include="bin/WsSoap.dll">
-      <publishTime>04/26/2015 06:23:43</publishTime>
+      <publishTime>04/26/2015 09:52:23</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/26/2015 06:29:54</publishTime>
+      <publishTime>04/26/2015 09:52:30</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>04/26/2015 06:18:33</publishTime>

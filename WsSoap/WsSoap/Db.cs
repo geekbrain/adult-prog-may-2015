@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace WsSoap
 {
     public class Db: IDisposable
     {
+        private readonly string _connectionString =
+            System.Web.Configuration.WebConfigurationManager
+                .ConnectionStrings["MySqlConnection"].ConnectionString;
+
         private readonly MySqlConnection _connection;
+
         private const string SelectSiteSql =
             @"select
                     s.id, s.url
@@ -120,14 +126,15 @@ namespace WsSoap
 
         public Db()
         {
-            _connection =
-                new MySqlConnection { ConnectionString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString };
-
-            _connection.Open();
+            _connection = new MySqlConnection(_connectionString);
         }
 
         private int? SelectSiteIdByUrl(string url)
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectSiteIdByUrl = _connection.CreateCommand())
             {
                 selectSiteIdByUrl.CommandText = SelectSiteIdByUrlSql;
@@ -139,6 +146,10 @@ namespace WsSoap
 
         public string GetLink()
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectSite = _connection.CreateCommand())
             {
                 selectSite.CommandText = SelectSiteSql;
@@ -171,6 +182,10 @@ namespace WsSoap
 
         private void InsertSitePage(int id, string url)
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var insertSitePage = _connection.CreateCommand())
             {
                 insertSitePage.CommandText = InsertSitePageSql;
@@ -183,8 +198,9 @@ namespace WsSoap
         public void InsertLinks(List<string> links, string url)
         {
             var sitePageId = SelectSitePageIdByUrl(url);
-            if (sitePageId == null) throw new WsSoapException(
-                "WsSoap.Db.InsertLinks exception! Can't find url in database!");
+            if (sitePageId == null)
+                throw new WsSoapException(
+                    "WsSoap.Db.InsertLinks exception! Can't find url in database!");
             var siteId = SelectSiteIdByUrl(url);
             int? id = 0;
             if ((siteId != null) && (siteId == sitePageId))
@@ -208,6 +224,10 @@ namespace WsSoap
 
         private Dictionary<int, string> SelectNames()
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             var names = new Dictionary<int, string>();
             using (var selectNames = _connection.CreateCommand())
             {
@@ -226,6 +246,10 @@ namespace WsSoap
         private List<string> SelectSearchPhrases(int nameId)
         {
             var searchPhrases = new List<string>();
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectSearchPhrases = _connection.CreateCommand())
             {
                 selectSearchPhrases.CommandText = SelectSearchPhrasesByNameIdSql;
@@ -256,28 +280,40 @@ namespace WsSoap
 
         private int? SelectSitePageIdByUrl(string url)
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectSitePageIdByUrl = _connection.CreateCommand())
             {
                 selectSitePageIdByUrl.CommandText = SelectSitePageIdByUrlSql;
                 selectSitePageIdByUrl.Parameters.AddWithValue("?url", url);
 
-                return (int)selectSitePageIdByUrl.ExecuteScalar();
+                return (int) selectSitePageIdByUrl.ExecuteScalar();
             }
         }
 
         private int? SelectNameIdByName(string name)
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectNameIdByName = _connection.CreateCommand())
             {
                 selectNameIdByName.CommandText = SelectNameIdByNameSql;
                 selectNameIdByName.Parameters.AddWithValue("?name", name);
 
-                return (int)selectNameIdByName.ExecuteScalar();
-            }            
+                return (int) selectNameIdByName.ExecuteScalar();
+            }
         }
 
         private void InsertDataCube(DateTime date, int nameId, int sitePageId, int dataFact)
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var insertDataCube = _connection.CreateCommand())
             {
                 insertDataCube.CommandText = InsertDataCubeSql;
@@ -306,12 +342,16 @@ namespace WsSoap
 
         private int? SelectSiteIdBySitePageId(int sitePageId)
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectSiteIdBySitePageId = _connection.CreateCommand())
             {
                 selectSiteIdBySitePageId.CommandText = SelectSiteIdBySitePageIdSql;
                 selectSiteIdBySitePageId.Parameters.AddWithValue("?id", sitePageId);
 
-                return (int)selectSiteIdBySitePageId.ExecuteScalar();
+                return (int) selectSiteIdBySitePageId.ExecuteScalar();
             }
         }
 
@@ -319,6 +359,10 @@ namespace WsSoap
         {
             var statsDictionary = new Dictionary<string, int>();
 
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectStats = _connection.CreateCommand())
             {
                 selectStats.CommandText = SelectStatsSql;
@@ -339,6 +383,10 @@ namespace WsSoap
         {
             var dailyStatsDictionary = new Dictionary<DateTime, Dictionary<string, int>>();
 
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectDailyStats = _connection.CreateCommand())
             {
                 selectDailyStats.CommandText = SelectDailyStatsSql;
@@ -348,8 +396,10 @@ namespace WsSoap
                     {
                         var statsDictionary = new Dictionary<string, int>
                         {
-                            {dailyStatsReader["name"].ToString(),
-                                (int) Math.Floor((double) dailyStatsReader["cnt"])}
+                            {
+                                dailyStatsReader["name"].ToString(),
+                                (int) Math.Floor((double) dailyStatsReader["cnt"])
+                            }
                         };
                         dailyStatsDictionary[(DateTime) dailyStatsReader["date"]] =
                             statsDictionary;
@@ -367,6 +417,10 @@ namespace WsSoap
                 "WsSoap.Db.GetStatsByName exception! Can't find name in database!");
 
             var statsDictionary = new Dictionary<DateTime, int>();
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectStats = _connection.CreateCommand())
             {
                 selectStats.CommandText = SelectStatsByNameSql;
@@ -393,6 +447,10 @@ namespace WsSoap
         {
             var sitesDictionary = new Dictionary<int, string>();
 
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectSite = _connection.CreateCommand())
             {
                 selectSite.CommandText = SelectSitesSql;
@@ -412,6 +470,10 @@ namespace WsSoap
         {
             var sitePages = new List<Page>();
 
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectSitePages = _connection.CreateCommand())
             {
                 selectSitePages.CommandText = SelectSitePagesSql;
@@ -433,6 +495,10 @@ namespace WsSoap
         {
             var namesSearchPhrasesDictionary = new Dictionary<string, Dictionary<int, string>>();
 
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var selectSearchPhrases = _connection.CreateCommand())
             {
                 selectSearchPhrases.CommandText = SelectSearchPhrasesSql;
@@ -442,8 +508,10 @@ namespace WsSoap
                     {
                         var searchPhrasesDictionary = new Dictionary<int, string>
                         {
-                            {(int) searchPhrasesReader["id"],
-                                searchPhrasesReader["search_phrase"].ToString()}
+                            {
+                                (int) searchPhrasesReader["id"],
+                                searchPhrasesReader["search_phrase"].ToString()
+                            }
                         };
                         namesSearchPhrasesDictionary[searchPhrasesReader["name"].ToString()] =
                             searchPhrasesDictionary;
@@ -456,6 +524,10 @@ namespace WsSoap
 
         public void SetSite(string url)
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var insertSite = _connection.CreateCommand())
             {
                 insertSite.CommandText = InsertSiteSql;
@@ -466,6 +538,10 @@ namespace WsSoap
 
         public void SetName(string name)
         {
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var insertName = _connection.CreateCommand())
             {
                 insertName.CommandText = InsertNameSql;
@@ -480,6 +556,10 @@ namespace WsSoap
             if (nameId == null) throw new WsSoapException(
                 "WsSoap.Db.SetSearchPhrase exception! Can't find url in database!");
 
+            if (_connection.State == ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
             using (var insertSearchPhrase = _connection.CreateCommand())
             {
                 insertSearchPhrase.CommandText = InsertSearchPhraseSql;
