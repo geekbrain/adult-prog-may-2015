@@ -151,7 +151,7 @@ namespace WsSoap
             _db.SetSite(url);
         }
 
-        public void SetNamer(string name)
+        public void SetName(string name)
         {
             _db.SetName(name);
         }

@@ -120,17 +120,8 @@ namespace WsSoap
 
         public Db()
         {
-            var connectionParams = new MySqlConnectionStringBuilder
-                {
-                    Server = "localhost",
-                    Database = "wesite_rating",
-                    UserID = "root",
-                    Password = "damysql",
-                    CharacterSet = "cp1251"
-                };
-
             _connection =
-                new MySqlConnection { ConnectionString = connectionParams.ConnectionString };
+                new MySqlConnection { ConnectionString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString };
 
             _connection.Open();
         }

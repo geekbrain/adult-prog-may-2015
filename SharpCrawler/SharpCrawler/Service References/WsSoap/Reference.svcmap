@@ -21,15 +21,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:17047/WsSoap.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://adultprog2015-001-site1.myasp.net/WsSoap.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WsSoap1.disco" MetadataType="Disco" ID="ca085db6-621b-435d-84e7-c4d5630c3165" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?disco" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="235b7e2c-dba2-46c3-a0a5-ac20e2a93602" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?wsdl" />
-    <MetadataFile FileName="WsSoap4.xsd" MetadataType="Schema" ID="ffc29a66-1c3f-4790-92f6-53566fe38590" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?xsd=xsd3" />
-    <MetadataFile FileName="WsSoap41.xsd" MetadataType="Schema" ID="bf730c50-bc2b-4b78-be8e-04a0b4c0a0a6" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?xsd=xsd2" />
-    <MetadataFile FileName="WsSoap42.xsd" MetadataType="Schema" ID="ef57215d-814d-46b4-aa9f-9f1b62b93c01" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?xsd=xsd1" />
-    <MetadataFile FileName="WsSoap43.xsd" MetadataType="Schema" ID="49b2565d-eee0-4081-822f-637557686e18" SourceId="1" SourceUrl="http://localhost:17047/WsSoap.svc?xsd=xsd0" />
+    <MetadataFile FileName="WsSoap.xsd" MetadataType="Schema" ID="b6722667-7d62-4724-b377-b0cd1f60a1f4" SourceId="1" SourceUrl="http://adultprog2015-001-site1.myasp.net/WsSoap.svc?xsd=xsd0" />
+    <MetadataFile FileName="WsSoap.disco" MetadataType="Disco" ID="49648b52-5299-45f6-be6a-b376bf5894f4" SourceId="1" SourceUrl="http://adultprog2015-001-site1.myasp.net/WsSoap.svc?disco" />
+    <MetadataFile FileName="WsSoap1.xsd" MetadataType="Schema" ID="22c91018-0049-4812-9841-32279e72acb8" SourceId="1" SourceUrl="http://adultprog2015-001-site1.myasp.net/WsSoap.svc?xsd=xsd3" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="b126efda-5a19-4170-96c7-770a92f482c6" SourceId="1" SourceUrl="http://adultprog2015-001-site1.myasp.net/WsSoap.svc?wsdl" />
+    <MetadataFile FileName="WsSoap2.xsd" MetadataType="Schema" ID="17e9ae9c-92cb-4c5f-940d-170163384e5c" SourceId="1" SourceUrl="http://adultprog2015-001-site1.myasp.net/WsSoap.svc?xsd=xsd1" />
+    <MetadataFile FileName="WsSoap3.xsd" MetadataType="Schema" ID="744ca77b-7161-4010-b8f4-e5f009f5640c" SourceId="1" SourceUrl="http://adultprog2015-001-site1.myasp.net/WsSoap.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

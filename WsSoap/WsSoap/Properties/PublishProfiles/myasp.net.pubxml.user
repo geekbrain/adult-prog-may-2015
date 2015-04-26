@@ -11,16 +11,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/MySql.Data.dll">
-      <publishTime>06/19/2013 23:35:14</publishTime>
+      <publishTime>10/17/2012 14:19:26</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.dll">
+      <publishTime>06/13/2013 01:24:56</publishTime>
     </File>
     <File Include="bin/WsSoap.dll">
-      <publishTime>04/23/2015 18:33:08</publishTime>
+      <publishTime>04/26/2015 06:23:43</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/23/2015 19:10:49</publishTime>
+      <publishTime>04/26/2015 06:29:54</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/23/2015 19:10:48</publishTime>
+      <publishTime>04/26/2015 06:18:33</publishTime>
     </File>
     <File Include="WsSoap.svc">
       <publishTime>04/21/2015 21:26:41</publishTime>
