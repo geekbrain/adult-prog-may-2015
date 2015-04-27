@@ -21,7 +21,7 @@ class Window : public QWidget
     Q_OBJECT
 
 public:
-    Window(const StatisticsExtractor& statsExtractor);
+    Window();
 
 private:
     /**
@@ -39,7 +39,7 @@ private:
     void configFinalFace();
 
     NameDao* names_; // Список личностей, о которых смотрится статистика.
-    //    StatisticsExtractor *statExtractor_;
+    StatisticsExtractor *statExtractor_;
 
     QSharedPointer<GeneralStatWidget> generalStatWidget_;
     QSharedPointer<DailyStatWidget> dailyStatWidget_;

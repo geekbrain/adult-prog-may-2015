@@ -7,10 +7,10 @@
 #include "namedao.h"
 #include "statisticsextractor.h"
 
-Window::Window(const StatisticsExtractor& statsExtractor) :
+Window::Window() :
     names_(new NameDao(this)),
-//    statExtractor_(new StatisticsExtractor(this)),
-    generalStatWidget_(new GeneralStatWidget(statsExtractor, Qt::Vertical, tr("Общая статистика"))),
+    statExtractor_(new StatisticsExtractor(this)),
+    generalStatWidget_(new GeneralStatWidget(*statExtractor_, Qt::Vertical, tr("Общая статистика"))),
     dailyStatWidget_(new DailyStatWidget(names_, Qt::Vertical, tr("Ежедневная статистика"))),
     nameStatWidget_(new NameStatWidget(names_, Qt::Vertical, tr("Статистика по имени"))),
     stackedWidget_(new QStackedWidget(this))

@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QSharedPointer>
-#include "wssoap.h"
 
 class GeneralStatistics;
 class NameDao;
@@ -29,15 +28,6 @@ private:
     void fillTempGeneralStatistics(QSharedPointer<GeneralStatistics>&) const;
     void fillTempSitesList(QSharedPointer<WorkSites> &workSites) const;
     void getNamesFromService();
-
-    Service *service_;
-private slots:
-    /**
-     * @brief onGetNamesDone успешное выполнение метода,
-     * @param parameters принимаем результат
-     */
-    void onGetNamesDone( const TNS__GetNamesResponse& parameters );
-    void onGetNamesError( const KDSoapMessage& fault);
 };
 
 #endif // STATISTICSEXTRACTOR_H
