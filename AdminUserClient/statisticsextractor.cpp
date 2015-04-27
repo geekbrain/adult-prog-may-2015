@@ -10,15 +10,6 @@
 StatisticsExtractor::StatisticsExtractor(QObject *parent) :
     QObject(parent)
 {
-    _ns1__GetNames ns1__GetNames;
-    _ns1__GetNamesResponse ns1__GetNamesResponse;
-    BasicHttpBinding_USCOREIServiceProxy server("http://adultprog2015.somee.com/WsSoap.svc");
-    if (server.GetNames(&ns1__GetNames, ns1__GetNamesResponse) == SOAP_OK) {
-        qDebug() << "True";
-    }
-    else
-        qDebug() << "FAIL";
-
 }
 
 void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const
@@ -29,6 +20,15 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
 void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) const
 {
     fillTempSitesList(workSites);
+    // Следующий код планируется использовать для доступа к функции getsites веб-сервиса.
+    //    _ns1__GetSites ns1__GetSites;
+    //    _ns1__GetSitesResponse ns1__GetSitesResponse;
+    //    BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
+    //    if (server.GetSites(&ns1__GetSites, ns1__GetSitesResponse) == SOAP_OK) {
+    //        qDebug() << "Функция GetSites вызвана успешно";
+    //    }
+    //    else
+    //        qDebug() << "Провал: функция GetNames не сработала.";
 }
 
 void StatisticsExtractor::fillTempGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const
@@ -47,4 +47,12 @@ void StatisticsExtractor::fillTempSitesList(QSharedPointer<WorkSites> &workSites
 
 void StatisticsExtractor::getNamesFromService()
 {
+    _ns1__GetNames ns1__GetNames;
+    _ns1__GetNamesResponse ns1__GetNamesResponse;
+    BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
+    if (server.GetNames(&ns1__GetNames, ns1__GetNamesResponse) == SOAP_OK) {
+        qDebug() << "Функция GetNames вызвана успешно";
+    }
+    else
+        qDebug() << "Провал: функция GetNames не сработала.";
 }
