@@ -7,10 +7,6 @@ namespace WsSoap
 {
     public class Db: IDisposable
     {
-        private readonly string _connectionString =
-            System.Web.Configuration.WebConfigurationManager
-                .ConnectionStrings["MySqlConnection"].ConnectionString;
-
         private readonly MySqlConnection _connection;
 
         private const string SelectSiteSql =
@@ -129,9 +125,9 @@ namespace WsSoap
         private const string InsertSearchPhraseSql =
             @"insert into search_phrase (name, name_id) values (?name, ?name_id)";
 
-        public Db()
+        public Db(string connectionString)
         {
-            _connection = new MySqlConnection(_connectionString);
+            _connection = new MySqlConnection(connectionString);
         }
 
         private int? SelectSiteIdByUrl(string url)
