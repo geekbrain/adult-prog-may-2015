@@ -10,8 +10,12 @@ HEADERS     = \
     namedao.h \
     statisticsextractor.h \
     statistics.h \
-    wssoap.h \
-    worksites.h
+    worksites.h \
+    gSoap/BasicHttpBinding_USCOREIService.nsmap \
+    gSoap/soapBasicHttpBinding_USCOREIServiceProxy.h \
+    gSoap/soapH.h \
+    gSoap/soapStub.h \
+    gSoap/stdsoap2.h
 SOURCES     = main.cpp \
               window.cpp \
     generalstatwidget.cpp \
@@ -20,7 +24,9 @@ SOURCES     = main.cpp \
     namedao.cpp \
     statisticsextractor.cpp \
     statistics.cpp \
-    wssoap.cpp \
-    worksites.cpp
+    worksites.cpp \
+    gSoap/soapBasicHttpBinding_USCOREIServiceProxy.cpp \
+    gSoap/soapC.cpp \
+    gSoap/stdsoap2.cpp
 
 #DESTDIR = /bin
