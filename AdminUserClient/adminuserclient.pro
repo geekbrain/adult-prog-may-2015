@@ -14,10 +14,6 @@ HEADERS     = \
     worksites.h \
     gSoap/BasicHttpBinding_USCOREIService.nsmap \
     gSoap/soapBasicHttpBinding_USCOREIServiceProxy.h \
-    gSoap/soapStub.h \
-    gSoap/stdsoap2.h \
-    gSoap/BasicHttpBinding_USCOREIService.nsmap \
-    gSoap/soapBasicHttpBinding_USCOREIServiceProxy.h \
     gSoap/soapH.h \
     gSoap/soapStub.h \
     gSoap/stdsoap2.h
@@ -31,9 +27,6 @@ SOURCES     = main.cpp \
     statistics.cpp \
     wssoap.cpp \
     worksites.cpp \
-    gSoap/soapBasicHttpBinding_USCOREIServiceProxy.cpp \
-    gSoap/soapC.cpp \
-    gSoap/stdsoap2.cpp \
     gSoap/soapBasicHttpBinding_USCOREIServiceProxy.cpp \
     gSoap/soapC.cpp \
     gSoap/stdsoap2.cpp
