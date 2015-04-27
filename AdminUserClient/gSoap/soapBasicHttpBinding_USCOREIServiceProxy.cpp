@@ -63,10 +63,9 @@ void BasicHttpBinding_USCOREIServiceProxy::BasicHttpBinding_USCOREIServiceProxy_
 	{"SOAP-ENC", "http://www.w3.org/2003/05/soap-encoding", "http://schemas.xmlsoap.org/soap/encoding/", NULL},
 	{"xsi", "http://www.w3.org/2001/XMLSchema-instance", "http://www.w3.org/*/XMLSchema-instance", NULL},
 	{"xsd", "http://www.w3.org/2001/XMLSchema", "http://www.w3.org/*/XMLSchema", NULL},
-	{"ns5", "http://schemas.datacontract.org/2004/07/WsSoap", NULL, NULL},
-	{"ns3", "http://schemas.microsoft.com/2003/10/Serialization/", NULL, NULL},
-	{"ns4", "http://schemas.microsoft.com/2003/10/Serialization/Arrays", NULL, NULL},
-	{"ns1", "http://tempuri.org/", NULL, NULL},
+	{"ns1", "http://schemas.datacontract.org/2004/07/WsSoap", NULL, NULL},
+	{"arr", "http://schemas.microsoft.com/2003/10/Serialization/Arrays", NULL, NULL},
+	{"tempuri", "http://tempuri.org/", NULL, NULL},
 	{NULL, NULL, NULL, NULL}
 };
 	soap_set_namespaces(this->soap, namespaces);
@@ -128,9 +127,9 @@ char *BasicHttpBinding_USCOREIServiceProxy::soap_sprint_fault(char *buf, size_t 
 }
 #endif
 
-int BasicHttpBinding_USCOREIServiceProxy::GetLink(const char *endpoint, const char *soap_action, _ns1__GetLink *ns1__GetLink, _ns1__GetLinkResponse &ns1__GetLinkResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetLink(const char *endpoint, const char *soap_action, _tempuri__GetLink *tempuri__GetLink, _tempuri__GetLinkResponse &tempuri__GetLinkResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetLink soap_tmp___ns1__GetLink;
+	struct __tempuri__GetLink soap_tmp___tempuri__GetLink;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -139,16 +138,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetLink(const char *endpoint, const ch
 		soap_action = "http://tempuri.org/IService/GetLink";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetLink.ns1__GetLink = ns1__GetLink;
+	soap_tmp___tempuri__GetLink.tempuri__GetLink = tempuri__GetLink;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetLink(soap, &soap_tmp___ns1__GetLink);
+	soap_serialize___tempuri__GetLink(soap, &soap_tmp___tempuri__GetLink);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetLink(soap, &soap_tmp___ns1__GetLink, "-ns1:GetLink", NULL)
+		 || soap_put___tempuri__GetLink(soap, &soap_tmp___tempuri__GetLink, "-tempuri:GetLink", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -159,20 +158,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetLink(const char *endpoint, const ch
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetLink(soap, &soap_tmp___ns1__GetLink, "-ns1:GetLink", NULL)
+	 || soap_put___tempuri__GetLink(soap, &soap_tmp___tempuri__GetLink, "-tempuri:GetLink", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetLinkResponse)
+	if (!&tempuri__GetLinkResponse)
 		return soap_closesock(soap);
-	ns1__GetLinkResponse.soap_default(soap);
+	tempuri__GetLinkResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetLinkResponse.soap_get(soap, "ns1:GetLinkResponse", NULL);
+	tempuri__GetLinkResponse.soap_get(soap, "tempuri:GetLinkResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -182,9 +181,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetLink(const char *endpoint, const ch
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::GetNamesDictionary(const char *endpoint, const char *soap_action, _ns1__GetNamesDictionary *ns1__GetNamesDictionary, _ns1__GetNamesDictionaryResponse &ns1__GetNamesDictionaryResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetNamesDictionary(const char *endpoint, const char *soap_action, _tempuri__GetNamesDictionary *tempuri__GetNamesDictionary, _tempuri__GetNamesDictionaryResponse &tempuri__GetNamesDictionaryResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetNamesDictionary soap_tmp___ns1__GetNamesDictionary;
+	struct __tempuri__GetNamesDictionary soap_tmp___tempuri__GetNamesDictionary;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -193,16 +192,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetNamesDictionary(const char *endpoin
 		soap_action = "http://tempuri.org/IService/GetNamesDictionary";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetNamesDictionary.ns1__GetNamesDictionary = ns1__GetNamesDictionary;
+	soap_tmp___tempuri__GetNamesDictionary.tempuri__GetNamesDictionary = tempuri__GetNamesDictionary;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetNamesDictionary(soap, &soap_tmp___ns1__GetNamesDictionary);
+	soap_serialize___tempuri__GetNamesDictionary(soap, &soap_tmp___tempuri__GetNamesDictionary);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetNamesDictionary(soap, &soap_tmp___ns1__GetNamesDictionary, "-ns1:GetNamesDictionary", NULL)
+		 || soap_put___tempuri__GetNamesDictionary(soap, &soap_tmp___tempuri__GetNamesDictionary, "-tempuri:GetNamesDictionary", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -213,20 +212,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetNamesDictionary(const char *endpoin
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetNamesDictionary(soap, &soap_tmp___ns1__GetNamesDictionary, "-ns1:GetNamesDictionary", NULL)
+	 || soap_put___tempuri__GetNamesDictionary(soap, &soap_tmp___tempuri__GetNamesDictionary, "-tempuri:GetNamesDictionary", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetNamesDictionaryResponse)
+	if (!&tempuri__GetNamesDictionaryResponse)
 		return soap_closesock(soap);
-	ns1__GetNamesDictionaryResponse.soap_default(soap);
+	tempuri__GetNamesDictionaryResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetNamesDictionaryResponse.soap_get(soap, "ns1:GetNamesDictionaryResponse", NULL);
+	tempuri__GetNamesDictionaryResponse.soap_get(soap, "tempuri:GetNamesDictionaryResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -236,9 +235,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetNamesDictionary(const char *endpoin
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::SendLinks(const char *endpoint, const char *soap_action, _ns1__SendLinks *ns1__SendLinks, _ns1__SendLinksResponse &ns1__SendLinksResponse)
+int BasicHttpBinding_USCOREIServiceProxy::SendLinks(const char *endpoint, const char *soap_action, _tempuri__SendLinks *tempuri__SendLinks, _tempuri__SendLinksResponse &tempuri__SendLinksResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__SendLinks soap_tmp___ns1__SendLinks;
+	struct __tempuri__SendLinks soap_tmp___tempuri__SendLinks;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -247,16 +246,16 @@ int BasicHttpBinding_USCOREIServiceProxy::SendLinks(const char *endpoint, const 
 		soap_action = "http://tempuri.org/IService/SendLinks";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__SendLinks.ns1__SendLinks = ns1__SendLinks;
+	soap_tmp___tempuri__SendLinks.tempuri__SendLinks = tempuri__SendLinks;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__SendLinks(soap, &soap_tmp___ns1__SendLinks);
+	soap_serialize___tempuri__SendLinks(soap, &soap_tmp___tempuri__SendLinks);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__SendLinks(soap, &soap_tmp___ns1__SendLinks, "-ns1:SendLinks", NULL)
+		 || soap_put___tempuri__SendLinks(soap, &soap_tmp___tempuri__SendLinks, "-tempuri:SendLinks", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -267,20 +266,20 @@ int BasicHttpBinding_USCOREIServiceProxy::SendLinks(const char *endpoint, const 
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__SendLinks(soap, &soap_tmp___ns1__SendLinks, "-ns1:SendLinks", NULL)
+	 || soap_put___tempuri__SendLinks(soap, &soap_tmp___tempuri__SendLinks, "-tempuri:SendLinks", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__SendLinksResponse)
+	if (!&tempuri__SendLinksResponse)
 		return soap_closesock(soap);
-	ns1__SendLinksResponse.soap_default(soap);
+	tempuri__SendLinksResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__SendLinksResponse.soap_get(soap, "ns1:SendLinksResponse", NULL);
+	tempuri__SendLinksResponse.soap_get(soap, "tempuri:SendLinksResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -290,9 +289,9 @@ int BasicHttpBinding_USCOREIServiceProxy::SendLinks(const char *endpoint, const 
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::SendAmountDictionary(const char *endpoint, const char *soap_action, _ns1__SendAmountDictionary *ns1__SendAmountDictionary, _ns1__SendAmountDictionaryResponse &ns1__SendAmountDictionaryResponse)
+int BasicHttpBinding_USCOREIServiceProxy::SendAmountDictionary(const char *endpoint, const char *soap_action, _tempuri__SendAmountDictionary *tempuri__SendAmountDictionary, _tempuri__SendAmountDictionaryResponse &tempuri__SendAmountDictionaryResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__SendAmountDictionary soap_tmp___ns1__SendAmountDictionary;
+	struct __tempuri__SendAmountDictionary soap_tmp___tempuri__SendAmountDictionary;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -301,16 +300,16 @@ int BasicHttpBinding_USCOREIServiceProxy::SendAmountDictionary(const char *endpo
 		soap_action = "http://tempuri.org/IService/SendAmountDictionary";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__SendAmountDictionary.ns1__SendAmountDictionary = ns1__SendAmountDictionary;
+	soap_tmp___tempuri__SendAmountDictionary.tempuri__SendAmountDictionary = tempuri__SendAmountDictionary;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__SendAmountDictionary(soap, &soap_tmp___ns1__SendAmountDictionary);
+	soap_serialize___tempuri__SendAmountDictionary(soap, &soap_tmp___tempuri__SendAmountDictionary);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__SendAmountDictionary(soap, &soap_tmp___ns1__SendAmountDictionary, "-ns1:SendAmountDictionary", NULL)
+		 || soap_put___tempuri__SendAmountDictionary(soap, &soap_tmp___tempuri__SendAmountDictionary, "-tempuri:SendAmountDictionary", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -321,20 +320,20 @@ int BasicHttpBinding_USCOREIServiceProxy::SendAmountDictionary(const char *endpo
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__SendAmountDictionary(soap, &soap_tmp___ns1__SendAmountDictionary, "-ns1:SendAmountDictionary", NULL)
+	 || soap_put___tempuri__SendAmountDictionary(soap, &soap_tmp___tempuri__SendAmountDictionary, "-tempuri:SendAmountDictionary", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__SendAmountDictionaryResponse)
+	if (!&tempuri__SendAmountDictionaryResponse)
 		return soap_closesock(soap);
-	ns1__SendAmountDictionaryResponse.soap_default(soap);
+	tempuri__SendAmountDictionaryResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__SendAmountDictionaryResponse.soap_get(soap, "ns1:SendAmountDictionaryResponse", NULL);
+	tempuri__SendAmountDictionaryResponse.soap_get(soap, "tempuri:SendAmountDictionaryResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -344,9 +343,9 @@ int BasicHttpBinding_USCOREIServiceProxy::SendAmountDictionary(const char *endpo
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::GetStats(const char *endpoint, const char *soap_action, _ns1__GetStats *ns1__GetStats, _ns1__GetStatsResponse &ns1__GetStatsResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetStats(const char *endpoint, const char *soap_action, _tempuri__GetStats *tempuri__GetStats, _tempuri__GetStatsResponse &tempuri__GetStatsResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetStats soap_tmp___ns1__GetStats;
+	struct __tempuri__GetStats soap_tmp___tempuri__GetStats;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -355,16 +354,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetStats(const char *endpoint, const c
 		soap_action = "http://tempuri.org/IService/GetStats";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetStats.ns1__GetStats = ns1__GetStats;
+	soap_tmp___tempuri__GetStats.tempuri__GetStats = tempuri__GetStats;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetStats(soap, &soap_tmp___ns1__GetStats);
+	soap_serialize___tempuri__GetStats(soap, &soap_tmp___tempuri__GetStats);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetStats(soap, &soap_tmp___ns1__GetStats, "-ns1:GetStats", NULL)
+		 || soap_put___tempuri__GetStats(soap, &soap_tmp___tempuri__GetStats, "-tempuri:GetStats", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -375,20 +374,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetStats(const char *endpoint, const c
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetStats(soap, &soap_tmp___ns1__GetStats, "-ns1:GetStats", NULL)
+	 || soap_put___tempuri__GetStats(soap, &soap_tmp___tempuri__GetStats, "-tempuri:GetStats", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetStatsResponse)
+	if (!&tempuri__GetStatsResponse)
 		return soap_closesock(soap);
-	ns1__GetStatsResponse.soap_default(soap);
+	tempuri__GetStatsResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetStatsResponse.soap_get(soap, "ns1:GetStatsResponse", NULL);
+	tempuri__GetStatsResponse.soap_get(soap, "tempuri:GetStatsResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -398,9 +397,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetStats(const char *endpoint, const c
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::GetDailyStats(const char *endpoint, const char *soap_action, _ns1__GetDailyStats *ns1__GetDailyStats, _ns1__GetDailyStatsResponse &ns1__GetDailyStatsResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetDailyStats(const char *endpoint, const char *soap_action, _tempuri__GetDailyStats *tempuri__GetDailyStats, _tempuri__GetDailyStatsResponse &tempuri__GetDailyStatsResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetDailyStats soap_tmp___ns1__GetDailyStats;
+	struct __tempuri__GetDailyStats soap_tmp___tempuri__GetDailyStats;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -409,16 +408,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetDailyStats(const char *endpoint, co
 		soap_action = "http://tempuri.org/IService/GetDailyStats";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetDailyStats.ns1__GetDailyStats = ns1__GetDailyStats;
+	soap_tmp___tempuri__GetDailyStats.tempuri__GetDailyStats = tempuri__GetDailyStats;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetDailyStats(soap, &soap_tmp___ns1__GetDailyStats);
+	soap_serialize___tempuri__GetDailyStats(soap, &soap_tmp___tempuri__GetDailyStats);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetDailyStats(soap, &soap_tmp___ns1__GetDailyStats, "-ns1:GetDailyStats", NULL)
+		 || soap_put___tempuri__GetDailyStats(soap, &soap_tmp___tempuri__GetDailyStats, "-tempuri:GetDailyStats", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -429,20 +428,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetDailyStats(const char *endpoint, co
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetDailyStats(soap, &soap_tmp___ns1__GetDailyStats, "-ns1:GetDailyStats", NULL)
+	 || soap_put___tempuri__GetDailyStats(soap, &soap_tmp___tempuri__GetDailyStats, "-tempuri:GetDailyStats", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetDailyStatsResponse)
+	if (!&tempuri__GetDailyStatsResponse)
 		return soap_closesock(soap);
-	ns1__GetDailyStatsResponse.soap_default(soap);
+	tempuri__GetDailyStatsResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetDailyStatsResponse.soap_get(soap, "ns1:GetDailyStatsResponse", NULL);
+	tempuri__GetDailyStatsResponse.soap_get(soap, "tempuri:GetDailyStatsResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -452,9 +451,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetDailyStats(const char *endpoint, co
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::GetStatsByName(const char *endpoint, const char *soap_action, _ns1__GetStatsByName *ns1__GetStatsByName, _ns1__GetStatsByNameResponse &ns1__GetStatsByNameResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetStatsByName(const char *endpoint, const char *soap_action, _tempuri__GetStatsByName *tempuri__GetStatsByName, _tempuri__GetStatsByNameResponse &tempuri__GetStatsByNameResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetStatsByName soap_tmp___ns1__GetStatsByName;
+	struct __tempuri__GetStatsByName soap_tmp___tempuri__GetStatsByName;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -463,16 +462,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetStatsByName(const char *endpoint, c
 		soap_action = "http://tempuri.org/IService/GetStatsByName";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetStatsByName.ns1__GetStatsByName = ns1__GetStatsByName;
+	soap_tmp___tempuri__GetStatsByName.tempuri__GetStatsByName = tempuri__GetStatsByName;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetStatsByName(soap, &soap_tmp___ns1__GetStatsByName);
+	soap_serialize___tempuri__GetStatsByName(soap, &soap_tmp___tempuri__GetStatsByName);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetStatsByName(soap, &soap_tmp___ns1__GetStatsByName, "-ns1:GetStatsByName", NULL)
+		 || soap_put___tempuri__GetStatsByName(soap, &soap_tmp___tempuri__GetStatsByName, "-tempuri:GetStatsByName", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -483,20 +482,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetStatsByName(const char *endpoint, c
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetStatsByName(soap, &soap_tmp___ns1__GetStatsByName, "-ns1:GetStatsByName", NULL)
+	 || soap_put___tempuri__GetStatsByName(soap, &soap_tmp___tempuri__GetStatsByName, "-tempuri:GetStatsByName", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetStatsByNameResponse)
+	if (!&tempuri__GetStatsByNameResponse)
 		return soap_closesock(soap);
-	ns1__GetStatsByNameResponse.soap_default(soap);
+	tempuri__GetStatsByNameResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetStatsByNameResponse.soap_get(soap, "ns1:GetStatsByNameResponse", NULL);
+	tempuri__GetStatsByNameResponse.soap_get(soap, "tempuri:GetStatsByNameResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -506,9 +505,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetStatsByName(const char *endpoint, c
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::GetNames(const char *endpoint, const char *soap_action, _ns1__GetNames *ns1__GetNames, _ns1__GetNamesResponse &ns1__GetNamesResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetNames(const char *endpoint, const char *soap_action, _tempuri__GetNames *tempuri__GetNames, _tempuri__GetNamesResponse &tempuri__GetNamesResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetNames soap_tmp___ns1__GetNames;
+	struct __tempuri__GetNames soap_tmp___tempuri__GetNames;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -517,16 +516,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetNames(const char *endpoint, const c
 		soap_action = "http://tempuri.org/IService/GetNames";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetNames.ns1__GetNames = ns1__GetNames;
+	soap_tmp___tempuri__GetNames.tempuri__GetNames = tempuri__GetNames;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetNames(soap, &soap_tmp___ns1__GetNames);
+	soap_serialize___tempuri__GetNames(soap, &soap_tmp___tempuri__GetNames);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetNames(soap, &soap_tmp___ns1__GetNames, "-ns1:GetNames", NULL)
+		 || soap_put___tempuri__GetNames(soap, &soap_tmp___tempuri__GetNames, "-tempuri:GetNames", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -537,20 +536,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetNames(const char *endpoint, const c
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetNames(soap, &soap_tmp___ns1__GetNames, "-ns1:GetNames", NULL)
+	 || soap_put___tempuri__GetNames(soap, &soap_tmp___tempuri__GetNames, "-tempuri:GetNames", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetNamesResponse)
+	if (!&tempuri__GetNamesResponse)
 		return soap_closesock(soap);
-	ns1__GetNamesResponse.soap_default(soap);
+	tempuri__GetNamesResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetNamesResponse.soap_get(soap, "ns1:GetNamesResponse", NULL);
+	tempuri__GetNamesResponse.soap_get(soap, "tempuri:GetNamesResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -560,9 +559,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetNames(const char *endpoint, const c
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::GetSites(const char *endpoint, const char *soap_action, _ns1__GetSites *ns1__GetSites, _ns1__GetSitesResponse &ns1__GetSitesResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetSites(const char *endpoint, const char *soap_action, _tempuri__GetSites *tempuri__GetSites, _tempuri__GetSitesResponse &tempuri__GetSitesResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetSites soap_tmp___ns1__GetSites;
+	struct __tempuri__GetSites soap_tmp___tempuri__GetSites;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -571,16 +570,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetSites(const char *endpoint, const c
 		soap_action = "http://tempuri.org/IService/GetSites";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetSites.ns1__GetSites = ns1__GetSites;
+	soap_tmp___tempuri__GetSites.tempuri__GetSites = tempuri__GetSites;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetSites(soap, &soap_tmp___ns1__GetSites);
+	soap_serialize___tempuri__GetSites(soap, &soap_tmp___tempuri__GetSites);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetSites(soap, &soap_tmp___ns1__GetSites, "-ns1:GetSites", NULL)
+		 || soap_put___tempuri__GetSites(soap, &soap_tmp___tempuri__GetSites, "-tempuri:GetSites", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -591,20 +590,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetSites(const char *endpoint, const c
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetSites(soap, &soap_tmp___ns1__GetSites, "-ns1:GetSites", NULL)
+	 || soap_put___tempuri__GetSites(soap, &soap_tmp___tempuri__GetSites, "-tempuri:GetSites", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetSitesResponse)
+	if (!&tempuri__GetSitesResponse)
 		return soap_closesock(soap);
-	ns1__GetSitesResponse.soap_default(soap);
+	tempuri__GetSitesResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetSitesResponse.soap_get(soap, "ns1:GetSitesResponse", NULL);
+	tempuri__GetSitesResponse.soap_get(soap, "tempuri:GetSitesResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -614,9 +613,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetSites(const char *endpoint, const c
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::GetPages(const char *endpoint, const char *soap_action, _ns1__GetPages *ns1__GetPages, _ns1__GetPagesResponse &ns1__GetPagesResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetPages(const char *endpoint, const char *soap_action, _tempuri__GetPages *tempuri__GetPages, _tempuri__GetPagesResponse &tempuri__GetPagesResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetPages soap_tmp___ns1__GetPages;
+	struct __tempuri__GetPages soap_tmp___tempuri__GetPages;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -625,16 +624,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetPages(const char *endpoint, const c
 		soap_action = "http://tempuri.org/IService/GetPages";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetPages.ns1__GetPages = ns1__GetPages;
+	soap_tmp___tempuri__GetPages.tempuri__GetPages = tempuri__GetPages;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetPages(soap, &soap_tmp___ns1__GetPages);
+	soap_serialize___tempuri__GetPages(soap, &soap_tmp___tempuri__GetPages);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetPages(soap, &soap_tmp___ns1__GetPages, "-ns1:GetPages", NULL)
+		 || soap_put___tempuri__GetPages(soap, &soap_tmp___tempuri__GetPages, "-tempuri:GetPages", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -645,20 +644,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetPages(const char *endpoint, const c
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetPages(soap, &soap_tmp___ns1__GetPages, "-ns1:GetPages", NULL)
+	 || soap_put___tempuri__GetPages(soap, &soap_tmp___tempuri__GetPages, "-tempuri:GetPages", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetPagesResponse)
+	if (!&tempuri__GetPagesResponse)
 		return soap_closesock(soap);
-	ns1__GetPagesResponse.soap_default(soap);
+	tempuri__GetPagesResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetPagesResponse.soap_get(soap, "ns1:GetPagesResponse", NULL);
+	tempuri__GetPagesResponse.soap_get(soap, "tempuri:GetPagesResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -668,9 +667,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetPages(const char *endpoint, const c
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::GetSearchPhrases(const char *endpoint, const char *soap_action, _ns1__GetSearchPhrases *ns1__GetSearchPhrases, _ns1__GetSearchPhrasesResponse &ns1__GetSearchPhrasesResponse)
+int BasicHttpBinding_USCOREIServiceProxy::GetSearchPhrases(const char *endpoint, const char *soap_action, _tempuri__GetSearchPhrases *tempuri__GetSearchPhrases, _tempuri__GetSearchPhrasesResponse &tempuri__GetSearchPhrasesResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__GetSearchPhrases soap_tmp___ns1__GetSearchPhrases;
+	struct __tempuri__GetSearchPhrases soap_tmp___tempuri__GetSearchPhrases;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -679,16 +678,16 @@ int BasicHttpBinding_USCOREIServiceProxy::GetSearchPhrases(const char *endpoint,
 		soap_action = "http://tempuri.org/IService/GetSearchPhrases";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__GetSearchPhrases.ns1__GetSearchPhrases = ns1__GetSearchPhrases;
+	soap_tmp___tempuri__GetSearchPhrases.tempuri__GetSearchPhrases = tempuri__GetSearchPhrases;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__GetSearchPhrases(soap, &soap_tmp___ns1__GetSearchPhrases);
+	soap_serialize___tempuri__GetSearchPhrases(soap, &soap_tmp___tempuri__GetSearchPhrases);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__GetSearchPhrases(soap, &soap_tmp___ns1__GetSearchPhrases, "-ns1:GetSearchPhrases", NULL)
+		 || soap_put___tempuri__GetSearchPhrases(soap, &soap_tmp___tempuri__GetSearchPhrases, "-tempuri:GetSearchPhrases", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -699,20 +698,20 @@ int BasicHttpBinding_USCOREIServiceProxy::GetSearchPhrases(const char *endpoint,
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__GetSearchPhrases(soap, &soap_tmp___ns1__GetSearchPhrases, "-ns1:GetSearchPhrases", NULL)
+	 || soap_put___tempuri__GetSearchPhrases(soap, &soap_tmp___tempuri__GetSearchPhrases, "-tempuri:GetSearchPhrases", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__GetSearchPhrasesResponse)
+	if (!&tempuri__GetSearchPhrasesResponse)
 		return soap_closesock(soap);
-	ns1__GetSearchPhrasesResponse.soap_default(soap);
+	tempuri__GetSearchPhrasesResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__GetSearchPhrasesResponse.soap_get(soap, "ns1:GetSearchPhrasesResponse", NULL);
+	tempuri__GetSearchPhrasesResponse.soap_get(soap, "tempuri:GetSearchPhrasesResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -722,9 +721,9 @@ int BasicHttpBinding_USCOREIServiceProxy::GetSearchPhrases(const char *endpoint,
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::SetSite(const char *endpoint, const char *soap_action, _ns1__SetSite *ns1__SetSite, _ns1__SetSiteResponse &ns1__SetSiteResponse)
+int BasicHttpBinding_USCOREIServiceProxy::SetSite(const char *endpoint, const char *soap_action, _tempuri__SetSite *tempuri__SetSite, _tempuri__SetSiteResponse &tempuri__SetSiteResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__SetSite soap_tmp___ns1__SetSite;
+	struct __tempuri__SetSite soap_tmp___tempuri__SetSite;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -733,16 +732,16 @@ int BasicHttpBinding_USCOREIServiceProxy::SetSite(const char *endpoint, const ch
 		soap_action = "http://tempuri.org/IService/SetSite";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__SetSite.ns1__SetSite = ns1__SetSite;
+	soap_tmp___tempuri__SetSite.tempuri__SetSite = tempuri__SetSite;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__SetSite(soap, &soap_tmp___ns1__SetSite);
+	soap_serialize___tempuri__SetSite(soap, &soap_tmp___tempuri__SetSite);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__SetSite(soap, &soap_tmp___ns1__SetSite, "-ns1:SetSite", NULL)
+		 || soap_put___tempuri__SetSite(soap, &soap_tmp___tempuri__SetSite, "-tempuri:SetSite", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -753,20 +752,20 @@ int BasicHttpBinding_USCOREIServiceProxy::SetSite(const char *endpoint, const ch
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__SetSite(soap, &soap_tmp___ns1__SetSite, "-ns1:SetSite", NULL)
+	 || soap_put___tempuri__SetSite(soap, &soap_tmp___tempuri__SetSite, "-tempuri:SetSite", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__SetSiteResponse)
+	if (!&tempuri__SetSiteResponse)
 		return soap_closesock(soap);
-	ns1__SetSiteResponse.soap_default(soap);
+	tempuri__SetSiteResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__SetSiteResponse.soap_get(soap, "ns1:SetSiteResponse", NULL);
+	tempuri__SetSiteResponse.soap_get(soap, "tempuri:SetSiteResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -776,9 +775,9 @@ int BasicHttpBinding_USCOREIServiceProxy::SetSite(const char *endpoint, const ch
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::SetName(const char *endpoint, const char *soap_action, _ns1__SetName *ns1__SetName, _ns1__SetNameResponse &ns1__SetNameResponse)
+int BasicHttpBinding_USCOREIServiceProxy::SetName(const char *endpoint, const char *soap_action, _tempuri__SetName *tempuri__SetName, _tempuri__SetNameResponse &tempuri__SetNameResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__SetName soap_tmp___ns1__SetName;
+	struct __tempuri__SetName soap_tmp___tempuri__SetName;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -787,16 +786,16 @@ int BasicHttpBinding_USCOREIServiceProxy::SetName(const char *endpoint, const ch
 		soap_action = "http://tempuri.org/IService/SetName";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__SetName.ns1__SetName = ns1__SetName;
+	soap_tmp___tempuri__SetName.tempuri__SetName = tempuri__SetName;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__SetName(soap, &soap_tmp___ns1__SetName);
+	soap_serialize___tempuri__SetName(soap, &soap_tmp___tempuri__SetName);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__SetName(soap, &soap_tmp___ns1__SetName, "-ns1:SetName", NULL)
+		 || soap_put___tempuri__SetName(soap, &soap_tmp___tempuri__SetName, "-tempuri:SetName", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -807,20 +806,20 @@ int BasicHttpBinding_USCOREIServiceProxy::SetName(const char *endpoint, const ch
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__SetName(soap, &soap_tmp___ns1__SetName, "-ns1:SetName", NULL)
+	 || soap_put___tempuri__SetName(soap, &soap_tmp___tempuri__SetName, "-tempuri:SetName", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__SetNameResponse)
+	if (!&tempuri__SetNameResponse)
 		return soap_closesock(soap);
-	ns1__SetNameResponse.soap_default(soap);
+	tempuri__SetNameResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__SetNameResponse.soap_get(soap, "ns1:SetNameResponse", NULL);
+	tempuri__SetNameResponse.soap_get(soap, "tempuri:SetNameResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -830,9 +829,9 @@ int BasicHttpBinding_USCOREIServiceProxy::SetName(const char *endpoint, const ch
 	return soap_closesock(soap);
 }
 
-int BasicHttpBinding_USCOREIServiceProxy::SetSearchPhrase(const char *endpoint, const char *soap_action, _ns1__SetSearchPhrase *ns1__SetSearchPhrase, _ns1__SetSearchPhraseResponse &ns1__SetSearchPhraseResponse)
+int BasicHttpBinding_USCOREIServiceProxy::SetSearchPhrase(const char *endpoint, const char *soap_action, _tempuri__SetSearchPhrase *tempuri__SetSearchPhrase, _tempuri__SetSearchPhraseResponse &tempuri__SetSearchPhraseResponse)
 {	struct soap *soap = this->soap;
-	struct __ns1__SetSearchPhrase soap_tmp___ns1__SetSearchPhrase;
+	struct __tempuri__SetSearchPhrase soap_tmp___tempuri__SetSearchPhrase;
 	if (endpoint)
 		soap_endpoint = endpoint;
 	if (soap_endpoint == NULL)
@@ -841,16 +840,16 @@ int BasicHttpBinding_USCOREIServiceProxy::SetSearchPhrase(const char *endpoint, 
 		soap_action = "http://tempuri.org/IService/SetSearchPhrase";
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
-	soap_tmp___ns1__SetSearchPhrase.ns1__SetSearchPhrase = ns1__SetSearchPhrase;
+	soap_tmp___tempuri__SetSearchPhrase.tempuri__SetSearchPhrase = tempuri__SetSearchPhrase;
 	soap_serializeheader(soap);
-	soap_serialize___ns1__SetSearchPhrase(soap, &soap_tmp___ns1__SetSearchPhrase);
+	soap_serialize___tempuri__SetSearchPhrase(soap, &soap_tmp___tempuri__SetSearchPhrase);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put___ns1__SetSearchPhrase(soap, &soap_tmp___ns1__SetSearchPhrase, "-ns1:SetSearchPhrase", NULL)
+		 || soap_put___tempuri__SetSearchPhrase(soap, &soap_tmp___tempuri__SetSearchPhrase, "-tempuri:SetSearchPhrase", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -861,20 +860,20 @@ int BasicHttpBinding_USCOREIServiceProxy::SetSearchPhrase(const char *endpoint, 
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put___ns1__SetSearchPhrase(soap, &soap_tmp___ns1__SetSearchPhrase, "-ns1:SetSearchPhrase", NULL)
+	 || soap_put___tempuri__SetSearchPhrase(soap, &soap_tmp___tempuri__SetSearchPhrase, "-tempuri:SetSearchPhrase", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
-	if (!&ns1__SetSearchPhraseResponse)
+	if (!&tempuri__SetSearchPhraseResponse)
 		return soap_closesock(soap);
-	ns1__SetSearchPhraseResponse.soap_default(soap);
+	tempuri__SetSearchPhraseResponse.soap_default(soap);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
-	ns1__SetSearchPhraseResponse.soap_get(soap, "ns1:SetSearchPhraseResponse", NULL);
+	tempuri__SetSearchPhraseResponse.soap_get(soap, "tempuri:SetSearchPhraseResponse", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)

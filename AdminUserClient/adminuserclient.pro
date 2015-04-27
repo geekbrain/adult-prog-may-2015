@@ -16,6 +16,11 @@ HEADERS     = \
     gSoap/soapBasicHttpBinding_USCOREIServiceProxy.h \
     gSoap/soapStub.h \
     gSoap/stdsoap2.h \
+    gSoap/BasicHttpBinding_USCOREIService.nsmap \
+    gSoap/soapBasicHttpBinding_USCOREIServiceProxy.h \
+    gSoap/soapH.h \
+    gSoap/soapStub.h \
+    gSoap/stdsoap2.h
 SOURCES     = main.cpp \
               window.cpp \
     generalstatwidget.cpp \
@@ -29,5 +34,8 @@ SOURCES     = main.cpp \
     gSoap/soapBasicHttpBinding_USCOREIServiceProxy.cpp \
     gSoap/soapC.cpp \
     gSoap/stdsoap2.cpp \
+    gSoap/soapBasicHttpBinding_USCOREIServiceProxy.cpp \
+    gSoap/soapC.cpp \
+    gSoap/stdsoap2.cpp
 
 #DESTDIR = /bin
