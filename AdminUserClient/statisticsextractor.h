@@ -20,6 +20,8 @@ public:
      */
     void getWorkSites(QSharedPointer<WorkSites>&) const;
 
+    void getNamesFromService(QSharedPointer<NameDao>&) const;
+
 signals:
 
 public slots:
@@ -27,7 +29,6 @@ public slots:
 private:
     void fillTempGeneralStatistics(QSharedPointer<GeneralStatistics>&) const;
     void fillTempSitesList(QSharedPointer<WorkSites> &workSites) const;
-    void getNamesFromService();
 
     const std::string SoapServiceAddr = "http://adultprog2015.somee.com/WsSoap.svc";
 };

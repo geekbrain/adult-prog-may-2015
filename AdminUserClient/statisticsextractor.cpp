@@ -11,7 +11,6 @@
 StatisticsExtractor::StatisticsExtractor(QObject *parent) :
     QObject(parent)
 {
-    getNamesFromService();
 }
 
 void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const
@@ -28,7 +27,7 @@ void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) con
         //        qDebug() << "Функция GetSites вызвана успешно";
 
         size_t countOfSites = response.GetSitesResult->__sizeKeyValueOfintstring;
-        qDebug() << response.GetSitesResult->KeyValueOfintstring->Key;
+        qDebug() << "Сайтов" << countOfSites;
         for (size_t siteIndex = 0; siteIndex < countOfSites; ++siteIndex) {
             std::string stdSiteName =
                     std::string(response.GetSitesResult->KeyValueOfintstring[siteIndex].Value);
@@ -40,6 +39,27 @@ void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) con
     else {
         //        qDebug() << "Провал: функция GetNames не сработала.";
     }
+}
+
+void StatisticsExtractor::getNamesFromService(QSharedPointer<NameDao> &names) const
+{
+    _ns1__GetNames ns1__GetNames;
+    _ns1__GetNamesResponse ns1__GetNamesResponse;
+    BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
+    if (server.GetNames(&ns1__GetNames, ns1__GetNamesResponse) == SOAP_OK) {
+        qDebug() << "Функция GetNames вызвана успешно";
+
+        size_t countOfNames = ns1__GetNamesResponse.GetNamesResult->__sizeKeyValueOfintstring;
+        for (size_t nameIndex = 0; nameIndex < countOfNames; ++nameIndex)
+            names->addName(QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->
+                                                  KeyValueOfintstring[nameIndex].Value));
+
+        //        qDebug() << QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[0].Value);
+        //        qDebug() << QString::fromStdString(std::string(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[1].Value));
+        //        qDebug() << QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[2].Value);
+    }
+    else
+        qDebug() << "Провал: функция GetNames не сработала.";
 }
 
 void StatisticsExtractor::fillTempGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const
@@ -56,29 +76,4 @@ void StatisticsExtractor::fillTempSitesList(QSharedPointer<WorkSites> &workSites
     workSites->append(QUrl::fromUserInput("lenta.ru"));
 }
 
-void StatisticsExtractor::getNamesFromService()
-{
-//    _ns1__GetNames ns1__GetNames;
-//    _ns1__GetNamesResponse ns1__GetNamesResponse;
-//    BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
-//    if (server.GetNames(&ns1__GetNames, ns1__GetNamesResponse) == SOAP_OK) {
-//        qDebug() << "Функция GetNames вызвана успешно";
-//    }
-//    else
-//        qDebug() << "Провал: функция GetNames не сработала.";
-//    std::string str(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring->Value);
-//    qDebug() << ns1__GetNamesResponse.GetNamesResult->__sizeKeyValueOfintstring;
-//    qDebug() << QString::fromStdString(str);
-    _ns1__GetNamesDictionary ns1__GetNamesDictionary;
-    _ns1__GetNamesDictionaryResponse ns1__GetNamesDictionaryResponse;
-    BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
-    server.GetNamesDictionary(&ns1__GetNamesDictionary, ns1__GetNamesDictionaryResponse);
-    int size = ns1__GetNamesDictionaryResponse.GetNamesDictionaryResult->KeyValueOfstringArrayOfstringty7Ep6D1->Value->__sizestring;
-    qDebug() << size;
-//    for (int i = 0; i < size; ++i) {
-//        qDebug() << QString::fromLatin1(ns1__GetNamesDictionaryResponse.GetNamesDictionaryResult->
-//                                        KeyValueOfstringArrayOfstringty7Ep6D1->Value->string[i],
-//                                        ns1__GetNamesDictionaryResponse.GetNamesDictionaryResult->KeyValueOfstringArrayOfstringty7Ep6D1->Value->__sizestring);
-//    }
 
-}
