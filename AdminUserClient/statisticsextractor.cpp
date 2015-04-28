@@ -21,19 +21,25 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
 
 void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) const
 {
-    fillTempSitesList(workSites);
-    //    Следующий код планируется использовать для доступа к функции getsites веб-сервиса.
     _ns1__GetSites ns1__GetSites;
-    _ns1__GetSitesResponse ns1__GetSitesResponse;
+    _ns1__GetSitesResponse response;
     BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
-    if (server.GetSites(&ns1__GetSites, ns1__GetSitesResponse) == SOAP_OK) {
-        qDebug() << "Функция GetSites вызвана успешно";
-    }
-    else
-        qDebug() << "Провал: функция GetNames не сработала.";
+    if (server.GetSites(&ns1__GetSites, response) == SOAP_OK) {
+        //        qDebug() << "Функция GetSites вызвана успешно";
 
-    qDebug() << ns1__GetSitesResponse.GetSitesResult->__sizeKeyValueOfintstring;
-    qDebug() << QString::fromStdString(std::string(ns1__GetSitesResponse.GetSitesResult->KeyValueOfintstring->Value));
+        size_t countOfSites = response.GetSitesResult->__sizeKeyValueOfintstring;
+        qDebug() << response.GetSitesResult->KeyValueOfintstring->Key;
+        for (size_t siteIndex = 0; siteIndex < countOfSites; ++siteIndex) {
+            std::string stdSiteName =
+                    std::string(response.GetSitesResult->KeyValueOfintstring[siteIndex].Value);
+            QUrl::ParsingMode parsingMode = QUrl::StrictMode;
+            QUrl url(QString::fromStdString(stdSiteName), parsingMode);
+            workSites->append(url);
+        }
+    }
+    else {
+        //        qDebug() << "Провал: функция GetNames не сработала.";
+    }
 }
 
 void StatisticsExtractor::fillTempGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const
@@ -69,10 +75,10 @@ void StatisticsExtractor::getNamesFromService()
     server.GetNamesDictionary(&ns1__GetNamesDictionary, ns1__GetNamesDictionaryResponse);
     int size = ns1__GetNamesDictionaryResponse.GetNamesDictionaryResult->KeyValueOfstringArrayOfstringty7Ep6D1->Value->__sizestring;
     qDebug() << size;
-    for (int i = 0; i < size; ++i) {
-        qDebug() << QString::fromLatin1(ns1__GetNamesDictionaryResponse.GetNamesDictionaryResult->
-                                        KeyValueOfstringArrayOfstringty7Ep6D1->Value->string[i],
-                                        ns1__GetNamesDictionaryResponse.GetNamesDictionaryResult->KeyValueOfstringArrayOfstringty7Ep6D1->Value->__sizestring);
-    }
+//    for (int i = 0; i < size; ++i) {
+//        qDebug() << QString::fromLatin1(ns1__GetNamesDictionaryResponse.GetNamesDictionaryResult->
+//                                        KeyValueOfstringArrayOfstringty7Ep6D1->Value->string[i],
+//                                        ns1__GetNamesDictionaryResponse.GetNamesDictionaryResult->KeyValueOfstringArrayOfstringty7Ep6D1->Value->__sizestring);
+//    }
 
 }
