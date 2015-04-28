@@ -9,6 +9,8 @@ namespace WsSoap
     {
         private readonly MySqlConnection _connection;
 
+        const int DefaultMaxQueuedTime = 1;
+
         private const string SelectSiteSql =
             @"select
                     s.id, s.url
@@ -38,7 +40,7 @@ namespace WsSoap
                 site_page sp
             where
                 not exists(select dc.id from data_cube dc where dc.site_page_id = sp.id
-                    and dc.date = ?date);";
+                    and dc.date = ?date) limit 1;";
 
         private const string InsertSitePageSql =
             @"insert site_page (url, site_id)
@@ -106,6 +108,11 @@ namespace WsSoap
             from site_page sp
             join site s on s.id = sp.site_id";
 
+        private const string SelectSitePageByIdSql =
+            @"select sp.url
+            from site_page sp
+            where sp.id = ?site_page_id";
+
         private const string SelectSitePagesBySiteIdSql =
             @"select sp.id, sp.url
             from site_page sp
@@ -125,6 +132,21 @@ namespace WsSoap
         private const string InsertSearchPhraseSql =
             @"insert into search_phrase (name, name_id) values (?name, ?name_id)";
 
+        private const string SelectQueueSql =
+            @"select q.id, q.site_page_id from queue q where id = ?id";
+
+        private const string SelectQueueOneOldestSql =
+            @"select q.id, q.site_page from queue q
+            where q.datetime in (select min(datetime) from queue q2)
+            and q.datetime < ?datetime
+            limit 1";
+
+        private const string DeleteQueueSql =
+            @"delete from queue q where q.id = ?id";
+
+        private const string QueueInsrtSql =
+            @"insert into queue (site_page_id, datetime_income) values (?site_page_id, ?datetime)";
+
         public Db(string connectionString)
         {
             _connection = new MySqlConnection(connectionString);
@@ -142,37 +164,64 @@ namespace WsSoap
             }
         }
 
-        public string GetLink()
+        private void SelectSitePageOutOfDate(out int? sitePageId, out string url)
         {
-            CheckConnectionState();
-            using (var selectSite = _connection.CreateCommand())
-            {
-                selectSite.CommandText = SelectSiteSql;
-                using (var siteReader = selectSite.ExecuteReader())
-                {
-                    if (siteReader.Read())
-                    {
-                        var id = (int) siteReader["id"];
-                        var url = siteReader["url"].ToString();
-
-                        siteReader.Close();
-                        InsertSitePage(id, url);
-                    }
-                }
-            }
+            sitePageId = null;
+            url = null;
             using (var selectSitePageOutOfDate = _connection.CreateCommand())
             {
                 selectSitePageOutOfDate.CommandText = SelectSitePageOutOfDateSql;
                 selectSitePageOutOfDate.Parameters.AddWithValue("?date", DateTime.Today);
                 using (var sitePageOutOfDateReader = selectSitePageOutOfDate.ExecuteReader())
                 {
-                    if (sitePageOutOfDateReader.Read())
+                    if (!sitePageOutOfDateReader.Read()) return;
+                    sitePageId = (int?) sitePageOutOfDateReader["id"];
+                    url = sitePageOutOfDateReader["url"].ToString();
+                }
+            }            
+        }
+
+        public string GetLink()
+        {
+            CheckConnectionState();
+            TransfetSiteToSitePages();
+            int? sitePageId;
+            string url;
+
+            var dateTime = DateTime.Now.AddHours(DefaultMaxQueuedTime);
+            SelectQueueOneOldest(dateTime, out sitePageId, out url);
+            if (sitePageId != null) return url;
+            SelectSitePageOutOfDate(out sitePageId, out url);
+            if (sitePageId != null)
+            {
+                EnqueueSitePage((int) sitePageId);
+            }
+
+            return url;
+        }
+
+        private void TransfetSiteToSitePages()
+        {
+            using (var selectSite = _connection.CreateCommand())
+            {
+                selectSite.CommandText = SelectSiteSql;
+                using (var siteReader = selectSite.ExecuteReader())
+                {
+                    int? id = null;
+                    string url = null;
+                    if (siteReader.Read())
                     {
-                        return sitePageOutOfDateReader["url"].ToString();
+                        id = (int) siteReader["id"];
+                        url = siteReader["url"].ToString();
+
+                        siteReader.Close();
+                    }
+                    if ((id != null) && (url != null))
+                    {
+                        InsertSitePage((int) id, url);
                     }
                 }
             }
-            return null;
         }
 
         private void InsertSitePage(int id, string url)
@@ -193,6 +242,7 @@ namespace WsSoap
             if (sitePageId == null)
                 throw new WsSoapException(
                     "WsSoap.Db.InsertLinks exception! Can't find url in database!");
+            
             var siteId = SelectSiteIdByUrl(url);
             int? id = 0;
             if ((siteId != null) && (siteId == sitePageId))
@@ -219,6 +269,8 @@ namespace WsSoap
             {
                 InsertSitePage((int) id, link);
             }
+
+            DequeueSitePage((int) sitePageId);
         }
 
         private IEnumerable<string> SelectSitePagesBySiteId(int siteId)
@@ -486,6 +538,18 @@ namespace WsSoap
             return sitePages;
         }
 
+        public string SelectSitePageById(int sitePageId)
+        {
+            CheckConnectionState();
+            using (var selectSitePageById = _connection.CreateCommand())
+            {
+                selectSitePageById.CommandText = SelectQueueOneOldestSql;
+                selectSitePageById.Parameters.AddWithValue("?site_page_id", sitePageId);
+
+                return (string) selectSitePageById.ExecuteScalar();
+            }
+        }
+
         public Dictionary<string, Dictionary<int, string>> GetSearchPhrases()
         {
             var namesSearchPhrasesDictionary = new Dictionary<string, Dictionary<int, string>>();
@@ -573,6 +637,70 @@ namespace WsSoap
                 insertSearchPhrase.Parameters.AddWithValue("?name", searchPhrase);
                 insertSearchPhrase.ExecuteNonQuery();
             }
+        }
+
+        private void InsertQueue(int sitePageId)
+        {
+            CheckConnectionState();
+            using (var insertQueue = _connection.CreateCommand())
+            {
+                insertQueue.CommandText = QueueInsrtSql;
+                insertQueue.Parameters.AddWithValue("?site_page_id", sitePageId);
+                insertQueue.Parameters.AddWithValue("?datetime", DateTime.UtcNow);
+                insertQueue.ExecuteNonQuery();
+            }
+        }
+
+        private int SelectOneQueue()
+        {
+            CheckConnectionState();
+            using (var selectQueueOne = _connection.CreateCommand())
+            {
+                selectQueueOne.CommandText = SelectQueueSql;
+
+                return (int)selectQueueOne.ExecuteScalar();
+            }
+        }
+
+        private void SelectQueueOneOldest(DateTime dateTime, out int? sitePageId, out string url)
+        {
+            sitePageId = null;
+            url = null;
+            CheckConnectionState();
+            using (var selectQueueOneOldest = _connection.CreateCommand())
+            {
+                selectQueueOneOldest.CommandText = SelectQueueOneOldestSql;
+                selectQueueOneOldest.Parameters.AddWithValue("?datetime", dateTime);
+
+                using (var queueOneOldestReader = selectQueueOneOldest.ExecuteReader())
+                {
+                    if (!queueOneOldestReader.Read()) return;
+                    sitePageId = (int?) queueOneOldestReader["id"];
+                    url = queueOneOldestReader["url"].ToString();
+                }
+            }
+        }
+
+        private void DeleteQueue(int id)
+        {
+            CheckConnectionState();
+            using (var deleteQueue = _connection.CreateCommand())
+            {
+                deleteQueue.CommandText = DeleteQueueSql;
+                deleteQueue.Parameters.AddWithValue("?id", id);
+                deleteQueue.ExecuteNonQuery();
+            }
+        }
+
+        public void EnqueueSitePage(int sitePageId, int queueMaxTime = DefaultMaxQueuedTime)              //todo restrict changing
+        {
+            InsertQueue(sitePageId);
+        }
+
+        public string DequeueSitePage(int sitePageId)                //todo restrict changing
+        {
+            DeleteQueue(sitePageId);
+            return SelectSitePageById(sitePageId);
         }
 
         public void Dispose()

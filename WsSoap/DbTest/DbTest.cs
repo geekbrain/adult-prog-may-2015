@@ -21,7 +21,7 @@ namespace DbTest
                 CharacterSet = "cp1251"
             };
 
-            _db = new Db(connectionParams.ConnectionString);            
+            _db = new Db(connectionParams.ConnectionString);
         }
 
         [TestMethod]
