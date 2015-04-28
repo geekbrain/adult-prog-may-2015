@@ -59,8 +59,8 @@ void BasicHttpBinding_USCOREIServiceProxy::BasicHttpBinding_USCOREIServiceProxy_
 	soap_endpoint = NULL;
 	static const struct Namespace namespaces[] =
 {
-	{"SOAP-ENV", "http://www.w3.org/2003/05/soap-envelope", "http://schemas.xmlsoap.org/soap/envelope/", NULL},
-	{"SOAP-ENC", "http://www.w3.org/2003/05/soap-encoding", "http://schemas.xmlsoap.org/soap/encoding/", NULL},
+	{"SOAP-ENV", "http://schemas.xmlsoap.org/soap/envelope/", "http://schemas.xmlsoap.org/soap/envelope/", NULL},
+	{"SOAP-ENC", "http://schemas.xmlsoap.org/soap/encoding/", "http://schemas.xmlsoap.org/soap/encoding/", NULL},
 	{"xsi", "http://www.w3.org/2001/XMLSchema-instance", "http://www.w3.org/*/XMLSchema-instance", NULL},
 	{"xsd", "http://www.w3.org/2001/XMLSchema", "http://www.w3.org/*/XMLSchema", NULL},
 	{"ns5", "http://schemas.datacontract.org/2004/07/WsSoap", NULL, NULL},
@@ -140,6 +140,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetLink(const char *endpoint, const ch
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetLink.ns1__GetLink = ns1__GetLink;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetLink(soap, &soap_tmp___ns1__GetLink);
 	if (soap_begin_count(soap))
@@ -194,6 +195,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetNamesDictionary(const char *endpoin
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetNamesDictionary.ns1__GetNamesDictionary = ns1__GetNamesDictionary;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetNamesDictionary(soap, &soap_tmp___ns1__GetNamesDictionary);
 	if (soap_begin_count(soap))
@@ -248,6 +250,7 @@ int BasicHttpBinding_USCOREIServiceProxy::SendLinks(const char *endpoint, const 
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__SendLinks.ns1__SendLinks = ns1__SendLinks;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__SendLinks(soap, &soap_tmp___ns1__SendLinks);
 	if (soap_begin_count(soap))
@@ -302,6 +305,7 @@ int BasicHttpBinding_USCOREIServiceProxy::SendAmountDictionary(const char *endpo
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__SendAmountDictionary.ns1__SendAmountDictionary = ns1__SendAmountDictionary;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__SendAmountDictionary(soap, &soap_tmp___ns1__SendAmountDictionary);
 	if (soap_begin_count(soap))
@@ -356,6 +360,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetStats(const char *endpoint, const c
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetStats.ns1__GetStats = ns1__GetStats;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetStats(soap, &soap_tmp___ns1__GetStats);
 	if (soap_begin_count(soap))
@@ -410,6 +415,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetDailyStats(const char *endpoint, co
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetDailyStats.ns1__GetDailyStats = ns1__GetDailyStats;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetDailyStats(soap, &soap_tmp___ns1__GetDailyStats);
 	if (soap_begin_count(soap))
@@ -464,6 +470,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetStatsByName(const char *endpoint, c
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetStatsByName.ns1__GetStatsByName = ns1__GetStatsByName;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetStatsByName(soap, &soap_tmp___ns1__GetStatsByName);
 	if (soap_begin_count(soap))
@@ -518,6 +525,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetNames(const char *endpoint, const c
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetNames.ns1__GetNames = ns1__GetNames;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetNames(soap, &soap_tmp___ns1__GetNames);
 	if (soap_begin_count(soap))
@@ -572,6 +580,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetSites(const char *endpoint, const c
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetSites.ns1__GetSites = ns1__GetSites;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetSites(soap, &soap_tmp___ns1__GetSites);
 	if (soap_begin_count(soap))
@@ -626,6 +635,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetPages(const char *endpoint, const c
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetPages.ns1__GetPages = ns1__GetPages;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetPages(soap, &soap_tmp___ns1__GetPages);
 	if (soap_begin_count(soap))
@@ -680,6 +690,7 @@ int BasicHttpBinding_USCOREIServiceProxy::GetSearchPhrases(const char *endpoint,
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__GetSearchPhrases.ns1__GetSearchPhrases = ns1__GetSearchPhrases;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__GetSearchPhrases(soap, &soap_tmp___ns1__GetSearchPhrases);
 	if (soap_begin_count(soap))
@@ -734,6 +745,7 @@ int BasicHttpBinding_USCOREIServiceProxy::SetSite(const char *endpoint, const ch
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__SetSite.ns1__SetSite = ns1__SetSite;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__SetSite(soap, &soap_tmp___ns1__SetSite);
 	if (soap_begin_count(soap))
@@ -788,6 +800,7 @@ int BasicHttpBinding_USCOREIServiceProxy::SetName(const char *endpoint, const ch
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__SetName.ns1__SetName = ns1__SetName;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__SetName(soap, &soap_tmp___ns1__SetName);
 	if (soap_begin_count(soap))
@@ -842,6 +855,7 @@ int BasicHttpBinding_USCOREIServiceProxy::SetSearchPhrase(const char *endpoint, 
 	soap_begin(soap);
 	soap->encodingStyle = NULL;
 	soap_tmp___ns1__SetSearchPhrase.ns1__SetSearchPhrase = ns1__SetSearchPhrase;
+	soap_set_version(soap, 1); /* SOAP1.1 */
 	soap_serializeheader(soap);
 	soap_serialize___ns1__SetSearchPhrase(soap, &soap_tmp___ns1__SetSearchPhrase);
 	if (soap_begin_count(soap))
