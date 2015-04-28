@@ -28,6 +28,7 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
             qDebug() << encodedString;
             QTextCodec *codec = QTextCodec::codecForName("KOI8-U");
             QString name = codec->toUnicode(encodedString);
+
             statistics->setNameStat(
                 name,
                 response.GetStatsResult->KeyValueOfstringint[nameIndex].Value
