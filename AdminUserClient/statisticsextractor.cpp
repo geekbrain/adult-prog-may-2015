@@ -15,7 +15,24 @@ StatisticsExtractor::StatisticsExtractor(QObject *parent) :
 
 void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const
 {
-    fillTempGeneralStatistics(statistics);
+    _ns1__GetStats ns1__GetStats;
+    _ns1__GetStatsResponse response;
+    BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
+
+    if (server.GetStats(&ns1__GetStats, response) == SOAP_OK) {
+        size_t countOfNames = response.GetStatsResult->__sizeKeyValueOfstringint;
+        qDebug() << "Имен" << countOfNames;
+        for (size_t nameIndex = 0; nameIndex < countOfNames; ++nameIndex) {
+            //qDebug()  <<
+            statistics->setNameStat(
+                QString::fromLocal8Bit(response.GetStatsResult->KeyValueOfstringint[nameIndex].Key),
+                response.GetStatsResult->KeyValueOfstringint[nameIndex].Value
+            );
+        }
+    }
+    else {
+        // ... Проинформировать об ошибке.
+    }
 }
 
 void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) const
@@ -24,7 +41,7 @@ void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) con
     _ns1__GetSitesResponse response;
     BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
     if (server.GetSites(&ns1__GetSites, response) == SOAP_OK) {
-        //        qDebug() << "Функция GetSites вызвана успешно";
+        qDebug() << "Функция GetSites вызвана успешно";
 
         size_t countOfSites = response.GetSitesResult->__sizeKeyValueOfintstring;
         qDebug() << "Сайтов" << countOfSites;
@@ -37,7 +54,7 @@ void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) con
         }
     }
     else {
-        //        qDebug() << "Провал: функция GetNames не сработала.";
+        qDebug() << "Провал: функция GetNames не сработала.";
     }
 }
 
