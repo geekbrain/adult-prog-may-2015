@@ -80,6 +80,7 @@ void GeneralStatWidget::configTableView()
     table_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     //Set Header Label Texts Here
+    //    table_->setHorizontalHeaderLabels(QString("адрес;упоминаний;").split(";"));
     QStringList tableHeader;
     tableHeader<<"имя"<<"упоминаний";
     table_->setHorizontalHeaderLabels(tableHeader);
@@ -99,6 +100,8 @@ void GeneralStatWidget::setOkBtBehavior(const StatisticsExtractor& statsExtracto
         QSharedPointer<GeneralStatistics> genStats(new GeneralStatistics(url));
         statsExtractor.getGeneralStatistics(genStats);
         inputStatsToTable(genStats);
+        int sortColNumber = 1;
+        table_->sortByColumn(sortColNumber, Qt::DescendingOrder); // Сортируем столбец sortColNumber по убыванию.
     });
 }
 

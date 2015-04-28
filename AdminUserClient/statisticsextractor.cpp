@@ -6,6 +6,7 @@
 #include "gSoap/BasicHttpBinding_USCOREIService.nsmap"
 #include <QUrl>
 #include <QDebug>
+#include <QTextCodec>
 #include <string>
 
 StatisticsExtractor::StatisticsExtractor(QObject *parent) :
@@ -21,11 +22,14 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
 
     if (server.GetStats(&ns1__GetStats, response) == SOAP_OK) {
         size_t countOfNames = response.GetStatsResult->__sizeKeyValueOfstringint;
-        qDebug() << "Имен" << countOfNames;
         for (size_t nameIndex = 0; nameIndex < countOfNames; ++nameIndex) {
             //qDebug()  <<
+            QByteArray encodedString(response.GetStatsResult->KeyValueOfstringint[nameIndex].Key);
+            qDebug() << encodedString;
+            QTextCodec *codec = QTextCodec::codecForName("KOI8-U");
+            QString name = codec->toUnicode(encodedString);
             statistics->setNameStat(
-                QString::fromLocal8Bit(response.GetStatsResult->KeyValueOfstringint[nameIndex].Key),
+                name,
                 response.GetStatsResult->KeyValueOfstringint[nameIndex].Value
             );
         }
@@ -41,10 +45,9 @@ void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) con
     _ns1__GetSitesResponse response;
     BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
     if (server.GetSites(&ns1__GetSites, response) == SOAP_OK) {
-        qDebug() << "Функция GetSites вызвана успешно";
+//        qDebug() << "Функция GetSites вызвана успешно";
 
         size_t countOfSites = response.GetSitesResult->__sizeKeyValueOfintstring;
-        qDebug() << "Сайтов" << countOfSites;
         for (size_t siteIndex = 0; siteIndex < countOfSites; ++siteIndex) {
             std::string stdSiteName =
                     std::string(response.GetSitesResult->KeyValueOfintstring[siteIndex].Value);
@@ -54,7 +57,7 @@ void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) con
         }
     }
     else {
-        qDebug() << "Провал: функция GetNames не сработала.";
+//        qDebug() << "Провал: функция GetNames не сработала.";
     }
 }
 
@@ -71,9 +74,9 @@ void StatisticsExtractor::getNamesFromService(QSharedPointer<NameDao> &names) co
             names->addName(QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->
                                                   KeyValueOfintstring[nameIndex].Value));
 
-        //        qDebug() << QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[0].Value);
-        //        qDebug() << QString::fromStdString(std::string(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[1].Value));
-        //        qDebug() << QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[2].Value);
+        qDebug() << QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[0].Value);
+        qDebug() << QString::fromStdString(std::string(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[1].Value));
+        qDebug() << QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[2].Value);
     }
     else
         qDebug() << "Провал: функция GetNames не сработала.";

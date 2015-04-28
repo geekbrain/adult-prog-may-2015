@@ -76,6 +76,7 @@ void NameStatWidget::congigRightArea()
     table_->setShowGrid(true);
     table_->setStyleSheet("QTableView {selection-background-color: red;}");
     table_->setGeometry(QApplication::desktop()->screenGeometry());
+
     QVBoxLayout *rightLay = new QVBoxLayout(this);
     rightLay->addWidget(table_);
     rightGroup_->setLayout(rightLay);
