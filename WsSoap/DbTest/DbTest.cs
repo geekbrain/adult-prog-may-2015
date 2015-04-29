@@ -65,5 +65,49 @@ namespace DbTest
                 Assert.IsTrue(sitesCountBeforeAdd == sitesCountAfterAdd);
             }
         }
+
+        [TestMethod]
+        public void TestGetLink()
+        {
+            var link = _db.GetLink();
+            Assert.IsNotNull(link);
+            Assert.IsTrue(link == "http://www.lenta.ru");
+        }
+
+        [TestMethod]
+        public void TestGetLinkTwice()
+        {
+            var firstLink = _db.GetLink();
+            var secondLink = _db.GetLink();
+            Assert.IsNotNull(firstLink);
+            Assert.IsNotNull(secondLink);
+            Assert.AreNotEqual(firstLink, "");
+            Assert.AreNotEqual(secondLink, "");
+            Assert.AreNotEqual(firstLink, secondLink);
+        }
+
+        [TestMethod]
+        public void TestEnqueue()
+        {
+            _db.EnqueueSitePage(2113);
+        }
+
+        [TestMethod]
+        public void TestSelectOldSitePage()
+        {
+            int? sitePageId;
+            string url;
+            _db.SelectSitePageOutOfDate(out sitePageId, out url);
+            Assert.IsNotNull(sitePageId);
+        }
+
+        [TestMethod]
+        public void TestSelectQueueOneOldest()
+        {
+            int? sitePageId;
+            string url;
+            _db.SelectQueueOneOldest(DateTime.UtcNow, 1, out sitePageId, out url);
+            Assert.IsNull(sitePageId);
+        }
     }
 }

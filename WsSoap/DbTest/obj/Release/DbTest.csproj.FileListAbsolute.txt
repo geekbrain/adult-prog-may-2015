@@ -1,0 +1,9 @@
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Release\DbTest.dll
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Release\DbTest.pdb
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Release\WsSoap.dll
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Release\WsSoap.pdb
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\obj\Release\DbTest.csprojResolveAssemblyReference.cache
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\obj\Release\DbTest.dll
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\obj\Release\DbTest.pdb
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Release\NLog.dll
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Release\NLog.xml

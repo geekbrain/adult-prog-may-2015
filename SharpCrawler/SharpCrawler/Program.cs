@@ -1,9 +1,12 @@
 ﻿using System;
+using NLog;
 
 namespace SharpCrawler
 {
     class Program
     {
+        private static Logger _logger = LogManager.GetLogger("Logger");
+
         static void Main(string[] args)
         {
             var downloader = new Downloader();
@@ -15,22 +18,18 @@ namespace SharpCrawler
                 try
                 {
                     var url = wsAdapter.GetLink();
-                    Console.WriteLine("Current link: " + url);
+                    _logger.Info("Текущий url=" + url);
                     if (url == null)
                     {
-                        Console.WriteLine("Job is done!");
+                        _logger.Info("Нет url для обработки");
                         System.Threading.Thread.Sleep(1000);
                         continue;
                     }
 
                     var html = downloader.GetHtml(url);
                     var links = crawler.GetLinks(html, url);
-                    if ((links != null) && (links.Count > 0))
-                    {
-                        wsAdapter.SendLinks(links, url);
-                        //links.ForEach(Console.WriteLine);
-                        //Console.ReadLine();
-                    }
+                    _logger.Info("Возвращаем полученные ссылки по url=" + url);
+                    wsAdapter.SendLinks(links, url);
 
                     var namesDictionary = wsAdapter.GetNamesDictionary();
                     if ((namesDictionary == null) || (namesDictionary.Count == 0))
@@ -52,8 +51,7 @@ namespace SharpCrawler
                 }
                 catch (CrawlerException exception)
                 {
-                    Console.WriteLine(exception.Message);
-                    Console.ReadLine();
+                    _logger.Error(exception.Message);
                 }
             }
         }

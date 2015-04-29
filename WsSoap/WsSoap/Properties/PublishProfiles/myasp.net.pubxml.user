@@ -14,16 +14,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2012 14:19:26</publishTime>
     </File>
     <File Include="bin/MySql.Data.Entity.dll">
-      <publishTime>06/13/2013 01:24:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>04/29/2015 15:29:39</publishTime>
     </File>
     <File Include="bin/WsSoap.dll">
-      <publishTime>04/28/2015 16:51:37</publishTime>
+      <publishTime>04/29/2015 20:12:49</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/29/2015 15:29:40</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/28/2015 16:53:38</publishTime>
+      <publishTime>04/29/2015 20:17:11</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/28/2015 14:55:12</publishTime>
+      <publishTime>04/29/2015 20:15:39</publishTime>
     </File>
     <File Include="WsSoap.svc">
       <publishTime>04/26/2015 16:34:15</publishTime>
