@@ -3,7 +3,7 @@
 
 #include <QGroupBox>
 #include <memory>
-#include "namedao.h"
+#include "statisticsextractor.h"
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -18,7 +18,7 @@ class NameStatWidget : public QGroupBox
 {
     Q_OBJECT
 public:
-    explicit NameStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
+    explicit NameStatWidget(const StatisticsExtractor& statsExtractor, Qt::Orientation orientation, const QString &title,
                              QWidget *parent = 0);
 
 signals:
@@ -26,7 +26,6 @@ signals:
 public slots:
 
 private:
-    NameDao* names_; // Список лиц, по которым подсчитываем статистику.
     QGroupBox *leftGroup_;
     QGroupBox *rightGroup_;
     QComboBox *sitesCombo_;
@@ -43,7 +42,7 @@ private:
     const int MinPagesCount = 0; // Наименьшая глубина в страницах для сбора статистики.
     const int MaxPagesCount = 9; // Наибольшая глубина в страницах для сбора статистики.
 
-    void configLeftArea(const NameDao& names);
+    void configLeftArea(const StatisticsExtractor& statsExtractor);
     void congigRightArea();
     void setFinalFace(Qt::Orientation orientation);
 

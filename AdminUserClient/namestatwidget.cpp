@@ -1,11 +1,12 @@
 #include <QtWidgets>
 #include <QCalendarWidget>
+#include <QSharedPointer>
 #include "namestatwidget.h"
+#include "namedao.h"
 
-NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, const QString &title,
+NameStatWidget::NameStatWidget(const StatisticsExtractor& statsExtractor, Qt::Orientation orientation, const QString &title,
                                QWidget *parent)
         : QGroupBox(title, parent),
-          names_(names),
           leftGroup_(new QGroupBox("Параметры", this)),
           rightGroup_(new QGroupBox("Результаты", this)),
           sitesCombo_(new QComboBox(this)),
@@ -17,15 +18,18 @@ NameStatWidget::NameStatWidget(NameDao* names, Qt::Orientation orientation, cons
 //          table_(new QTableWidget()),
           rowsCount_(0)
 {
-    configLeftArea(*names);
+    configLeftArea(statsExtractor);
     congigRightArea();
     setFinalFace(orientation);
 }
 
-void NameStatWidget::configLeftArea(const NameDao& names)
+void NameStatWidget::configLeftArea(const StatisticsExtractor& statsExtractor)
 {
     sitesCombo_->addItem("lenta.ru");
-    auto namesList = names.namesList();
+
+    QSharedPointer<NameDao> names(new NameDao());
+    statsExtractor.getNamesFromService(names);
+    auto namesList = names->namesList();
     // Заполняю выпадающий список именами.
     foreach (auto var, namesList) {
         namesCombo_->addItem(var);
