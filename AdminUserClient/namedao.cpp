@@ -26,3 +26,7 @@ void NameDao::initTempData()
     names_.append("Навальный");
 }
 
+NamesDecoder::NamesDecoder()
+{
+
+}

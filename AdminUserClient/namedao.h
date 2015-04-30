@@ -23,4 +23,9 @@ private:
     void initTempData();
 };
 
+class NamesDecoder {
+public:
+    NamesDecoder();
+};
+
 #endif // NAMEDAO_H
