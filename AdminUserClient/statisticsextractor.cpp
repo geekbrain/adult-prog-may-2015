@@ -24,9 +24,8 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
         size_t countOfNames = response.GetStatsResult->__sizeKeyValueOfstringint;
         for (size_t nameIndex = 0; nameIndex < countOfNames; ++nameIndex) {
             QByteArray encodedString = response.GetStatsResult->KeyValueOfstringint[nameIndex].Key;
-            QTextCodec *codec = QTextCodec::codecForName("IBM 866");
-            QString name = codec->toUnicode(encodedString);
-//            QString name = QString::fromLocal8Bit(encodedString);
+            NamesDecoder namesDecoder;
+            QString name = namesDecoder.toString(encodedString);
 
             statistics->setNameStat(
                 name,
@@ -82,13 +81,13 @@ void StatisticsExtractor::getNamesFromService(QSharedPointer<NameDao> &names) co
         qDebug() << "Функция GetNames вызвана успешно";
 
         size_t countOfNames = ns1__GetNamesResponse.GetNamesResult->__sizeKeyValueOfintstring;
-        for (size_t nameIndex = 0; nameIndex < countOfNames; ++nameIndex)
-            names->addName(QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->
-                                                  KeyValueOfintstring[nameIndex].Value));
-
-        qDebug() << QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[0].Value);
-        qDebug() << QString::fromStdString(std::string(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[1].Value));
-        qDebug() << QString::fromLocal8Bit(ns1__GetNamesResponse.GetNamesResult->KeyValueOfintstring[2].Value);
+        for (size_t nameIndex = 0; nameIndex < countOfNames; ++nameIndex) {
+            QByteArray encodedString = ns1__GetNamesResponse.GetNamesResult->
+                                            KeyValueOfintstring[nameIndex].Value;
+            NamesDecoder namesDecoder;
+            QString name = namesDecoder.toString(encodedString);
+            names->addName(name);
+        }
     }
     else
         qDebug() << "Провал: функция GetNames не сработала.";

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QList>
+#include <QMap>
 
 class NameDao : public QObject
 {
@@ -26,6 +27,10 @@ private:
 class NamesDecoder {
 public:
     NamesDecoder();
+    QString toString(const QByteArray&) const;
+private:
+    QMap<int, QString> map_;
+    void createMap();
 };
 
 #endif // NAMEDAO_H
