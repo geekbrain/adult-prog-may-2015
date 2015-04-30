@@ -72,13 +72,14 @@ void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) con
     }
 }
 
-void StatisticsExtractor::getNamesFromService(QSharedPointer<NameDao> &names) const
+int StatisticsExtractor::getNamesFromService(QSharedPointer<NameDao> &names) const
 {
+    int operationStatus = -1;
     _ns1__GetNames ns1__GetNames;
     _ns1__GetNamesResponse ns1__GetNamesResponse;
     BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
     if (server.GetNames(&ns1__GetNames, ns1__GetNamesResponse) == SOAP_OK) {
-        qDebug() << "Функция GetNames вызвана успешно";
+        operationStatus = 0;
 
         size_t countOfNames = ns1__GetNamesResponse.GetNamesResult->__sizeKeyValueOfintstring;
         for (size_t nameIndex = 0; nameIndex < countOfNames; ++nameIndex) {
@@ -89,8 +90,7 @@ void StatisticsExtractor::getNamesFromService(QSharedPointer<NameDao> &names) co
             names->addName(name);
         }
     }
-    else
-        qDebug() << "Провал: функция GetNames не сработала.";
+    return operationStatus;
 }
 
 void StatisticsExtractor::fillTempGeneralStatistics(QSharedPointer<GeneralStatistics>& statistics) const

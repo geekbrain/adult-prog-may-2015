@@ -26,7 +26,11 @@ public:
      */
     void getWorkSites(QSharedPointer<WorkSites>&) const;
 
-    void getNamesFromService(QSharedPointer<NameDao>&) const;
+    /**
+     * @brief getNamesFromService
+     * @return 0 в случае успеха; -1: ошибка обращения к источнику данных.
+     */
+    int getNamesFromService(QSharedPointer<NameDao>&) const;
 
 signals:
 
