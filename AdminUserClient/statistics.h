@@ -38,4 +38,12 @@ private:
     QMap<QString,quint32> namesMentions_;
 };
 
+class StatsByName : public Statistics
+{
+public:
+    StatsByName(const QString& name);
+private:
+    QString name_; // По которому берем статистику.
+};
+
 #endif // STATISTICS_H

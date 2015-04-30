@@ -23,10 +23,8 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
     if (server.GetStats(&ns1__GetStats, response) == SOAP_OK) {
         size_t countOfNames = response.GetStatsResult->__sizeKeyValueOfstringint;
         for (size_t nameIndex = 0; nameIndex < countOfNames; ++nameIndex) {
-            //qDebug()  <<
-            QByteArray encodedString(response.GetStatsResult->KeyValueOfstringint[nameIndex].Key);
-            qDebug() << encodedString;
-            QTextCodec *codec = QTextCodec::codecForName("KOI8-U");
+            QByteArray encodedString = response.GetStatsResult->KeyValueOfstringint[nameIndex].Key;
+            QTextCodec *codec = QTextCodec::codecForName("IBM 866");
             QString name = codec->toUnicode(encodedString);
 
             statistics->setNameStat(
