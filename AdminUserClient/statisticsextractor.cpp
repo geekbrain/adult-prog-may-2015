@@ -38,7 +38,7 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
     }
 }
 
-int StatisticsExtractor::getNameStatistics(QSharedPointer<GeneralStatistics> &statistics) const
+int StatisticsExtractor::getNameStatistics(QSharedPointer<StatsByName> &statistics) const
 {
     _ns1__GetStatsByName ns1__GetStatsByName;
     _ns1__GetStatsByNameResponse response;

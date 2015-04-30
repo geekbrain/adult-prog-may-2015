@@ -7,6 +7,7 @@
 class GeneralStatistics;
 class NameDao;
 class WorkSites;
+class StatsByName;
 
 class StatisticsExtractor : public QObject
 {
@@ -19,7 +20,7 @@ public:
      * @brief getNameStatistics
      * @return 0 в случае успеха; -1: ошибка обращения к источнику данных.
      */
-    int getNameStatistics(QSharedPointer<GeneralStatistics>&) const;
+    int getNameStatistics(QSharedPointer<StatsByName>&) const;
 
     /**
      * @brief getWorkSites Сообщает о наборе сайтов, с которых собирается статистика.

@@ -124,7 +124,8 @@ void NameStatWidget::showResults(const StatisticsExtractor& statsExtractor)
 {
     // Если поле с числом страниц заполнено, обрабатываем введенные данные.
     if (!pageCountEdit_->text().isEmpty()) {
-        StatsByName statByName;
+        QSharedPointer<StatsByName> statByName( new StatsByName());
+        statsExtractor.getNameStatistics(statByName);
         fillTableTmpData();
     } else { // Если поле с числом страниц пусто, предупреждаем об этом и выходим.
         QMessageBox::warning(this, "Недостаточно данных", "Введите число страниц");
