@@ -1,11 +1,13 @@
 import java.io.IOException;
 
+/**
+ * Created by Андрей on 14.04.2015.
+ */
 public class Main {
     public static void main(String[] args) {
         try {
-            Downloader downloader = new Downloader();
-            LinkChecker linkChecker = new LinkChecker(downloader.getDocument(), downloader.getSite());
-            linkChecker.getListOfGoodLinks();
+            Spectator spectator = new Spectator();
+            System.out.println(spectator.getTextOfSite());
         } catch (IOException e) {
             e.printStackTrace();
         }

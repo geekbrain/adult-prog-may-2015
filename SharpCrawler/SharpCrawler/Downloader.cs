@@ -41,14 +41,7 @@ namespace SharpCrawler
 
         public string GetHtml(string url)
         {
-            try
-            {
-                return GetHtmlAsync(url).Result;
-            }
-            catch (Exception exception)
-            {
-                throw new CrawlerException("Sharp.Crawler.Downloader: " + exception.Message);
-            }
+            return GetHtmlAsync(url).Result;
         }
 
         public void Dispose()
