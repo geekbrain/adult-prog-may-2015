@@ -49,7 +49,7 @@ private:
 
 private slots:
     void fillTableTmpData();
-    void showResults();
+    void showResults(const StatisticsExtractor& statsExtractor);
 };
 
 #endif // NAMESTATWIDGET_H

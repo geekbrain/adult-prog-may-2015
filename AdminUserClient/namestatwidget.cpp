@@ -53,7 +53,9 @@ void NameStatWidget::configLeftArea(const StatisticsExtractor& statsExtractor)
     leftLayout->addStretch();
     leftGroup_->setLayout(leftLayout);
 
-    connect(okBt_, SIGNAL(clicked()), this, SLOT(showResults()));
+    connect(okBt_, &QPushButton::clicked, this, [&](){
+        showResults(statsExtractor);
+    });
 }
 
 void NameStatWidget::congigRightArea()
@@ -117,7 +119,7 @@ void NameStatWidget::fillTableTmpData()
     table_->sortByColumn(sortColNumber, Qt::DescendingOrder); // Сортируем столбец sortColNumber по убыванию.
 }
 
-void NameStatWidget::showResults()
+void NameStatWidget::showResults(const StatisticsExtractor& statsExtractor)
 {
     // Если поле с числом страниц заполнено, обрабатываем введенные данные.
     if (!pageCountEdit_->text().isEmpty())

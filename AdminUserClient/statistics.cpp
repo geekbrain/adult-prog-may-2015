@@ -33,3 +33,9 @@ QMap<QString, quint32> GeneralStatistics::getNamesMentions() const
 {
     return namesMentions_;
 }
+
+
+bool StatsByName::status() const
+{
+    return status_;
+}

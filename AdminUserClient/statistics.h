@@ -3,6 +3,7 @@
 
 #include <QMap>
 #include <QUrl>
+#include <QDate>
 
 class NameDao;
 
@@ -42,8 +43,29 @@ class StatsByName : public Statistics
 {
 public:
     StatsByName(const QString& name);
+
+    /**
+     * @brief The ParametersSet struct
+     * Набор значений, по которым, согласно документации, выбирается статистика.
+     */
+    struct ParametersSet
+    {
+        QUrl site; // С этого сайта соберется статистика.
+        QString person; // Конкретный человек.
+        size_t countOfPage;
+        QDate firstDay; // Начало периода.
+        QDate lastDay; // Конец периода.
+    };
+
+    /**
+     * @brief status
+     * @return истину, если статистика была собрана;
+     *          ложь, если по внутреннему набору параметров статистика еще не извлекалась.
+     */
+    bool status() const;
 private:
     QString name_; // По которому берем статистику.
+    bool status_;
 };
 
 #endif // STATISTICS_H
