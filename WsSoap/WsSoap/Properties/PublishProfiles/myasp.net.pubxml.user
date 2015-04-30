@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAIbK4tX+ltk6EvmpAyJ0LcAAAAAACAAAAAAAQZgAAAAEAACAAAADbY0v3fvCmYrZVzvB6YyG8hTsd04qYVt0/4EhDfj3CSwAAAAAOgAAAAAIAACAAAAADyZKAhgzZcOFU+42YANzT48UlfY6wvaNrv/HipIJLrCAAAACyWpm3CYG+3b2IZoxrRjdP5Tq1/5Zhxc/JUK36XVN/0EAAAACoqqSdDrCpUQs7CbklK8G/3jaXmKfVuDLyXJwqxz9QNlBljj7EsGrc7rC79l+z71qz3DXijhwO0b5gFSQFi8Of</EncryptedPassword>
+    <_PublishTargetUrl>ftp://ftp.myasp.net/site1</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>10/17/2012 14:19:26</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>04/29/2015 15:29:39</publishTime>
+    </File>
+    <File Include="bin/WsSoap.dll">
+      <publishTime>04/29/2015 20:12:49</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/29/2015 15:29:40</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>04/29/2015 20:17:11</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/29/2015 20:15:39</publishTime>
+    </File>
+    <File Include="WsSoap.svc">
+      <publishTime>04/26/2015 16:34:15</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

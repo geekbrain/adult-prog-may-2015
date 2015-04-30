@@ -1,0 +1,7 @@
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Debug\DbTest.dll
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Debug\DbTest.pdb
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Debug\WsSoap.dll
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\bin\Debug\WsSoap.pdb
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\obj\Debug\DbTest.csprojResolveAssemblyReference.cache
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\obj\Debug\DbTest.dll
+D:\Code\adult-prog-may-2015\WsSoap\DbTest\obj\Debug\DbTest.pdb
