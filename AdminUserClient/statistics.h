@@ -42,7 +42,7 @@ private:
 class StatsByName : public Statistics
 {
 public:
-    StatsByName(const QString& name);
+    StatsByName();
 
     /**
      * @brief The ParametersSet struct
@@ -63,9 +63,17 @@ public:
      *          ложь, если по внутреннему набору параметров статистика еще не извлекалась.
      */
     bool status() const;
+
+    void setSite(const QUrl&);
+    void setPerson(const QString&);
+    void setCountOfPage(size_t count);
+    void setDate(const QDate& first, const QDate& last);
+
 private:
-    QString name_; // По которому берем статистику.
     bool status_;
+    ParametersSet parameters_;
+
+    void resetStatus();
 };
 
 #endif // STATISTICS_H

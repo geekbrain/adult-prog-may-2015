@@ -35,7 +35,38 @@ QMap<QString, quint32> GeneralStatistics::getNamesMentions() const
 }
 
 
+StatsByName::StatsByName()
+    : status_(false)
+{
+
+}
+
 bool StatsByName::status() const
 {
     return status_;
+}
+
+void StatsByName::setSite(const QUrl &)
+{
+    resetStatus();
+}
+
+void StatsByName::setPerson(const QString &)
+{
+    resetStatus();
+}
+
+void StatsByName::setCountOfPage(size_t count)
+{
+    resetStatus();
+}
+
+void StatsByName::setDate(const QDate &first, const QDate &last)
+{
+    resetStatus();
+}
+
+void StatsByName::resetStatus()
+{
+    status_ = false;
 }

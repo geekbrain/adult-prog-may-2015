@@ -5,10 +5,13 @@
 #include "statistics.h"
 #include "worksites.h"
 
-GeneralStatWidget::GeneralStatWidget(const StatisticsExtractor& statsExtractor, Qt::Orientation orientation, const QString &title,
-                                     QWidget *parent)
-              : QGroupBox(title, parent),
-                table_(new QTableWidget(this))
+GeneralStatWidget::GeneralStatWidget(const StatisticsExtractor& statsExtractor
+                                        , Qt::Orientation orientation
+                                        , const QString &title
+                                        , QWidget *parent
+                                     )
+              : QGroupBox(title, parent)
+              , table_(new QTableWidget(this))
 {
     createControlsArea(statsExtractor);
     placementResultsArea();
