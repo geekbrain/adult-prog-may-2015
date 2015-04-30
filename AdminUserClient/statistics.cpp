@@ -46,23 +46,28 @@ bool StatsByName::status() const
     return status_;
 }
 
-void StatsByName::setSite(const QUrl &)
+void StatsByName::setSite(const QUrl &u)
 {
+    parameters_.site = u;
     resetStatus();
 }
 
-void StatsByName::setPerson(const QString &)
+void StatsByName::setPerson(const QString &name)
 {
+    parameters_.person = name;
     resetStatus();
 }
 
 void StatsByName::setCountOfPage(size_t count)
 {
+    parameters_.countOfPage = count;
     resetStatus();
 }
 
 void StatsByName::setDate(const QDate &first, const QDate &last)
 {
+    parameters_.firstDay = first;
+    parameters_.lastDay = last;
     resetStatus();
 }
 

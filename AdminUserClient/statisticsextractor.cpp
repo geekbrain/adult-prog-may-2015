@@ -39,6 +39,18 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
     }
 }
 
+int StatisticsExtractor::getNameStatistics(QSharedPointer<GeneralStatistics> &statistics) const
+{
+    _ns1__GetStatsByName ns1__GetStatsByName;
+    _ns1__GetStatsByNameResponse response;
+    BasicHttpBinding_USCOREIServiceProxy server(SoapServiceAddr.data());
+    int status = -1;
+    if (server.GetStatsByName(&ns1__GetStatsByName, response) == SOAP_OK) {
+        status = 0;
+    }
+    return status;
+}
+
 void StatisticsExtractor::getWorkSites(QSharedPointer<WorkSites> &workSites) const
 {
     _ns1__GetSites ns1__GetSites;

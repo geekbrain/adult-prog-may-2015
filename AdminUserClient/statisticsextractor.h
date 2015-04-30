@@ -16,6 +16,12 @@ public:
     void getGeneralStatistics(QSharedPointer<GeneralStatistics>&) const;
 
     /**
+     * @brief getNameStatistics
+     * @return 0 в случае успеха; -1: ошибка обращения к источнику данных.
+     */
+    int getNameStatistics(QSharedPointer<GeneralStatistics>&) const;
+
+    /**
      * @brief getWorkSites Сообщает о наборе сайтов, с которых собирается статистика.
      */
     void getWorkSites(QSharedPointer<WorkSites>&) const;

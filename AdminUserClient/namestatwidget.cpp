@@ -3,6 +3,7 @@
 #include <QSharedPointer>
 #include "namestatwidget.h"
 #include "namedao.h"
+#include "statistics.h"
 
 NameStatWidget::NameStatWidget(const StatisticsExtractor& statsExtractor, Qt::Orientation orientation, const QString &title,
                                QWidget *parent)
@@ -122,10 +123,12 @@ void NameStatWidget::fillTableTmpData()
 void NameStatWidget::showResults(const StatisticsExtractor& statsExtractor)
 {
     // Если поле с числом страниц заполнено, обрабатываем введенные данные.
-    if (!pageCountEdit_->text().isEmpty())
+    if (!pageCountEdit_->text().isEmpty()) {
+        StatsByName statByName;
         fillTableTmpData();
-    else // Если поле с числом страниц пусто, предупреждаем об этом и выходим.
+    } else { // Если поле с числом страниц пусто, предупреждаем об этом и выходим.
         QMessageBox::warning(this, "Недостаточно данных", "Введите число страниц");
+    }
 }
 
 
