@@ -45,6 +45,7 @@ private:
     void configLeftArea(const StatisticsExtractor& statsExtractor);
     void congigRightArea();
     void setFinalFace(Qt::Orientation orientation);
+    void fillNamesCombo(const StatisticsExtractor& statsExtractor);
 
 private slots:
     void fillTableTmpData();

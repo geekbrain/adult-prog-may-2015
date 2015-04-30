@@ -26,14 +26,7 @@ NameStatWidget::NameStatWidget(const StatisticsExtractor& statsExtractor, Qt::Or
 void NameStatWidget::configLeftArea(const StatisticsExtractor& statsExtractor)
 {
     sitesCombo_->addItem("lenta.ru");
-
-    QSharedPointer<NameDao> names(new NameDao());
-    statsExtractor.getNamesFromService(names);
-    auto namesList = names->namesList();
-    // Заполняю выпадающий список именами.
-    foreach (auto var, namesList) {
-        namesCombo_->addItem(var);
-    }
+    fillNamesCombo(statsExtractor);
 
     QBoxLayout* leftLayout = new QBoxLayout(QBoxLayout::TopToBottom);
     leftLayout->addWidget(sitesCombo_);
@@ -98,6 +91,17 @@ void NameStatWidget::setFinalFace(Qt::Orientation orientation)
     slidersLayout->addWidget(leftGroup_, 1);
     slidersLayout->addWidget(rightGroup_, 3);
     setLayout(slidersLayout);
+}
+
+void NameStatWidget::fillNamesCombo(const StatisticsExtractor &statsExtractor)
+{
+    QSharedPointer<NameDao> names(new NameDao());
+    statsExtractor.getNamesFromService(names);
+    auto namesList = names->namesList();
+    // Заполняю выпадающий список именами.
+    foreach (auto var, namesList) {
+        namesCombo_->addItem(var);
+    }
 }
 
 void NameStatWidget::fillTableTmpData()

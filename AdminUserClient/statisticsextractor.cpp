@@ -26,6 +26,7 @@ void StatisticsExtractor::getGeneralStatistics(QSharedPointer<GeneralStatistics>
             QByteArray encodedString = response.GetStatsResult->KeyValueOfstringint[nameIndex].Key;
             QTextCodec *codec = QTextCodec::codecForName("IBM 866");
             QString name = codec->toUnicode(encodedString);
+//            QString name = QString::fromLocal8Bit(encodedString);
 
             statistics->setNameStat(
                 name,
