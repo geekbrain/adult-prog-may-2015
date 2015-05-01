@@ -9,10 +9,89 @@
 //------------------------------------------------------------------------------
 
 namespace SharpCrawler.WsSoap {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Page", Namespace="http://schemas.datacontract.org/2004/07/WsSoap")]
+    [System.SerializableAttribute()]
+    public partial class Page : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SiteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SitePageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Site {
+            get {
+                return this.SiteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SiteField, value) != true)) {
+                    this.SiteField = value;
+                    this.RaisePropertyChanged("Site");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SitePage {
+            get {
+                return this.SitePageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SitePageField, value) != true)) {
+                    this.SitePageField = value;
+                    this.RaisePropertyChanged("SitePage");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WsSoap.IService", SessionMode=System.ServiceModel.SessionMode.Required)]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WsSoap.IService")]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetLink", ReplyAction="http://tempuri.org/IService/GetLinkResponse")]
@@ -28,16 +107,76 @@ namespace SharpCrawler.WsSoap {
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>> GetNamesDictionaryAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendLinks", ReplyAction="http://tempuri.org/IService/SendLinksResponse")]
-        void SendLinks(System.Collections.Generic.List<string> links);
+        void SendLinks(System.Collections.Generic.List<string> links, string url);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendLinks", ReplyAction="http://tempuri.org/IService/SendLinksResponse")]
-        System.Threading.Tasks.Task SendLinksAsync(System.Collections.Generic.List<string> links);
+        System.Threading.Tasks.Task SendLinksAsync(System.Collections.Generic.List<string> links, string url);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendAmountDictionary", ReplyAction="http://tempuri.org/IService/SendAmountDictionaryResponse")]
-        void SendAmountDictionary(System.Collections.Generic.Dictionary<string, int> namesAmountDictionary);
+        void SendAmountDictionary(System.Collections.Generic.Dictionary<string, int> namesAmountDictionary, string url);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendAmountDictionary", ReplyAction="http://tempuri.org/IService/SendAmountDictionaryResponse")]
-        System.Threading.Tasks.Task SendAmountDictionaryAsync(System.Collections.Generic.Dictionary<string, int> namesAmountDictionary);
+        System.Threading.Tasks.Task SendAmountDictionaryAsync(System.Collections.Generic.Dictionary<string, int> namesAmountDictionary, string url);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetStats", ReplyAction="http://tempuri.org/IService/GetStatsResponse")]
+        System.Collections.Generic.Dictionary<string, int> GetStats();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetStats", ReplyAction="http://tempuri.org/IService/GetStatsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetStatsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDailyStats", ReplyAction="http://tempuri.org/IService/GetDailyStatsResponse")]
+        System.Collections.Generic.Dictionary<System.DateTime, System.Collections.Generic.Dictionary<string, int>> GetDailyStats();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDailyStats", ReplyAction="http://tempuri.org/IService/GetDailyStatsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<System.DateTime, System.Collections.Generic.Dictionary<string, int>>> GetDailyStatsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetStatsByName", ReplyAction="http://tempuri.org/IService/GetStatsByNameResponse")]
+        System.Collections.Generic.Dictionary<System.DateTime, int> GetStatsByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetStatsByName", ReplyAction="http://tempuri.org/IService/GetStatsByNameResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<System.DateTime, int>> GetStatsByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetNames", ReplyAction="http://tempuri.org/IService/GetNamesResponse")]
+        System.Collections.Generic.Dictionary<int, string> GetNames();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetNames", ReplyAction="http://tempuri.org/IService/GetNamesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> GetNamesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSites", ReplyAction="http://tempuri.org/IService/GetSitesResponse")]
+        System.Collections.Generic.Dictionary<int, string> GetSites();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSites", ReplyAction="http://tempuri.org/IService/GetSitesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> GetSitesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPages", ReplyAction="http://tempuri.org/IService/GetPagesResponse")]
+        System.Collections.Generic.List<SharpCrawler.WsSoap.Page> GetPages();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPages", ReplyAction="http://tempuri.org/IService/GetPagesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<SharpCrawler.WsSoap.Page>> GetPagesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSearchPhrases", ReplyAction="http://tempuri.org/IService/GetSearchPhrasesResponse")]
+        System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, string>> GetSearchPhrases();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSearchPhrases", ReplyAction="http://tempuri.org/IService/GetSearchPhrasesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, string>>> GetSearchPhrasesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SetSite", ReplyAction="http://tempuri.org/IService/SetSiteResponse")]
+        void SetSite(string url);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SetSite", ReplyAction="http://tempuri.org/IService/SetSiteResponse")]
+        System.Threading.Tasks.Task SetSiteAsync(string url);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SetName", ReplyAction="http://tempuri.org/IService/SetNameResponse")]
+        void SetName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SetName", ReplyAction="http://tempuri.org/IService/SetNameResponse")]
+        System.Threading.Tasks.Task SetNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SetSearchPhrase", ReplyAction="http://tempuri.org/IService/SetSearchPhraseResponse")]
+        void SetSearchPhrase(string name, string searchPhrase);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SetSearchPhrase", ReplyAction="http://tempuri.org/IService/SetSearchPhraseResponse")]
+        System.Threading.Tasks.Task SetSearchPhraseAsync(string name, string searchPhrase);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,20 +222,100 @@ namespace SharpCrawler.WsSoap {
             return base.Channel.GetNamesDictionaryAsync();
         }
         
-        public void SendLinks(System.Collections.Generic.List<string> links) {
-            base.Channel.SendLinks(links);
+        public void SendLinks(System.Collections.Generic.List<string> links, string url) {
+            base.Channel.SendLinks(links, url);
         }
         
-        public System.Threading.Tasks.Task SendLinksAsync(System.Collections.Generic.List<string> links) {
-            return base.Channel.SendLinksAsync(links);
+        public System.Threading.Tasks.Task SendLinksAsync(System.Collections.Generic.List<string> links, string url) {
+            return base.Channel.SendLinksAsync(links, url);
         }
         
-        public void SendAmountDictionary(System.Collections.Generic.Dictionary<string, int> namesAmountDictionary) {
-            base.Channel.SendAmountDictionary(namesAmountDictionary);
+        public void SendAmountDictionary(System.Collections.Generic.Dictionary<string, int> namesAmountDictionary, string url) {
+            base.Channel.SendAmountDictionary(namesAmountDictionary, url);
         }
         
-        public System.Threading.Tasks.Task SendAmountDictionaryAsync(System.Collections.Generic.Dictionary<string, int> namesAmountDictionary) {
-            return base.Channel.SendAmountDictionaryAsync(namesAmountDictionary);
+        public System.Threading.Tasks.Task SendAmountDictionaryAsync(System.Collections.Generic.Dictionary<string, int> namesAmountDictionary, string url) {
+            return base.Channel.SendAmountDictionaryAsync(namesAmountDictionary, url);
+        }
+        
+        public System.Collections.Generic.Dictionary<string, int> GetStats() {
+            return base.Channel.GetStats();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetStatsAsync() {
+            return base.Channel.GetStatsAsync();
+        }
+        
+        public System.Collections.Generic.Dictionary<System.DateTime, System.Collections.Generic.Dictionary<string, int>> GetDailyStats() {
+            return base.Channel.GetDailyStats();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<System.DateTime, System.Collections.Generic.Dictionary<string, int>>> GetDailyStatsAsync() {
+            return base.Channel.GetDailyStatsAsync();
+        }
+        
+        public System.Collections.Generic.Dictionary<System.DateTime, int> GetStatsByName(string name) {
+            return base.Channel.GetStatsByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<System.DateTime, int>> GetStatsByNameAsync(string name) {
+            return base.Channel.GetStatsByNameAsync(name);
+        }
+        
+        public System.Collections.Generic.Dictionary<int, string> GetNames() {
+            return base.Channel.GetNames();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> GetNamesAsync() {
+            return base.Channel.GetNamesAsync();
+        }
+        
+        public System.Collections.Generic.Dictionary<int, string> GetSites() {
+            return base.Channel.GetSites();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> GetSitesAsync() {
+            return base.Channel.GetSitesAsync();
+        }
+        
+        public System.Collections.Generic.List<SharpCrawler.WsSoap.Page> GetPages() {
+            return base.Channel.GetPages();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<SharpCrawler.WsSoap.Page>> GetPagesAsync() {
+            return base.Channel.GetPagesAsync();
+        }
+        
+        public System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, string>> GetSearchPhrases() {
+            return base.Channel.GetSearchPhrases();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, string>>> GetSearchPhrasesAsync() {
+            return base.Channel.GetSearchPhrasesAsync();
+        }
+        
+        public void SetSite(string url) {
+            base.Channel.SetSite(url);
+        }
+        
+        public System.Threading.Tasks.Task SetSiteAsync(string url) {
+            return base.Channel.SetSiteAsync(url);
+        }
+        
+        public void SetName(string name) {
+            base.Channel.SetName(name);
+        }
+        
+        public System.Threading.Tasks.Task SetNameAsync(string name) {
+            return base.Channel.SetNameAsync(name);
+        }
+        
+        public void SetSearchPhrase(string name, string searchPhrase) {
+            base.Channel.SetSearchPhrase(name, searchPhrase);
+        }
+        
+        public System.Threading.Tasks.Task SetSearchPhraseAsync(string name, string searchPhrase) {
+            return base.Channel.SetSearchPhraseAsync(name, searchPhrase);
         }
     }
 }

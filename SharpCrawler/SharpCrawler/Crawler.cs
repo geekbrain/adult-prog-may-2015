@@ -12,20 +12,6 @@ namespace SharpCrawler
 
         public List<string> GetLinks(string html, string url)
         {
-            Uri uri;
-            try
-            {
-                uri = new Uri(url);
-            }
-            catch (Exception exception)
-            {
-                throw new CrawlerException(
-                    "SharpCrawler.Crawler.GetLinks: Bad URL! " +
-                    exception.Message);
-            }
-            var host = uri.Host.Replace("www.","");
-            var scheme = uri.Scheme;
-
             var document = new HtmlDocument();
 
             document.LoadHtml(html);
@@ -40,21 +26,73 @@ namespace SharpCrawler
 
             var validLinks = new List<string>();
 
-            var regexAbsoluteLink = new Regex("^http://[[a-z]*[.]*]*" + host + "");
+            validLinks.AddRange(GetAbsoluteLinks(links, url));
+            validLinks.AddRange(ConvertLinksRelativeToAbsolute(GetRelativeLinks(links), url));
+
+            return validLinks;
+        }
+
+        private IEnumerable<string> GetAbsoluteLinks(IEnumerable<string> links, string host)
+        {
+            var regexAbsoluteLink = new Regex("^http://[[a-z]*[.]*]*" + host);
             var absoluteLinks = links
                 .Where(link => regexAbsoluteLink.IsMatch(link))
                 .Distinct();
-            validLinks.AddRange(absoluteLinks);
 
+            return absoluteLinks;
+        }
+
+        private static IEnumerable<string> GetRelativeLinks(IEnumerable<string> links)
+        {
             var regexRelativeLink = new Regex("^/");
             var relativeLinks = links
                 .Where(link => regexRelativeLink.IsMatch(link))
                 .Distinct();
-            validLinks.AddRange(relativeLinks.Select(relativeLink =>
-                scheme + "://" + host + relativeLink));
 
-            return validLinks;
+            return relativeLinks;
         }
+
+        private static Uri GetUriFromString(string url)
+        {
+            Uri uri;
+            try
+            {
+                uri = new Uri(url);
+            }
+            catch (Exception exception)
+            {
+                throw new CrawlerException(
+                    "SharpCrawler.Crawler.GetLinks: Bad URL! " +
+                    exception.Message);
+            }
+
+            return uri;
+        }
+
+        private static string GetHostFromUrl(string url)
+        {
+            var host = GetUriFromString(url).Host.Replace("www.", "");
+
+            return host;
+        }
+
+        private static string GetSchemeFromUrl(string url)
+        {
+            var scheme = GetUriFromString(url).Scheme;
+
+            return scheme;
+        }
+
+        private static IEnumerable<string> ConvertLinksRelativeToAbsolute(
+            IEnumerable<string> links, string url)
+        {
+            var host = GetHostFromUrl(url);
+            var scheme = GetSchemeFromUrl(url);
+
+            return links.Select(relativeLink =>
+                scheme + "://" + host + relativeLink);
+        }
+
 
         public Dictionary<string, int> GetNamesAmountDictionary(string html,
             Dictionary<string, List<string>> namesAliases)
@@ -69,8 +107,8 @@ namespace SharpCrawler
 
             foreach (var nameAliases in namesAliases)
             {
-                var amountNames =
-                    new Regex(nameAliases.Key, RegexOptions.IgnoreCase).Matches(html).Count;
+                var amountNames = new Regex(nameAliases.Key, RegexOptions.IgnoreCase)
+                    .Matches(html).Count;
                 var amountAliases = 0;
                 if (nameAliases.Value != null)
                 {
