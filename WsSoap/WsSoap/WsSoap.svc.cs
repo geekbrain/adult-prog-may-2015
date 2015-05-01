@@ -1,48 +1,91 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace WsSoap
 {
-    [ServiceBehavior(
-        ConcurrencyMode = ConcurrencyMode.Single,
-        InstanceContextMode = InstanceContextMode.PerSession
-        )]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single,
+        InstanceContextMode = InstanceContextMode.Single)]
     public class Service : IService
     {
-        private int _counter = 0;
-        private List<string> _links = new List<string>();
-        private Dictionary<string, int> _namesAmountDictionary =
-            new Dictionary<string, int>();
+        private readonly Db _db;
+
+        private Service()
+        {
+            var connectionString = System.Web.Configuration.WebConfigurationManager
+                .ConnectionStrings["MySqlConnection"].ConnectionString;
+
+            _db = new Db(connectionString);
+        }
 
         public string GetLink()
         {
-            if (_counter > 0)
-            {
-                return null;
-            }
-            _counter++;
-            return "http://lenta.ru/lib/14160711/";
+            return _db.GetLink();
         }
 
         public Dictionary<string, List<string>> GetNamesDictionary()
         {
-            var aliasesDictionary = new Dictionary<string, List<string>>
-            {
-                {"Путин", new List<string> {"Владимир Владимирович", "Президент"}},
-                {"Медведев", null}
-            };
-
-            return aliasesDictionary;
+            return _db.GetNames();
         }
 
-        public void SendLinks(List<string> links)
+        public void SendLinks(List<string> links, string url)
         {
-            _links = links;
+            _db.InsertLinks(links, url);
         }
 
-        public void SendAmountDictionary(Dictionary<string, int> namesAmountDictionary)
+        public void SendAmountDictionary(Dictionary<string, int> namesAmountDictionary, string url)
         {
-            _namesAmountDictionary = namesAmountDictionary;
+            _db.InsertAmount(namesAmountDictionary, url);
+        }
+
+        public Dictionary<string, int> GetStats()
+        {
+            return _db.GetStats();
+        }
+
+        public Dictionary<DateTime, Dictionary<string, int>> GetDailyStats()
+        {
+            return _db.GetDailyStats();
+        }
+
+        public Dictionary<DateTime, int> GetStatsByName(string name)
+        {
+            return _db.GetStatsByName(name);
+        }
+
+        public Dictionary<int, string> GetNames()
+        {
+            return _db.GetNamesWithId();
+        }
+
+        public Dictionary<int, string> GetSites()
+        {
+            return _db.GetSites();
+        }
+
+        public List<Page> GetPages()
+        {
+            return _db.GetPages();
+        }
+
+        public Dictionary<string, Dictionary<int, string>> GetSearchPhrases()
+        {
+            return _db.GetSearchPhrases();
+        }
+
+        public void SetSite(string url)
+        {
+            _db.SetSite(url);
+        }
+
+        public void SetName(string name)
+        {
+            _db.SetName(name);
+        }
+
+        public void SetSearchPhrase(string name, string searchPhrase)
+        {
+            _db.SetSearchPhrase(name, searchPhrase);
         }
     }
 }
