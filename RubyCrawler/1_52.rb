@@ -8,18 +8,19 @@ class News_text
 	def quantity_of_occurences(word)
 		@contents.scan(word).length
 	end
-	def compare(list_of_search_items)
+	def compare(hash_of_search_items)
 		@comparison = Hash.new
-		list_of_search_items.each do |search_item|
-			@comparison[search_item] = self.quantity_of_occurences(search_item)
+		hash_of_search_items.each do |search_item, synonyms|
+			@comparison[search_item] = 0
+			synonyms.each do |synonym|
+				@comparison[search_item] += self.quantity_of_occurences(synonym)
+			end
 		end
 		@comparison
 	end
 end
 
-# ## example:
-# search_item1 = /Медведев.*?/
-# search_item2 = /Навальн.*/
-# search_item3 = /(Путин.*?)|((п|П)резидент.{0,2}\s(РФ|России|Российской\sФедерации))/
+# #example:
+# evil_guys = {'Медведев' => ['Медведев'], 'Навальный' => ['Навальный', 'Навальному'], 'Путин' => ['Путин', 'президент РФ']}
 # a = News_text.new("блабла Медведев Путиным погоняет Навальный Навальному не товарищ, а Президент Российской Федерации")
-# p a.compare([search_item1, search_item2, search_item3])
+# p a.compare(evil_guys)
