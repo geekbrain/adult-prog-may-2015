@@ -120,12 +120,28 @@ void NameStatWidget::fillTableTmpData()
     table_->sortByColumn(sortColNumber, Qt::DescendingOrder); // Сортируем столбец sortColNumber по убыванию.
 }
 
+void NameStatWidget::fillTableData(QSharedPointer<StatsByName> &statistics)
+{
+    rowsCount_ = statistics->countOfPage();
+    table_->setRowCount(rowsCount_);
+
+    for (size_t row = 0; row < rowsCount_; ++row)
+        for (size_t col = 0; col < ColCount; ++col) {
+            table_->setItem(row, col, new QTableWidgetItem(""));
+            table_->item(row, col)->setData(Qt::DisplayRole, col * row);
+        }
+
+    int sortColNumber = 1;
+    table_->sortByColumn(sortColNumber, Qt::DescendingOrder); // Сортируем столбец sortColNumber по убыванию.
+}
+
 void NameStatWidget::showResults(const StatisticsExtractor& statsExtractor)
 {
     // Если поле с числом страниц заполнено, обрабатываем введенные данные.
     if (!pageCountEdit_->text().isEmpty()) {
         QSharedPointer<StatsByName> statByName( new StatsByName());
         statsExtractor.getNameStatistics(statByName);
+        fillTableData(statByName);
         fillTableTmpData();
     } else { // Если поле с числом страниц пусто, предупреждаем об этом и выходим.
         QMessageBox::warning(this, "Недостаточно данных", "Введите число страниц");

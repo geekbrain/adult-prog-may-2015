@@ -64,6 +64,11 @@ void StatsByName::setCountOfPage(size_t count)
     resetStatus();
 }
 
+size_t StatsByName::countOfPage()
+{
+    return parameters_.countOfPage;
+}
+
 void StatsByName::setDate(const QDate &first, const QDate &last)
 {
     parameters_.firstDay = first;

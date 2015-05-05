@@ -49,6 +49,7 @@ private:
 
 private slots:
     void fillTableTmpData();
+    void fillTableData(QSharedPointer<StatsByName> &statistics);
     void showResults(const StatisticsExtractor& statsExtractor);
 };
 

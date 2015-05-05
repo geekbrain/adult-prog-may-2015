@@ -67,6 +67,7 @@ public:
     void setSite(const QUrl&);
     void setPerson(const QString&);
     void setCountOfPage(size_t count);
+    size_t countOfPage();
     void setDate(const QDate& first, const QDate& last);
 
 private:
