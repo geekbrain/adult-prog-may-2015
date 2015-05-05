@@ -15,9 +15,10 @@ namespace SharpCrawler
 
             while (true)
             {
+                string url = null;
                 try
                 {
-                    var url = wsAdapter.GetLink();
+                    url = wsAdapter.GetLink();
                     _logger.Info("Текущий url=" + url);
                     if (url == null)
                     {
@@ -32,26 +33,25 @@ namespace SharpCrawler
                     wsAdapter.SendLinks(links, url);
 
                     var namesDictionary = wsAdapter.GetNamesDictionary();
-                    if ((namesDictionary == null) || (namesDictionary.Count == 0))
-                    {
-                        continue;
-                    }
-
                     var namesAmountDictionary =
                         crawler.GetNamesAmountDictionary(html, namesDictionary);
 
                     wsAdapter.SendAmountDictionary(namesAmountDictionary, url);
-
-//                    foreach (var nameAmount in namesAmountDictionary)
-//                    {
-//                        Console.WriteLine("name:\t" + nameAmount.Key + "\tamount:\t" +
-//                                          nameAmount.Value.ToString());
-//                    }
-//                    Console.ReadLine();
                 }
                 catch (CrawlerException exception)
                 {
-                    _logger.Error(exception.Message);
+                    _logger.Error(exception.Message);                        
+                    try
+                    {
+                        if (url != null)
+                        {
+                            wsAdapter.SendAmountDictionary(null, url);
+                        }
+                    }
+                    catch (Exception innerException)
+                    {
+                        _logger.Error(innerException.Message);                        
+                    }
                 }
             }
         }

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>DbSnippets</Title>
+      <Author>dds</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>selectSiteIdByUrl</ID>
+          <ToolTip>selectSiteIdByUrl</ToolTip>
+          <Default>selectSiteIdByUrl</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>T</ID>
+          <ToolTip>T</ToolTip>
+          <Default>T</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[        private <$T$> SelectSiteIdByUrl(string url)
+        {
+            CheckConnectionState();
+            using (var $selectSiteIdByUrl$ = _connection.CreateCommand())
+            {
+                const string selectSiteIdByUrlSql =
+                    @"select
+                            s.id
+                    from
+                        site s
+                    where
+                        s.url = ?url";
+
+                $selectSiteIdByUrl$.CommandText = selectSiteIdByUrlSql;
+                $selectSiteIdByUrl$.Parameters.AddWithValue("?url", url);
+                return <$T$>$selectSiteIdByUrl$.ExecuteScalar();
+            }
+        }
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
