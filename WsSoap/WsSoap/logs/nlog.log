@@ -209,3 +209,372 @@
 2015-04-29 20:14:59.3060|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/apology/
 2015-04-29 20:15:01.4728|INFO|DbLogger|Удаляем из очереди site_page_id = 2091
 2015-04-29 20:15:06.7959|INFO|DbLogger|Удаляем из очереди site_page_id = 2092
+2015-05-04 20:22:29.8007|INFO|DbLogger|Удаляем из очереди site_page_id = 2
+2015-05-04 20:24:52.4978|INFO|DbLogger|Удаляем из очереди site_page_id = 1938
+2015-05-04 20:25:58.4936|INFO|DbLogger|Добавляем в очередь url по запросу из базы
+2015-05-04 20:25:58.9866|INFO|DbLogger|URL: http://lenta.ru
+2015-05-04 20:27:28.2258|INFO|DbLogger|Добавляем в очередь url по запросу из базы
+2015-05-04 20:27:28.2258|INFO|DbLogger|URL: http://lenta.ru/
+2015-05-04 20:28:02.8147|INFO|DbLogger|Добавляем в очередь url по запросу из базы
+2015-05-04 20:28:03.2668|INFO|DbLogger|URL: http://lenta.ru/rubrics/russia/
+2015-05-04 20:28:14.0974|INFO|DbLogger|Добавляем в очередь url по запросу из базы
+2015-05-04 20:28:14.0974|INFO|DbLogger|URL: http://lenta.ru/rubrics/world/
+2015-05-04 20:29:28.6476|INFO|DbLogger|Добавляем в очередь url по запросу из базы
+2015-05-04 20:29:28.6476|INFO|DbLogger|URL: http://lenta.ru/rubrics/economics/
+2015-05-04 20:30:23.9878|INFO|DbLogger|Удаляем из очереди site_page_id = 1939
+2015-05-04 20:30:31.7873|INFO|DbLogger|Добавляем в очередь url по запросу из базы
+2015-05-04 20:30:31.7873|INFO|DbLogger|URL: http://lenta.ru/rubrics/business/
+2015-05-04 20:31:41.1612|INFO|DbLogger|Добавляем в очередь url по запросу из базы
+2015-05-04 20:31:41.1612|INFO|DbLogger|URL: http://lenta.ru/rubrics/forces/
+2015-05-05 05:40:46.4897|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:40:46.5357|INFO|DbLogger|URL: http://lenta.ru/rss
+2015-05-05 05:42:40.9942|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:42:40.9942|INFO|DbLogger|URL: http://lenta.ru/rss
+2015-05-05 05:44:35.3368|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:35.3368|INFO|DbLogger|URL: http://lenta.ru/rss
+2015-05-05 05:44:47.7665|INFO|DbLogger|Удаляем из очереди site_page_id = 2075
+2015-05-05 05:44:49.7066|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:49.7066|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:44:50.8647|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:50.8647|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:44:52.0017|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:52.0017|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:44:53.1538|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:53.1538|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:44:54.6089|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:54.6089|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:44:55.8820|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:55.8820|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:44:57.2090|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:57.2090|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:44:58.5161|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:58.5161|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:44:59.6652|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:44:59.6652|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:45:00.8842|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:45:00.8842|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:45:17.9292|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:45:17.9292|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:45:19.1933|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:45:19.1933|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:45:20.3594|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:45:20.3594|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:45:21.5164|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:45:21.5164|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:45:22.6575|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:45:22.6575|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:48:20.1236|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:20.1236|INFO|DbLogger|URL: http://lenta.ru/about
+2015-05-05 05:48:24.3879|INFO|DbLogger|Удаляем из очереди site_page_id = 3316
+2015-05-05 05:48:26.3530|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:26.3530|INFO|DbLogger|URL: http://lenta.ru/about#adv
+2015-05-05 05:48:28.9861|INFO|DbLogger|Удаляем из очереди site_page_id = 3317
+2015-05-05 05:48:30.9403|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:30.9403|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/23/fabiar5/
+2015-05-05 05:48:33.4084|INFO|DbLogger|Удаляем из очереди site_page_id = 3318
+2015-05-05 05:48:35.3745|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:35.3745|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/14/future/
+2015-05-05 05:48:36.0785|INFO|DbLogger|Удаляем из очереди site_page_id = 3319
+2015-05-05 05:48:38.0357|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:38.0357|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/23/auk/
+2015-05-05 05:48:38.7227|INFO|DbLogger|Удаляем из очереди site_page_id = 3320
+2015-05-05 05:48:40.6708|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:40.6708|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/21/rrevoqlong2/
+2015-05-05 05:48:41.3658|INFO|DbLogger|Удаляем из очереди site_page_id = 3321
+2015-05-05 05:48:43.3210|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:43.3210|INFO|DbLogger|URL: http://lenta.ru/theme/acura
+2015-05-05 05:48:44.0290|INFO|DbLogger|Удаляем из очереди site_page_id = 3322
+2015-05-05 05:48:45.9851|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:45.9851|INFO|DbLogger|URL: http://lenta.ru/theme/alfa-romeo
+2015-05-05 05:48:46.6862|INFO|DbLogger|Удаляем из очереди site_page_id = 3323
+2015-05-05 05:48:48.6433|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:48.6433|INFO|DbLogger|URL: http://lenta.ru/theme/aston-martin
+2015-05-05 05:48:49.3413|INFO|DbLogger|Удаляем из очереди site_page_id = 3324
+2015-05-05 05:48:51.2984|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:51.2984|INFO|DbLogger|URL: http://lenta.ru/theme/audi
+2015-05-05 05:48:51.9815|INFO|DbLogger|Удаляем из очереди site_page_id = 3325
+2015-05-05 05:48:53.9356|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:53.9356|INFO|DbLogger|URL: http://lenta.ru/theme/bmw
+2015-05-05 05:48:54.6406|INFO|DbLogger|Удаляем из очереди site_page_id = 3326
+2015-05-05 05:48:56.5937|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:56.5937|INFO|DbLogger|URL: http://lenta.ru/theme/bentley
+2015-05-05 05:48:57.3088|INFO|DbLogger|Удаляем из очереди site_page_id = 3327
+2015-05-05 05:48:59.2569|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:48:59.2569|INFO|DbLogger|URL: http://lenta.ru/theme/bugatti
+2015-05-05 05:48:59.9389|INFO|DbLogger|Удаляем из очереди site_page_id = 3328
+2015-05-05 05:49:01.8910|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:01.8910|INFO|DbLogger|URL: http://lenta.ru/theme/cadillac
+2015-05-05 05:49:02.5711|INFO|DbLogger|Удаляем из очереди site_page_id = 3329
+2015-05-05 05:49:04.5222|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:04.5222|INFO|DbLogger|URL: http://lenta.ru/theme/chery
+2015-05-05 05:49:05.2202|INFO|DbLogger|Удаляем из очереди site_page_id = 3330
+2015-05-05 05:49:07.1763|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:07.1763|INFO|DbLogger|URL: http://lenta.ru/theme/chevrolet
+2015-05-05 05:49:07.8554|INFO|DbLogger|Удаляем из очереди site_page_id = 3331
+2015-05-05 05:49:09.8035|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:09.8035|INFO|DbLogger|URL: http://lenta.ru/theme/chrysler
+2015-05-05 05:49:10.4895|INFO|DbLogger|Удаляем из очереди site_page_id = 3332
+2015-05-05 05:49:12.4446|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:12.4446|INFO|DbLogger|URL: http://lenta.ru/theme/citroen
+2015-05-05 05:49:13.1917|INFO|DbLogger|Удаляем из очереди site_page_id = 3333
+2015-05-05 05:49:15.1438|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:15.1438|INFO|DbLogger|URL: http://lenta.ru/theme/dodge
+2015-05-05 05:49:15.8148|INFO|DbLogger|Удаляем из очереди site_page_id = 3334
+2015-05-05 05:49:17.7689|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:17.7689|INFO|DbLogger|URL: http://lenta.ru/theme/ferrari
+2015-05-05 05:49:18.4670|INFO|DbLogger|Удаляем из очереди site_page_id = 3335
+2015-05-05 05:49:20.4261|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:20.4261|INFO|DbLogger|URL: http://lenta.ru/theme/fiat
+2015-05-05 05:49:21.3221|INFO|DbLogger|Удаляем из очереди site_page_id = 3336
+2015-05-05 05:49:23.2752|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:23.2752|INFO|DbLogger|URL: http://lenta.ru/theme/ford
+2015-05-05 05:49:23.9643|INFO|DbLogger|Удаляем из очереди site_page_id = 3337
+2015-05-05 05:49:25.9154|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:25.9154|INFO|DbLogger|URL: http://lenta.ru/theme/gaz
+2015-05-05 05:49:26.6524|INFO|DbLogger|Удаляем из очереди site_page_id = 3338
+2015-05-05 05:49:28.6136|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:28.6136|INFO|DbLogger|URL: http://lenta.ru/theme/great-wall
+2015-05-05 05:49:29.3086|INFO|DbLogger|Удаляем из очереди site_page_id = 3339
+2015-05-05 05:49:31.2677|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:31.2677|INFO|DbLogger|URL: http://lenta.ru/theme/honda
+2015-05-05 05:49:31.9627|INFO|DbLogger|Удаляем из очереди site_page_id = 3340
+2015-05-05 05:49:33.9269|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:33.9269|INFO|DbLogger|URL: http://lenta.ru/theme/hummer
+2015-05-05 05:49:34.6249|INFO|DbLogger|Удаляем из очереди site_page_id = 3341
+2015-05-05 05:49:36.5780|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:36.5780|INFO|DbLogger|URL: http://lenta.ru/theme/hyundai
+2015-05-05 05:49:37.2880|INFO|DbLogger|Удаляем из очереди site_page_id = 3342
+2015-05-05 05:49:39.2432|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:39.2432|INFO|DbLogger|URL: http://lenta.ru/theme/infiniti
+2015-05-05 05:49:40.0002|INFO|DbLogger|Удаляем из очереди site_page_id = 3343
+2015-05-05 05:49:41.9593|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:41.9593|INFO|DbLogger|URL: http://lenta.ru/theme/jaguar
+2015-05-05 05:49:42.6544|INFO|DbLogger|Удаляем из очереди site_page_id = 3344
+2015-05-05 05:49:44.5995|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:44.5995|INFO|DbLogger|URL: http://lenta.ru/theme/jeep
+2015-05-05 05:49:45.2885|INFO|DbLogger|Удаляем из очереди site_page_id = 3345
+2015-05-05 05:49:47.2436|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:47.2436|INFO|DbLogger|URL: http://lenta.ru/theme/kia
+2015-05-05 05:49:47.9577|INFO|DbLogger|Удаляем из очереди site_page_id = 3346
+2015-05-05 05:49:49.9128|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:49.9128|INFO|DbLogger|URL: http://lenta.ru/theme/lada
+2015-05-05 05:49:50.6288|INFO|DbLogger|Удаляем из очереди site_page_id = 3347
+2015-05-05 05:49:52.5869|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:52.5869|INFO|DbLogger|URL: http://lenta.ru/theme/lamborghini
+2015-05-05 05:49:53.2950|INFO|DbLogger|Удаляем из очереди site_page_id = 3348
+2015-05-05 05:49:55.2521|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:55.2521|INFO|DbLogger|URL: http://lenta.ru/theme/land-rover
+2015-05-05 05:49:55.9911|INFO|DbLogger|Удаляем из очереди site_page_id = 3349
+2015-05-05 05:49:57.9522|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:49:57.9522|INFO|DbLogger|URL: http://lenta.ru/theme/lexus
+2015-05-05 05:49:58.6783|INFO|DbLogger|Удаляем из очереди site_page_id = 3350
+2015-05-05 05:50:00.6364|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:00.6364|INFO|DbLogger|URL: http://lenta.ru/theme/lifan
+2015-05-05 05:50:01.3464|INFO|DbLogger|Удаляем из очереди site_page_id = 3351
+2015-05-05 05:50:03.3025|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:03.3025|INFO|DbLogger|URL: http://lenta.ru/theme/mini
+2015-05-05 05:50:04.0066|INFO|DbLogger|Удаляем из очереди site_page_id = 3352
+2015-05-05 05:50:05.9597|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:05.9597|INFO|DbLogger|URL: http://lenta.ru/theme/maserati
+2015-05-05 05:50:06.6817|INFO|DbLogger|Удаляем из очереди site_page_id = 3353
+2015-05-05 05:50:08.6348|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:08.6348|INFO|DbLogger|URL: http://lenta.ru/theme/mazda
+2015-05-05 05:50:09.3449|INFO|DbLogger|Удаляем из очереди site_page_id = 3354
+2015-05-05 05:50:11.2890|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:11.2890|INFO|DbLogger|URL: http://lenta.ru/theme/mercedes-benz
+2015-05-05 05:50:12.0050|INFO|DbLogger|Удаляем из очереди site_page_id = 3355
+2015-05-05 05:50:13.9581|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:13.9581|INFO|DbLogger|URL: http://lenta.ru/theme/mitsubishi
+2015-05-05 05:50:14.6902|INFO|DbLogger|Удаляем из очереди site_page_id = 3356
+2015-05-05 05:50:16.6433|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:16.6433|INFO|DbLogger|URL: http://lenta.ru/theme/nissan
+2015-05-05 05:50:17.3733|INFO|DbLogger|Удаляем из очереди site_page_id = 3357
+2015-05-05 05:50:19.3315|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:19.3315|INFO|DbLogger|URL: http://lenta.ru/theme/opel
+2015-05-05 05:50:20.0115|INFO|DbLogger|Удаляем из очереди site_page_id = 3358
+2015-05-05 05:50:21.9696|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:21.9696|INFO|DbLogger|URL: http://lenta.ru/theme/peugeot
+2015-05-05 05:50:22.6756|INFO|DbLogger|Удаляем из очереди site_page_id = 3359
+2015-05-05 05:50:24.6248|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:24.6248|INFO|DbLogger|URL: http://lenta.ru/theme/porsche
+2015-05-05 05:50:25.3398|INFO|DbLogger|Удаляем из очереди site_page_id = 3360
+2015-05-05 05:50:27.2949|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:27.2949|INFO|DbLogger|URL: http://lenta.ru/theme/renault
+2015-05-05 05:50:28.0139|INFO|DbLogger|Удаляем из очереди site_page_id = 3361
+2015-05-05 05:50:29.9611|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:29.9611|INFO|DbLogger|URL: http://lenta.ru/theme/rolls-royce
+2015-05-05 05:50:30.6771|INFO|DbLogger|Удаляем из очереди site_page_id = 3362
+2015-05-05 05:50:32.6352|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:32.6352|INFO|DbLogger|URL: http://lenta.ru/theme/saab
+2015-05-05 05:50:33.3343|INFO|DbLogger|Удаляем из очереди site_page_id = 3363
+2015-05-05 05:50:35.2894|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:35.2894|INFO|DbLogger|URL: http://lenta.ru/theme/seat
+2015-05-05 05:50:35.9854|INFO|DbLogger|Удаляем из очереди site_page_id = 3364
+2015-05-05 05:50:37.9395|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:37.9395|INFO|DbLogger|URL: http://lenta.ru/theme/shuanghuan
+2015-05-05 05:50:38.6426|INFO|DbLogger|Удаляем из очереди site_page_id = 3365
+2015-05-05 05:50:40.5957|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:40.5957|INFO|DbLogger|URL: http://lenta.ru/theme/skoda
+2015-05-05 05:50:41.2967|INFO|DbLogger|Удаляем из очереди site_page_id = 3366
+2015-05-05 05:50:43.2508|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:43.2508|INFO|DbLogger|URL: http://lenta.ru/theme/smart
+2015-05-05 05:50:43.9749|INFO|DbLogger|Удаляем из очереди site_page_id = 3367
+2015-05-05 05:50:45.9230|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:45.9230|INFO|DbLogger|URL: http://lenta.ru/theme/ssangyong
+2015-05-05 05:50:46.6190|INFO|DbLogger|Удаляем из очереди site_page_id = 3368
+2015-05-05 05:50:48.5681|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:48.5681|INFO|DbLogger|URL: http://lenta.ru/theme/subaru
+2015-05-05 05:50:49.2512|INFO|DbLogger|Удаляем из очереди site_page_id = 3369
+2015-05-05 05:50:51.1973|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:51.1973|INFO|DbLogger|URL: http://lenta.ru/theme/suzuki
+2015-05-05 05:50:51.9703|INFO|DbLogger|Удаляем из очереди site_page_id = 3370
+2015-05-05 05:50:53.9254|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:53.9254|INFO|DbLogger|URL: http://lenta.ru/theme/tesla
+2015-05-05 05:50:54.6345|INFO|DbLogger|Удаляем из очереди site_page_id = 3371
+2015-05-05 05:50:56.5846|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:56.5846|INFO|DbLogger|URL: http://lenta.ru/theme/toyota
+2015-05-05 05:50:57.2706|INFO|DbLogger|Удаляем из очереди site_page_id = 3372
+2015-05-05 05:50:59.2557|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:50:59.2557|INFO|DbLogger|URL: http://lenta.ru/theme/volkswagen
+2015-05-05 05:51:00.0008|INFO|DbLogger|Удаляем из очереди site_page_id = 3373
+2015-05-05 05:51:01.9489|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:01.9489|INFO|DbLogger|URL: http://lenta.ru/theme/volvo
+2015-05-05 05:51:02.6579|INFO|DbLogger|Удаляем из очереди site_page_id = 3374
+2015-05-05 05:51:04.6100|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:04.6100|INFO|DbLogger|URL: http://lenta.ru/rubrics/testdrives
+2015-05-05 05:51:05.3311|INFO|DbLogger|Удаляем из очереди site_page_id = 3375
+2015-05-05 05:51:07.2852|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:07.2852|INFO|DbLogger|URL: http://lenta.ru/rubrics/reports
+2015-05-05 05:51:08.0162|INFO|DbLogger|Удаляем из очереди site_page_id = 3376
+2015-05-05 05:51:09.9693|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:09.9693|INFO|DbLogger|URL: http://lenta.ru/rubrics/selector
+2015-05-05 05:51:10.6854|INFO|DbLogger|Удаляем из очереди site_page_id = 3377
+2015-05-05 05:51:12.6465|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:12.6465|INFO|DbLogger|URL: http://lenta.ru/rubrics/stories
+2015-05-05 05:51:13.3775|INFO|DbLogger|Удаляем из очереди site_page_id = 3378
+2015-05-05 05:51:15.3337|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:15.3337|INFO|DbLogger|URL: http://lenta.ru/rubrics/lab
+2015-05-05 05:51:16.0667|INFO|DbLogger|Удаляем из очереди site_page_id = 3379
+2015-05-05 05:51:18.0318|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:18.0318|INFO|DbLogger|URL: http://lenta.ru/pulse
+2015-05-05 05:51:18.7138|INFO|DbLogger|Удаляем из очереди site_page_id = 3380
+2015-05-05 05:51:20.6690|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:20.6690|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/corvetterace/
+2015-05-05 05:51:21.3960|INFO|DbLogger|Удаляем из очереди site_page_id = 3381
+2015-05-05 05:51:23.3541|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:23.3541|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/rcoty15/
+2015-05-05 05:51:24.0512|INFO|DbLogger|Удаляем из очереди site_page_id = 3382
+2015-05-05 05:51:25.9983|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:25.9983|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/chironring/
+2015-05-05 05:51:26.6983|INFO|DbLogger|Удаляем из очереди site_page_id = 3383
+2015-05-05 05:51:28.6634|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:28.6634|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/kahn/
+2015-05-05 05:51:29.4025|INFO|DbLogger|Удаляем из очереди site_page_id = 3384
+2015-05-05 05:51:31.3596|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:31.3606|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/g500turbo/
+2015-05-05 05:51:32.0856|INFO|DbLogger|Удаляем из очереди site_page_id = 3385
+2015-05-05 05:51:34.0677|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:34.0677|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/watch/
+2015-05-05 05:51:34.8038|INFO|DbLogger|Удаляем из очереди site_page_id = 3386
+2015-05-05 05:51:36.7589|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:36.7589|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/mazda3mps/
+2015-05-05 05:51:37.4569|INFO|DbLogger|Удаляем из очереди site_page_id = 3387
+2015-05-05 05:51:39.4250|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:39.4250|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/sq7/
+2015-05-05 05:51:40.1301|INFO|DbLogger|Удаляем из очереди site_page_id = 3388
+2015-05-05 05:51:42.0802|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:42.0802|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/wrxsti/
+2015-05-05 05:51:42.8222|INFO|DbLogger|Удаляем из очереди site_page_id = 3389
+2015-05-05 05:51:44.7733|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:44.7733|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/20/nx/
+2015-05-05 05:51:45.5134|INFO|DbLogger|Удаляем из очереди site_page_id = 3390
+2015-05-05 05:51:47.4685|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:47.4685|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/15/cr-v/
+2015-05-05 05:51:48.1555|INFO|DbLogger|Удаляем из очереди site_page_id = 3391
+2015-05-05 05:51:50.1016|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:50.1016|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/14/twingo/
+2015-05-05 05:51:50.8177|INFO|DbLogger|Удаляем из очереди site_page_id = 3392
+2015-05-05 05:51:52.7718|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:52.7718|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/20/gpbah/
+2015-05-05 05:51:53.4688|INFO|DbLogger|Удаляем из очереди site_page_id = 3393
+2015-05-05 05:51:55.4199|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:55.4199|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/20/finalpilot/
+2015-05-05 05:51:56.1180|INFO|DbLogger|Удаляем из очереди site_page_id = 3394
+2015-05-05 05:51:58.0791|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:51:58.0791|INFO|DbLogger|URL: http://lenta.ru/gallery/2015/04/22/fireeng/
+2015-05-05 05:51:58.8161|INFO|DbLogger|Удаляем из очереди site_page_id = 3395
+2015-05-05 05:52:00.7733|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:52:00.7733|INFO|DbLogger|URL: http://lenta.ru/gallery/2015/04/17/bestinteriors/
+2015-05-05 05:52:01.5423|INFO|DbLogger|Удаляем из очереди site_page_id = 3396
+2015-05-05 05:52:03.5064|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:52:03.5064|INFO|DbLogger|URL: http://lenta.ru/gallery/2015/04/17/pimpmyride/
+2015-05-05 05:52:04.2115|INFO|DbLogger|Удаляем из очереди site_page_id = 3397
+2015-05-05 05:52:06.1606|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:52:06.1606|INFO|DbLogger|URL: http://lenta.ru/articles/2015/04/09/moko/
+2015-05-05 05:52:06.8866|INFO|DbLogger|Удаляем из очереди site_page_id = 3398
+2015-05-05 05:52:08.8337|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:52:08.8337|INFO|DbLogger|URL: http://lenta.ru/articles/2015/03/24/junkyard2/
+2015-05-05 05:59:07.0266|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:07.0426|INFO|DbLogger|URL: http://lenta.ru/articles/2015/03/24/junkyard2/
+2015-05-05 05:59:27.4068|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:27.4068|INFO|DbLogger|URL: http://lenta.ru/articles/2015/03/24/junkyard1/
+2015-05-05 05:59:34.0642|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:34.0642|INFO|DbLogger|URL: http://lenta.ru/gallery/2015/04/22/euroncap/
+2015-05-05 05:59:35.9953|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:35.9953|INFO|DbLogger|URL: http://lenta.ru/gallery/2015/04/06/gridgirls/
+2015-05-05 05:59:37.8984|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:37.8984|INFO|DbLogger|URL: http://lenta.ru/policies
+2015-05-05 05:59:40.4065|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:40.4075|INFO|DbLogger|URL: http://lenta.ru/pulse/2015/04/26/
+2015-05-05 05:59:42.6157|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:42.6157|INFO|DbLogger|URL: http://lenta.ru/export/atom
+2015-05-05 05:59:44.5228|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:44.5228|INFO|DbLogger|URL: http://lenta.ru/about/
+2015-05-05 05:59:46.4559|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:46.4559|INFO|DbLogger|URL: http://lenta.ru/rubrics/flat/
+2015-05-05 05:59:48.3920|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:48.3920|INFO|DbLogger|URL: http://lenta.ru/rubrics/village/
+2015-05-05 05:59:50.2981|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:50.2981|INFO|DbLogger|URL: http://lenta.ru/rubrics/office/
+2015-05-05 05:59:52.2232|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:52.2232|INFO|DbLogger|URL: http://lenta.ru/rubrics/city/
+2015-05-05 05:59:54.1103|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:54.1103|INFO|DbLogger|URL: http://lenta.ru/photo/2015/04/24/expo2015pavilions/
+2015-05-05 05:59:56.0584|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:56.0584|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/metrovnukovo/
+2015-05-05 05:59:57.9996|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:57.9996|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/buildingresultsmoscow/
+2015-05-05 05:59:59.9227|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 05:59:59.9227|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/dreamworksparkspb/
+2015-05-05 06:00:01.8608|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:01.8608|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/24/spb/
+2015-05-05 06:00:03.7689|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:03.7689|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/23/vtorichka/
+2015-05-05 06:00:06.2950|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:06.2950|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/23/initiative/
+2015-05-05 06:00:08.8462|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:08.8462|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/23/xabarovsk/
+2015-05-05 06:00:11.3213|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:11.3213|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/23/ikeametro/
+2015-05-05 06:00:13.8805|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:13.8805|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/22/einsparung/
+2015-05-05 06:00:16.4856|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:16.4856|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/22/outlet/
+2015-05-05 06:00:19.0198|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:19.0198|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/22/retail/
+2015-05-05 06:00:20.9289|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:20.9289|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/21/moek/
+2015-05-05 06:00:22.8600|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:22.8600|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/21/officemarket/
+2015-05-05 06:00:24.8091|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:24.8091|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/21/zagorod/
+2015-05-05 06:00:26.7182|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:26.7182|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/21/heliports/
+2015-05-05 06:00:28.6423|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:28.6423|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/20/zavidovospecialzone/
+2015-05-05 06:00:30.5844|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:30.5844|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/20/prishvinmansion/
+2015-05-05 06:00:32.5335|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:32.5335|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/20/turkishmosmetro/
+2015-05-05 06:00:34.4746|INFO|DbLogger|Возвращаем url из очереди
+2015-05-05 06:00:34.4746|INFO|DbLogger|URL: http://lenta.ru/news/2015/04/20/russiatopstrademarket/
